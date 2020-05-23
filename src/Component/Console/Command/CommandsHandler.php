@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Commands;
+namespace Chopper\Command;
 
-use Chopper\Commands\CommandTraits\MainCommandTrait;
+use Chopper\Command\CommandTraits\MainCommandTrait;
 use Chopper\Tools\ColoredConsole\Console;
 use Chopper\Traits\ClosedConstructorTrait;
 
@@ -16,7 +16,7 @@ class CommandsHandler
     use ClosedConstructorTrait;
 
     /**
-     * Commands start method
+     * Command start method
      */
     public static function main(): void
     {
