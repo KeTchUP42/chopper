@@ -1,0 +1,5 @@
+/vendor
+/.idea
+# Log files
+*.log
+*.dev

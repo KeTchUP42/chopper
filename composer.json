@@ -1,0 +1,30 @@
+{
+  "name": "roman/html-chopper",
+  "description": "Easy html chopper.",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Roman Bondarenko",
+      "email": "rom_bon@mail.ru"
+    }
+  ],
+  "require": {
+    "php": "^7.2",
+    "vlucas/phpdotenv": "^4.1",
+    "zendframework/zend-log": "^2.12"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master",
+    "phpunit/phpunit": "^9.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Chopper\\": "src/"
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Tests\\": "tests/"
+      }
+    }
+  }
+}
