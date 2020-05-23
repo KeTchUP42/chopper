@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-use Chopper\Tools\GLogger\GLogger;
+use Chopper\Component\Logger\GlobalLogger\GLogger;
 
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');

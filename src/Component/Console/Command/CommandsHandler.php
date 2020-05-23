@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Command;
+namespace Chopper\Component\Console\Command;
 
-use Chopper\Command\CommandTraits\MainCommandTrait;
-use Chopper\Tools\ColoredConsole\Console;
+use Chopper\Component\Console\ColoredConsole\Console;
+use Chopper\Component\Console\Command\CommandTraits\MainCommandTrait;
 use Chopper\Traits\ClosedConstructorTrait;
 
 /**

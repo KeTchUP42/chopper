@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Exceptions;
+namespace Chopper\Component\Logger\GlobalLogger\Exception;
 
 /**
  * GLoggerException

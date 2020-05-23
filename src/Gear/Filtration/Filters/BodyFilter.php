@@ -18,7 +18,7 @@ class BodyFilter extends Filter
     public function handle(string $data): string
     {
         $body = [];
-        preg_match("'<body[^>]*?>.*?</body>'si", $data, $body);
+        preg_match("~<body[^>]*?>.*?</body>~si", $data, $body);
 
         return parent::handle($body[0] ?? '');
     }

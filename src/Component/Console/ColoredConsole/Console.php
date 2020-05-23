@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Tools\ColoredConsole;
+namespace Chopper\Component\Console\ColoredConsole;
 
 use Chopper\Traits\ClosedConstructorTrait;
 

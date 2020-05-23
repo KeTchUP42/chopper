@@ -18,7 +18,7 @@ class DivFilter extends Filter
     public function handle(string $data): string
     {
         $block = [];
-        preg_match("'<div[^>]*?>.*?</div>'si", $data, $block);
+        preg_match("~<div[^>]*?>.*?</div>~si", $data, $block);
 
         return parent::handle($block[0] ?? '');
     }

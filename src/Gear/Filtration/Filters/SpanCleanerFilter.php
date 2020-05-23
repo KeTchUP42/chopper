@@ -17,7 +17,7 @@ class SpanCleanerFilter extends Filter
      */
     public function handle(string $data): string
     {
-        $data = preg_replace("'<span[^>]*?>.*?</span>'si", '', $data);
+        $data = preg_replace("~<span[^>]*?>.*?</span>~si", '', $data);
 
         return parent::handle($data);
     }

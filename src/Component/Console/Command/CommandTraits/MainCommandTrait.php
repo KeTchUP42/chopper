@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Command\CommandTraits;
+namespace Chopper\Component\Console\Command\CommandTraits;
 
 use Chopper\App\Mixer;
 

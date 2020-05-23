@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\App;
 
-use Chopper\Tools\ColoredConsole\Console;
+use Chopper\Component\Console\ColoredConsole\Console;
 
 /**
  * Main facade class
