@@ -24,24 +24,31 @@ trait CleanerCommandTrait
         if (!filter_var($path, FILTER_VALIDATE_URL)) {
             $path = $directory . $path;
         }
-
         (new Cleaner())->filtHtmlFile(
             $path,
-            $directory . ($dest ?? basename($path))
+            $directory . ($dest ?? str_replace(
+                    ['https://', 'http://', '/',],
+                    ['', '', '.'],
+                    $path
+                ))
         );
     }
 
     /**
      * Method downloads page to file
      *
-     * @param string      $path
+     * @param string      $url
      * @param string|null $dest
      */
-    private function download(string $path, string $dest = null): void
+    private function download(string $url, string $dest = null): void
     {
         (new PageDownloader())->downloadtofile(
-            $path,
-            $_ENV['HTML_RESOURCES'] . '/' . ($dest ?? basename($path))
+            $url,
+            $_ENV['HTML_RESOURCES'] . '/' . ($dest ?? str_replace(
+                    ['https://', 'http://', '/',],
+                    ['', '', '.'],
+                    $url
+                ))
         );
     }
 

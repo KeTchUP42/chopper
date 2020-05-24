@@ -36,6 +36,7 @@ class CommandsHandler
             Console::out()->color(Console::GREEN)->writeln('Done');
         } catch (\Error $error) {
             $this->error();
+            Console::out()->color(Console::RED)->writeln($error->getMessage());
         }
     }
 

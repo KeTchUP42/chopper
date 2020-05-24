@@ -11,7 +11,7 @@ use Chopper\Component\Downloader\Base\IDownloader;
 class PageDownloader implements IDownloader
 {
     /**
-     * Method downloads html page with Curl
+     * Method downloads html page with Curl to file
      *
      * @param string $url
      * @param string $dest
@@ -30,6 +30,13 @@ class PageDownloader implements IDownloader
         return false;
     }
 
+    /**
+     * Method downloads html page with Curl
+     *
+     * @param string $url
+     *
+     * @return string|null
+     */
     public function download(string $url): ?string
     {
         if (filter_var($url, FILTER_VALIDATE_URL)) {
@@ -43,7 +50,7 @@ class PageDownloader implements IDownloader
             $data = curl_exec($handler);
             curl_close($handler);
 
-            return $data;
+            return is_bool($data) ? null : $data;
         }
 
         return null;
