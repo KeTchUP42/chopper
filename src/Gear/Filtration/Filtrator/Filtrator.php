@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Filtration\Filtrator;
 
+use Chopper\Gear\Factory\Filter\IFilterFactory;
 use Chopper\Gear\Filtration\Filters\BaseFilter\IFilter;
 use Zend\Log\LoggerInterface;
 
@@ -42,6 +43,13 @@ class Filtrator implements IFiltrator
     public function setFilter(IFilter $filter): IFiltrator
     {
         $this->filter = $filter;
+
+        return $this;
+    }
+
+    public function setFilterWithFactory(IFilterFactory $factory): IFiltrator
+    {
+        $this->filter = $factory->createFilter();
 
         return $this;
     }

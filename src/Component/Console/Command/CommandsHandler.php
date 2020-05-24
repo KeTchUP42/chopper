@@ -4,15 +4,15 @@ declare(strict_types = 1);
 namespace Chopper\Component\Console\Command;
 
 use Chopper\Component\Console\ColoredConsole\Console;
-use Chopper\Component\Console\Command\CommandTraits\MainCommandTrait;
-use Chopper\Traits\ClosedConstructorTrait;
+use Chopper\Component\Console\Command\CommandTraits\CleanerCommandTrait;
+use Chopper\Component\Traits\ClosedConstructorTrait;
 
 /**
  * Easy console commands functional realization
  */
 class CommandsHandler
 {
-    use MainCommandTrait;
+    use CleanerCommandTrait;
     use ClosedConstructorTrait;
 
     /**
@@ -32,7 +32,8 @@ class CommandsHandler
     {
         try {
             $method = $argv[1] ?? 'error';
-            $this->$method($argv[2] ?? null);
+            $this->$method($argv[2] ?? null, $argv[3] ?? null);
+            Console::out()->color(Console::GREEN)->writeln('Done');
         } catch (\Error $error) {
             $this->error();
         }
@@ -43,6 +44,6 @@ class CommandsHandler
      */
     private function error(): void
     {
-        Console::out()->color(Console::RED)->writeln("Err");
+        Console::out()->color(Console::RED)->writeln("Concole command handler error!");
     }
 }

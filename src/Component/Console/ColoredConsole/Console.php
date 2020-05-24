@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\Component\Console\ColoredConsole;
 
-use Chopper\Traits\ClosedConstructorTrait;
+use Chopper\Component\Traits\ClosedConstructorTrait;
 
 /**
  * Console

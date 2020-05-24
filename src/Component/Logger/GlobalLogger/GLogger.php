@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Chopper\Component\Logger\GlobalLogger;
 
 use Chopper\Component\Logger\GlobalLogger\Exception\GLoggerException;
-use Chopper\Traits\SingletonTrait;
+use Chopper\Component\Traits\SingletonTrait;
 use Zend\Log\Logger;
 use Zend\Log\LoggerInterface;
 use Zend\Log\Writer\Stream;
