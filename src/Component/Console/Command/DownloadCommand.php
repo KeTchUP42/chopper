@@ -20,26 +20,29 @@ class DownloadCommand extends Command
     /**
      * @var string
      */
-    private $ResourcesDir;
+    private $ResourceDir;
 
     /**
      * Конструктор.
      *
-     * @param string $ResourcesDir
+     * @param string $ResourceDir
      */
-    public function __construct(string $ResourcesDir)
+    public function __construct(string $ResourceDir)
     {
         parent::__construct();
-        $this->ResourcesDir = $ResourcesDir;
+        $this->ResourceDir = $ResourceDir;
     }
 
+    /**
+     * Configuring
+     */
     protected function configure()
     {
         $this
             ->setName('download')
             ->setAliases(["d"])
             ->setDescription('Downloads file.')
-            ->setHelp('This command downloads file to recource dir.');
+            ->setHelp('This command downloads file to the target directory.');
         $this->addArgument('url', InputArgument::REQUIRED, 'File url');
         $this->addArgument('dest', InputArgument::OPTIONAL, 'New file name.');
     }
@@ -58,12 +61,22 @@ class DownloadCommand extends Command
         $dest = is_null($dest) ? uniqid('file', false) : basename($dest);
         $url  = $input->getArgument('url');
 
-        $output->writeln(sprintf('URL: %s', $url));
-        $output->writeln(sprintf('NEW FILE NAME: %s', $dest));
-
+        $this->log($output, $url, $dest);
         $this->download($url, $dest);
 
         return 0;
+    }
+
+    /**
+     *
+     * @param OutputInterface $output
+     * @param string          $url
+     * @param string          $dest
+     */
+    private function log(OutputInterface $output, string $url, string $dest): void
+    {
+        $output->writeln(sprintf('URL: %s', $url));
+        $output->writeln(sprintf('NEW FILE NAME: %s', $dest));
     }
 
     /**
@@ -72,12 +85,12 @@ class DownloadCommand extends Command
      * @param string      $url
      * @param string|null $dest
      */
-    private function download(string $url, string $dest = null): void
+    private function download(string $url, string $dest): void
     {
         Console::out()->color(Console::GREEN)->writeln('Downloading..');
         (new HttpDownloader(new CurlRequest(), GLogger::getLogFilePath()))->downloadtofile(
             $url,
-            $this->ResourcesDir . $dest
+            $this->ResourceDir . $dest
         );
         Console::out()->color(Console::GREEN)->writeln('Done');
     }

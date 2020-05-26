@@ -7,6 +7,7 @@ use Chopper\Gear\Filtration\Filters\BaseFilter\IFilter;
 use Chopper\Gear\Filtration\Filters\BodyFilter;
 use Chopper\Gear\Filtration\Filters\FormCleanerFilter;
 use Chopper\Gear\Filtration\Filters\ScriptCleanerFilter;
+use Chopper\Gear\Filtration\Filters\StyleCleanerFilter;
 
 /**
  * BaseFilterFactory
@@ -22,6 +23,7 @@ class BaseFilterFactory implements IFilterFactory
     {
         $filter = new BodyFilter();
         $filter->setFilter(new ScriptCleanerFilter())->setFilter(new FormCleanerFilter());
+        $filter->setFilter(new StyleCleanerFilter());
 
         return $filter;
     }

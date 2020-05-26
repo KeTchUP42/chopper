@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\App;
+namespace Chopper\Gear\Facade;
 
 use Chopper\Component\Curl\CurlRequest;
 use Chopper\Component\Downloader\HttpDownloader;

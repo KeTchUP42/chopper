@@ -1,6 +1,6 @@
 {
-  "name": "roman/html-chopper",
-  "description": "Easy html chopper.",
+  "name": "roman/file-chopper",
+  "description": "File chopper.",
   "type": "project",
   "authors": [
     {
