@@ -17,18 +17,18 @@ use Chopper\Gear\Filtration\Filtrator\Filtrator;
 class Cleaner
 {
     /**
-     * Method filts main file
+     * Method filts file
      *
-     * @param string $path
+     * @param string              $path
      *
-     * @param string $dest
+     * @param string              $dest
      *
      * @param IFilterFactory|null $factory
      *
      * @return bool
      * @throws GLoggerExceptionAlias
      */
-    public function filtHtmlFile(string $path, string $dest, IFilterFactory $factory = null): bool
+    public function filtFile(string $path, string $dest, IFilterFactory $factory = null): bool
     {
         $filtrator = new Filtrator(($factory ?? (new BaseFilterFactory())), GLogger::getLogger());
 

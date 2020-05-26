@@ -30,9 +30,9 @@ trait CleanerCommandTrait
         }
         $path = !filter_var($path, FILTER_VALIDATE_URL) ? $_ENV['MAIN_RESOURCES'] . $path : $path;
 
-        (new Cleaner())->filtHtmlFile(
+        (new Cleaner())->filtFile(
             $path,
-            $_ENV['MAIN_RESOURCES'] . $dest,
+            $_ENV['FINAL_DIR'] . $dest,
             $factory
         );
     }

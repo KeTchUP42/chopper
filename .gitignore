@@ -1,5 +1,4 @@
-/vendor
 /.idea
-# Log files
+/var/
+/vendor/
 *.log
-*.dev
