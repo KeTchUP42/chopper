@@ -49,11 +49,7 @@ class DivSearchFilter extends Filter
         $result = [];
         foreach ($data as $value) {
             $blocks = [];
-            preg_match_all(
-                "~<div[^>]*?>.*?</div>~si",
-                $this->divCut($value),
-                $blocks
-            ); //todo test and rewrite
+            preg_match_all("~<div[^>]*?>.*?</div>~si", $this->divCut($value), $blocks); //todo test and rewrite
             if (empty($blocks[0])) {
                 $result[] = $value;
             }

@@ -19,9 +19,9 @@ class Cleaner
     /**
      * Method filts main file
      *
-     * @param string              $path
+     * @param string $path
      *
-     * @param string              $dest
+     * @param string $dest
      *
      * @param IFilterFactory|null $factory
      *

@@ -54,17 +54,8 @@ class Filtrator implements IFiltrator
      */
     public function handle(string $data): string
     {
-        $this->logger->info(
-            sprintf(
-                "Filtrator is creating filter with %s.",
-                get_class($this->factory)
-            )
-        );
-        $this->logger->info(
-            sprintf(
-                "Filtrator is calling filter's handle method."
-            )
-        );
+        $this->logger->info(sprintf("Filtrator is creating filter with %s.", get_class($this->factory)));
+        $this->logger->info(sprintf("Filtrator is calling filter's handle method."));
         try {
             $data = $this->factory->createFilter()->handle($data);
             $this->logger->info(sprintf('Success!'));
