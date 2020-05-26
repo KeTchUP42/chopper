@@ -4,7 +4,6 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Filtration\Filtrator;
 
 use Chopper\Gear\Factory\Filter\IFilterFactory;
-use Chopper\Gear\Filtration\Filters\BaseFilter\IFilter;
 use Zend\Log\LoggerInterface;
 
 /**
@@ -13,9 +12,9 @@ use Zend\Log\LoggerInterface;
 class Filtrator implements IFiltrator
 {
     /**
-     * @var IFilter
+     * @var IFilterFactory
      */
-    protected $filter;
+    protected $factory;
 
     /**
      * @var LoggerInterface
@@ -25,31 +24,25 @@ class Filtrator implements IFiltrator
     /**
      * Конструктор.
      *
-     * @param IFilter         $filter
+     * @param IFilterFactory  $factory
      * @param LoggerInterface $logger
      */
-    public function __construct(IFilter $filter, LoggerInterface $logger)
+    public function __construct(IFilterFactory $factory, LoggerInterface $logger)
     {
-        $this->filter = $filter;
-        $this->logger = $logger;
+        $this->factory = $factory;
+        $this->logger  = $logger;
     }
 
     /**
+     * Установка Factory.
      *
-     * @param IFilter $filter
+     * @param IFilterFactory $factory
      *
-     * @return $this|IFiltrator
+     * @return Filtrator
      */
-    public function setFilter(IFilter $filter): IFiltrator
+    public function setFactory(IFilterFactory $factory): Filtrator
     {
-        $this->filter = $filter;
-
-        return $this;
-    }
-
-    public function setFilterWithFactory(IFilterFactory $factory): IFiltrator
-    {
-        $this->filter = $factory->createFilter();
+        $this->factory = $factory;
 
         return $this;
     }
@@ -63,12 +56,17 @@ class Filtrator implements IFiltrator
     {
         $this->logger->info(
             sprintf(
-                "Filtrator is calling filter %s handle method.",
-                get_class($this->filter)
+                "Filtrator is creating filter with %s.",
+                get_class($this->factory)
+            )
+        );
+        $this->logger->info(
+            sprintf(
+                "Filtrator is calling filter's handle method."
             )
         );
         try {
-            $data = $this->filter->handle($data);
+            $data = $this->factory->createFilter()->handle($data);
             $this->logger->info(sprintf('Success!'));
         } catch (\Exception $exception) {
             $this->logger->err(sprintf('Error! %s', $exception->getMessage()));

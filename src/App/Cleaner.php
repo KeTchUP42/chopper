@@ -30,7 +30,7 @@ class Cleaner
      */
     public function filtHtmlFile(string $path, string $dest, IFilterFactory $factory = null): bool
     {
-        $filtrator = new Filtrator(($factory ?? (new BaseFilterFactory()))->createFilter(), GLogger::getLogger());
+        $filtrator = new Filtrator(($factory ?? (new BaseFilterFactory())), GLogger::getLogger());
 
         if (filter_var($path, FILTER_VALIDATE_URL)) {
             file_put_contents(

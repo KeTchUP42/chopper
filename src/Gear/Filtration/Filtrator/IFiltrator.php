@@ -4,7 +4,6 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Filtration\Filtrator;
 
 use Chopper\Gear\Factory\Filter\IFilterFactory;
-use Chopper\Gear\Filtration\Filters\BaseFilter\IFilter;
 
 /**
  * IFiltrator
@@ -12,18 +11,13 @@ use Chopper\Gear\Filtration\Filters\BaseFilter\IFilter;
 interface IFiltrator
 {
     /**
-     * @param IFilter $filter
+     * Установка Factory.
      *
-     * @return IFiltrator
-     */
-    public function setFilter(IFilter $filter): IFiltrator;
-
-    /**
      * @param IFilterFactory $factory
      *
-     * @return IFiltrator
+     * @return Filtrator
      */
-    public function setFilterWithFactory(IFilterFactory $factory): IFiltrator;
+    public function setFactory(IFilterFactory $factory): Filtrator;
 
     /**
      * @param string $data
