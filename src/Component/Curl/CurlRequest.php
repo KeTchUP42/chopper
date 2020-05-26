@@ -39,7 +39,7 @@ class CurlRequest implements ICurlRequest
      *    'referer'     => '',
      *    'cookie'      => '',
      *    'post_fields' => '',
-     *    'timeout'     => 0 ,
+     *    'timeout'     => 300,
      *    ['login'      => '',]
      *    ['password'   => '',]
      *  ];
@@ -86,14 +86,7 @@ class CurlRequest implements ICurlRequest
     /**
      * Make curl request
      *
-     * @return array =
-     *      [
-     *       'header',
-     *       'body',
-     *       'curl_error',
-     *       'http_code',
-     *       'last_url'
-     *       ]
+     * @return array
      */
     public function exec(): array
     {
@@ -128,7 +121,9 @@ class CurlRequest implements ICurlRequest
      */
     public function setLogFile(string $logFilePath): void
     {
-        curl_setopt($this->ch, CURLOPT_STDERR, fopen($logFilePath, 'wb+'));
-        curl_setopt($this->ch, CURLOPT_VERBOSE, 1);
+        if (file_exists($logFilePath)) {
+            curl_setopt($this->ch, CURLOPT_STDERR, fopen($logFilePath, 'wb+'));
+            curl_setopt($this->ch, CURLOPT_VERBOSE, 1);
+        }
     }
 }

@@ -6,7 +6,6 @@ namespace Chopper\Gear\Filtration\Filters;
 use Chopper\Gear\Filtration\Filters\BaseFilter\Filter;
 
 /**
- * //todo REWRITE
  * DivSearchFilter
  */
 class DivSearchFilter extends Filter
@@ -38,7 +37,7 @@ class DivSearchFilter extends Filter
     }
 
     /**
-     * Method searches div tegs between main div tags recursive
+     * Method searches div tags between main div tags recursive
      *
      * @param array $data
      *

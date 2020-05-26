@@ -7,7 +7,6 @@ use Chopper\Component\Curl\CurlRequest;
 use Chopper\Component\Downloader\HttpDownloader;
 use Chopper\Component\Logger\GlobalLogger\Exception\GLoggerException as GLoggerExceptionAlias;
 use Chopper\Component\Logger\GlobalLogger\GLogger;
-use Chopper\Gear\Factory\Filter\BaseFilterFactory;
 use Chopper\Gear\Factory\Filter\IFilterFactory;
 use Chopper\Gear\Filtration\Filtrator\Filtrator;
 
@@ -28,9 +27,9 @@ class Cleaner
      * @return bool
      * @throws GLoggerExceptionAlias
      */
-    public function filtFile(string $path, string $dest, IFilterFactory $factory = null): bool
+    public function filtFile(string $path, string $dest, IFilterFactory $factory): bool
     {
-        $filtrator = new Filtrator(($factory ?? (new BaseFilterFactory())), GLogger::getLogger());
+        $filtrator = new Filtrator($factory, GLogger::getLogger());
 
         if (filter_var($path, FILTER_VALIDATE_URL)) {
             file_put_contents(

@@ -10,6 +10,9 @@ namespace Chopper\Component\Debug;
  */
 class Debug
 {
+    /**
+     * Method enables php to catch errors
+     */
     public static function enable(): void
     {
         error_reporting(-1);

@@ -2,7 +2,7 @@
 <?php
 declare(strict_types = 1);
 
-use Chopper\Component\Console\Application;
+use Chopper\Component\Console\App\Application;
 use Chopper\Component\Console\ColoredConsole\Console;
 use Chopper\Component\Debug\Debug;
 
@@ -28,5 +28,4 @@ if ($_ENV['APP_DEBUG']) {
         Debug::enable();
     }
 }
-$app = new Application();
-$app->start();
+(new Application())->start();

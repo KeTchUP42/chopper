@@ -20,7 +20,7 @@ interface ICurlRequest
      *    'referer'     => '',
      *    'cookie'      => '',
      *    'post_fields' => '',
-     *    'timeout'     => 0
+     *    'timeout'     => 0 ,
      *    ['login'      => '',]
      *    ['password'   => '',]
      *  ];
@@ -33,13 +33,20 @@ interface ICurlRequest
      * Make curl request
      *
      * @return array
+     *      [
+     *       'header',
+     *       'body',
+     *       'curl_error',
+     *       'http_code',
+     *       'last_url'
+     *      ];
      */
     public function exec(): array;
 
     /**
      * Method sets log file
      *
-     * @param string $logFile
+     * @param string $logFilePath
      */
-    public function setLogFile(string $logFile): void;
+    public function setLogFile(string $logFilePath): void;
 }

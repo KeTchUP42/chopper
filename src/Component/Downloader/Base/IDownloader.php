@@ -9,17 +9,32 @@ namespace Chopper\Component\Downloader\Base;
 interface IDownloader
 {
     /**
-     * Base download method
+     * Method downloads content with Curl to file
      *
-     * @param string $path
+     * @param string $url
      * @param string $dest
+     *
+     * @param array  $params
      *
      * @return bool
      */
-    public function downloadtofile(string $path, string $dest): bool;
+    public function downloadtofile(
+        string $url,
+        string $dest,
+        array $params = [
+            'host'        => '',
+            'header'      => '',
+            'method'      => 'GET',
+            'referer'     => '',
+            'cookie'      => '',
+            'post_fields' => '',
+            'timeout'     => 300
+        ]
+    ): bool;
 
     /**
-     * Method downloads main page with Curl
+     * Method downloads content with Curl
+     *
      * 'GET','POST','HEAD'
      *
      * @param string $url
@@ -31,7 +46,6 @@ interface IDownloader
     public function download(
         string $url,
         array $params = [
-            'url'         => '',
             'host'        => '',
             'header'      => '',
             'method'      => 'GET',

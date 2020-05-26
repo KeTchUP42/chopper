@@ -11,7 +11,8 @@
   "require": {
     "php": "^7.2",
     "vlucas/phpdotenv": "^4.1",
-    "zendframework/zend-log": "^2.12"
+    "zendframework/zend-log": "^2.12",
+    "symfony/console": "^5.0"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",

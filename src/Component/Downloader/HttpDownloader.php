@@ -17,7 +17,7 @@ class HttpDownloader implements IDownloader
     private $curl;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $logFilePath;
 
@@ -27,23 +27,36 @@ class HttpDownloader implements IDownloader
      * @param ICurlRequest $curl
      * @param string       $logFilePath
      */
-    public function __construct(ICurlRequest $curl, string $logFilePath)
+    public function __construct(ICurlRequest $curl, string $logFilePath = null)
     {
         $this->curl        = $curl;
         $this->logFilePath = $logFilePath;
     }
 
     /**
-     * Method downloads main page with Curl to file
+     * Method downloads content with Curl to file
      *
      * @param string $url
      * @param string $dest
      *
+     * @param array  $params
+     *
      * @return bool
      */
-    public function downloadtofile(string $url, string $dest): bool
-    {
-        $data = $this->download($url)['body'];
+    public function downloadtofile(
+        string $url,
+        string $dest,
+        array $params = [
+            'host'        => '',
+            'header'      => '',
+            'method'      => 'GET',
+            'referer'     => '',
+            'cookie'      => '',
+            'post_fields' => '',
+            'timeout'     => 300
+        ]
+    ): bool {
+        $data = $this->download($url, $params)['body'];
         if (!is_null($data)) {
             file_put_contents($dest, $data);
 
@@ -54,7 +67,8 @@ class HttpDownloader implements IDownloader
     }
 
     /**
-     * Method downloads main page with Curl
+     * Method downloads content with Curl
+     *
      * 'GET','POST','HEAD'
      *
      * @param string $url
@@ -66,7 +80,6 @@ class HttpDownloader implements IDownloader
     public function download(
         string $url,
         array $params = [
-            'url'         => '',
             'host'        => '',
             'header'      => '',
             'method'      => 'GET',
@@ -82,7 +95,9 @@ class HttpDownloader implements IDownloader
         $params['url'] = $url;
 
         $this->curl->init($params);
-        $this->curl->setLogFile($this->logFilePath);
+        if (!is_null($this->logFilePath)) {
+            $this->curl->setLogFile($this->logFilePath);
+        }
         $result = $this->curl->exec();
         if ($result['curl_error']) {
             throw new \RuntimeException($result['curl_error']);
