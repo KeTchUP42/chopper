@@ -6,9 +6,9 @@ namespace Chopper\Gear\Filtration\Filters;
 use Chopper\Gear\Filtration\Filters\BaseFilter\Filter;
 
 /**
- * DivFilter
+ *  StyleCleanerFilter
  */
-class DivFilter extends Filter
+class StyleCleanerFilter extends Filter
 {
     /**
      * @param string $data
@@ -17,9 +17,8 @@ class DivFilter extends Filter
      */
     public function handle(string $data): string
     {
-        $block = [];
-        preg_match("~<div[^>]*?>.*?</div>~si", $data, $block);
+        $data = preg_replace("~<style[^>]*?>.*?</style>~si", '', $data);
 
-        return parent::handle($block[0] ?? '');
+        return parent::handle($data);
     }
 }

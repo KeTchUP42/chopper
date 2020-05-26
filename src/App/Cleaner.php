@@ -3,10 +3,12 @@ declare(strict_types = 1);
 
 namespace Chopper\App;
 
-use Chopper\Component\Downloader\PageDownloader;
+use Chopper\Component\Curl\CurlRequest;
+use Chopper\Component\Downloader\HttpDownloader;
 use Chopper\Component\Logger\GlobalLogger\Exception\GLoggerException as GLoggerExceptionAlias;
 use Chopper\Component\Logger\GlobalLogger\GLogger;
 use Chopper\Gear\Factory\Filter\BaseFilterFactory;
+use Chopper\Gear\Factory\Filter\IFilterFactory;
 use Chopper\Gear\Filtration\Filtrator\Filtrator;
 
 /**
@@ -15,20 +17,28 @@ use Chopper\Gear\Filtration\Filtrator\Filtrator;
 class Cleaner
 {
     /**
-     * Method filts html file
+     * Method filts main file
      *
-     * @param string $path
+     * @param string              $path
      *
-     * @param string $dest
+     * @param string              $dest
+     *
+     * @param IFilterFactory|null $factory
      *
      * @return bool
      * @throws GLoggerExceptionAlias
      */
-    public function filtHtmlFile(string $path, string $dest): bool
+    public function filtHtmlFile(string $path, string $dest, IFilterFactory $factory = null): bool
     {
-        $filtrator = new Filtrator((new BaseFilterFactory())->createFilter(), GLogger::getLogger());
+        $filtrator = new Filtrator(($factory ?? (new BaseFilterFactory()))->createFilter(), GLogger::getLogger());
+
         if (filter_var($path, FILTER_VALIDATE_URL)) {
-            file_put_contents($dest, $filtrator->handle((new PageDownloader())->download($path)));
+            file_put_contents(
+                $dest,
+                $filtrator->handle(
+                    (new HttpDownloader(new CurlRequest(), GLogger::getLogFilePath()))->download($path)['body']
+                )
+            );
 
             return true;
         }

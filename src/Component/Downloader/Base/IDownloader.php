@@ -19,11 +19,26 @@ interface IDownloader
     public function downloadtofile(string $path, string $dest): bool;
 
     /**
-     * Base download method
+     * Method downloads main page with Curl
+     * 'GET','POST','HEAD'
      *
-     * @param string $path
+     * @param string $url
      *
-     * @return string
+     * @param array  $params
+     *
+     * @return array
      */
-    public function download(string $path): ?string;
+    public function download(
+        string $url,
+        array $params = [
+            'url'         => '',
+            'host'        => '',
+            'header'      => '',
+            'method'      => 'GET',
+            'referer'     => '',
+            'cookie'      => '',
+            'post_fields' => '',
+            'timeout'     => 300
+        ]
+    ): array;
 }

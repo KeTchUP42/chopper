@@ -14,12 +14,17 @@ use Zend\Log\Writer\Stream;
  */
 class GLogger
 {
-    /**
-     * @var
-     */
-    protected static $logger;
-
     use SingletonTrait;
+
+    /**
+     * @var LoggerInterface
+     */
+    private static $logger;
+
+    /**
+     * @var string
+     */
+    private static $logFilePath;
 
     /**
      * Global logger configuring
@@ -31,8 +36,19 @@ class GLogger
         if (file_exists($logFilePath)) {
             unlink($logFilePath);
         }
-        static::$logger = new Logger;
-        static::$logger->addWriter(new Stream($logFilePath));
+        self::$logFilePath = $logFilePath;
+        self::$logger      = new Logger;
+        self::$logger->addWriter(new Stream($logFilePath));
+    }
+
+    /**
+     * Получить LogFilePath
+     *
+     * @return mixed
+     */
+    public static function getLogFilePath(): string
+    {
+        return self::$logFilePath;
     }
 
     /**
@@ -40,10 +56,10 @@ class GLogger
      */
     public static function getLogger(): LoggerInterface
     {
-        if (static::$logger === null) {
-            throw new GLoggerException('GlobalLogger did not configured.');
+        if (self::$logger === null) {
+            throw new GLoggerException(sprintf('%s did not configured.', self::class));
         }
 
-        return static::$logger;
+        return self::$logger;
     }
 }

@@ -63,7 +63,7 @@ class Filtrator implements IFiltrator
     {
         $this->logger->info(
             sprintf(
-                'Filtrator is calling filter %s handle method.',
+                "Filtrator is calling filter %s handle method.",
                 get_class($this->filter)
             )
         );
