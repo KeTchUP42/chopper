@@ -23,8 +23,8 @@ class DivFilterFactory implements IFilterFactory
     public function createFilter(): IFilter
     {
         $filter = new BodyFilter();
-        $filter->setFilter(new ScriptCleanerFilter())->setFilter(new FormCleanerFilter());
-        $filter->setFilter(new StyleCleanerFilter())->setFilter(new DivSearchFilter());
+        $filter->setFilter(new ScriptCleanerFilter())->setFilter(new FormCleanerFilter())
+            ->setFilter(new StyleCleanerFilter())->setFilter(new DivSearchFilter());
 
         return $filter;
     }

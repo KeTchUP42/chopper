@@ -22,8 +22,8 @@ class BaseFilterFactory implements IFilterFactory
     public function createFilter(): IFilter
     {
         $filter = new BodyFilter();
-        $filter->setFilter(new ScriptCleanerFilter())->setFilter(new FormCleanerFilter());
-        $filter->setFilter(new StyleCleanerFilter());
+        $filter->setFilter(new ScriptCleanerFilter())->setFilter(new StyleCleanerFilter())
+            ->setFilter(new FormCleanerFilter());
 
         return $filter;
     }
