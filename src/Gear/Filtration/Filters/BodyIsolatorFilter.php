@@ -8,7 +8,7 @@ use Chopper\Gear\Filtration\Filters\BaseFilter\Filter;
 /**
  * BodyFilter
  */
-class BodyFilter extends Filter
+class BodyIsolatorFilter extends Filter
 {
     /**
      * @param string $data

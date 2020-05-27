@@ -17,8 +17,6 @@ class FormCleanerFilter extends Filter
      */
     public function handle(string $data): string
     {
-        $data = preg_replace("~<form[^>]*?>.*?</form>~si", '', $data);
-
-        return parent::handle($data);
+        return parent::handle(preg_replace("~<form[^>]*?>.*?</form>~si", '', $data));
     }
 }

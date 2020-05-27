@@ -88,13 +88,12 @@ class ClearCommand extends Command
         string $dest = null,
         string $factoryName = null
     ) {
-        $factoryName = is_null($factoryName) ? BaseFilterFactory::class
-            : "Chopper\Gear\Factory\Filter\\" . $factoryName;
+        $factoryName = is_null($factoryName) ? BaseFilterFactory::class : "Chopper\Gear\Factory\Filter\\".$factoryName;
         if (!class_exists($factoryName, true)) {
             throw new \RuntimeException(sprintf("Factory %s is not exists!", $factoryName));
         }
         $dest = is_null($dest) ? uniqid('file', false) : basename($dest);
-        $path = !filter_var($path, FILTER_VALIDATE_URL) ? $this->ResourceDir . $path : $path;
+        $path = !filter_var($path, FILTER_VALIDATE_URL) ? $this->ResourceDir.$path : $path;
 
         $this->log($output, $path, $dest, $factoryName);
         $this->clear($path, $dest, new $factoryName());
@@ -127,7 +126,7 @@ class ClearCommand extends Command
     private function clear(string $path, string $dest, IFilterFactory $factory): void
     {
         Console::out()->color(Console::GREEN)->writeln('Processing..');
-        if ((new Cleaner())->filtFile($path, $this->FinalDir . $dest, $factory)) {
+        if ((new Cleaner())->filtFile($path, $this->FinalDir.$dest, $factory)) {
             Console::out()->color(Console::GREEN)->writeln('Done');
         }
         else {

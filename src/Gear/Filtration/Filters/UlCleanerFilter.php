@@ -6,9 +6,9 @@ namespace Chopper\Gear\Filtration\Filters;
 use Chopper\Gear\Filtration\Filters\BaseFilter\Filter;
 
 /**
- * SpanCleanerFilter
+ *  UlCleanerFilter
  */
-class SpanCleanerFilter extends Filter
+class UlCleanerFilter extends Filter
 {
     /**
      * @param string $data
@@ -17,6 +17,6 @@ class SpanCleanerFilter extends Filter
      */
     public function handle(string $data): string
     {
-        return parent::handle(preg_replace("~<span[^>]*?>.*?</span>~si", '', $data));
+        return parent::handle(preg_replace("~<ul[^>]*?>.*?</ul>~si", '', $data));
     }
 }

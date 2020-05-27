@@ -51,7 +51,7 @@ class CurlRequest implements ICurlRequest
         $this->ch = curl_init();
         $header   = self::HEADER;
         if (isset($params['host']) && $params['host']) {
-            $header[] = "Host: " . $params['host'];
+            $header[] = "Host: ".$params['host'];
         }
         if (isset($params['header']) && $params['header']) {
             $header[] = $params['header'];
@@ -78,7 +78,7 @@ class CurlRequest implements ICurlRequest
         curl_setopt($this->ch, CURLOPT_COOKIEFILE, '');
 
         if (isset($params['login']) & isset($params['password'])) {
-            curl_setopt($this->ch, CURLOPT_USERPWD, $params['login'] . ':' . $params['password']);
+            curl_setopt($this->ch, CURLOPT_USERPWD, $params['login'].':'.$params['password']);
         }
         curl_setopt($this->ch, CURLOPT_TIMEOUT, $params['timeout']);
     }

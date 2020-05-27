@@ -11,20 +11,6 @@ interface ICurlRequest
     /**
      * Init curl session
      *
-     * $params =
-     *  [
-     *    'url'         => '',
-     *    'host'        => '',
-     *    'header'      => '',
-     *    'method'      => '',
-     *    'referer'     => '',
-     *    'cookie'      => '',
-     *    'post_fields' => '',
-     *    'timeout'     => 0 ,
-     *    ['login'      => '',]
-     *    ['password'   => '',]
-     *  ];
-     *
      * @param array $params
      */
     public function init(array $params): void;
@@ -33,13 +19,6 @@ interface ICurlRequest
      * Make curl request
      *
      * @return array
-     *      [
-     *       'header',
-     *       'body',
-     *       'curl_error',
-     *       'http_code',
-     *       'last_url'
-     *      ];
      */
     public function exec(): array;
 

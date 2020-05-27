@@ -65,7 +65,7 @@ class DivSearchFilter extends Filter
      *
      * @return string
      */
-    private function divCut(string $data)
+    private function divCut(string $data): string
     {
         $data = mb_substr($data, mb_strpos('<div', $data) + 4);
         $data = mb_substr($data, 0, mb_strrpos($data, '/div>'));
@@ -89,7 +89,7 @@ class DivSearchFilter extends Filter
                 $result .= $this->array_implode($glue, $value);
             }
             else {
-                $result .= $value . $glue;
+                $result .= $value.$glue;
             }
         }
 

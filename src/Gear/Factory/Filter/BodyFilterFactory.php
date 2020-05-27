@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Factory\Filter;
 
 use Chopper\Gear\Filtration\Filters\BaseFilter\IFilter;
-use Chopper\Gear\Filtration\Filters\BodyFilter;
+use Chopper\Gear\Filtration\Filters\BodyIsolatorFilter;
 
 /**
  * BodyFilterFactory
@@ -18,6 +18,6 @@ class BodyFilterFactory implements IFilterFactory
      */
     public function createFilter(): IFilter
     {
-        return new BodyFilter();
+        return new BodyIsolatorFilter();
     }
 }

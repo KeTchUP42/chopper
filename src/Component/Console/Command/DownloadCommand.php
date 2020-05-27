@@ -90,7 +90,7 @@ class DownloadCommand extends Command
         Console::out()->color(Console::GREEN)->writeln('Downloading..');
         (new HttpDownloader(new CurlRequest(), GLogger::getLogFilePath()))->downloadtofile(
             $url,
-            $this->ResourceDir . $dest
+            $this->ResourceDir.$dest
         );
         Console::out()->color(Console::GREEN)->writeln('Done');
     }

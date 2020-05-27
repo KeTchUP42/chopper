@@ -17,8 +17,6 @@ class StyleCleanerFilter extends Filter
      */
     public function handle(string $data): string
     {
-        $data = preg_replace("~<style[^>]*?>.*?</style>~si", '', $data);
-
-        return parent::handle($data);
+        return parent::handle(preg_replace("~<style[^>]*?>.*?</style>~si", '', $data));
     }
 }

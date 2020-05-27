@@ -131,7 +131,7 @@ final class Console
      */
     public function write(string $message): void
     {
-        echo $this->colorPrefix() . $message;
+        echo $this->colorPrefix().$message;
         echo self::$resetCode;
     }
 
@@ -142,6 +142,6 @@ final class Console
      */
     private function colorPrefix(): string
     {
-        return $this->color . $this->bgcolor . "m";
+        return $this->color.$this->bgcolor."m";
     }
 }

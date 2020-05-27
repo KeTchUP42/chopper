@@ -57,7 +57,7 @@ class HttpDownloader implements IDownloader
         ]
     ): bool {
         $data = $this->download($url, $params)['body'];
-        if (!is_null($data)) {
+        if ($data) {
             file_put_contents($dest, $data);
 
             return true;

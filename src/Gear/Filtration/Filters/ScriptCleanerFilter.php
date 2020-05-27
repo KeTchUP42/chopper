@@ -17,8 +17,6 @@ class ScriptCleanerFilter extends Filter
      */
     public function handle(string $data): string
     {
-        $data = preg_replace("~<script[^>]*?>.*?</script>~si", '', $data);
-
-        return parent::handle($data);
+        return parent::handle(preg_replace("~<script[^>]*?>.*?</script>~si", '', $data));
     }
 }
