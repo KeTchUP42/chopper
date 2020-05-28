@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * ClearFileCommand
  */
-class ClearCommand extends Command
+class FilterCommand extends Command
 {
     /**
      * @var string
@@ -43,13 +43,13 @@ class ClearCommand extends Command
 
     protected function configure()
     {
-        $this->setName('clear')
-            ->setAliases(["c"])
-            ->setDescription('Clears file with filter.')
-            ->setHelp('This command downloads file, clears it with filter and puts it to the target directory.');
+        $this->setName('filter')
+            ->setAliases(["f"])
+            ->setDescription('Filter out file.')
+            ->setHelp('This command downloads file, filter out it with filter and puts it to the target directory.');
         $this->addArgument('Path', InputArgument::REQUIRED, 'URL or local file path');
-        $this->addArgument('Dest', InputArgument::OPTIONAL, 'New file name.');
         $this->addArgument('FilterFactoryName', InputArgument::OPTIONAL, 'Name of filter factory.');
+        $this->addArgument('Dest', InputArgument::OPTIONAL, 'New file name.');
     }
 
     /**
@@ -96,7 +96,7 @@ class ClearCommand extends Command
         $path = !filter_var($path, FILTER_VALIDATE_URL) ? $this->ResourceDir.$path : $path;
 
         $this->log($output, $path, $dest, $factoryName);
-        $this->clear($path, $dest, new $factoryName());
+        $this->filter($path, $dest, new $factoryName());
     }
 
     /**
@@ -123,7 +123,7 @@ class ClearCommand extends Command
      *
      * @throws GLoggerException
      */
-    private function clear(string $path, string $dest, IFilterFactory $factory): void
+    private function filter(string $path, string $dest, IFilterFactory $factory): void
     {
         Console::out()->color(Console::GREEN)->writeln('Processing..');
         if ((new Cleaner())->filtFile($path, $this->FinalDir.$dest, $factory)) {
