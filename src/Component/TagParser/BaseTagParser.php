@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Component\Tag;
+namespace Chopper\Component\TagParser;
 
 /**
  * TagParser
@@ -34,7 +34,7 @@ class BaseTagParser extends TagParser
     }
 
     /**
-     * Method returns array of content between tags on needed deep level
+     * Method returns array of strings between tags on needed deep level
      *
      * @param string $data
      * @param int    $deepLvl
@@ -81,7 +81,7 @@ class BaseTagParser extends TagParser
     }
 
     /**
-     * Method returns array of content between tags on needed deep level
+     * Method returns array of strings between tags on needed deep level
      *
      * @param string $data
      * @param int    $deepLvl

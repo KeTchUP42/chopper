@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Component\Tag;
+namespace Chopper\Component\TagParser;
 
 /**
  * TagParser
@@ -66,7 +66,7 @@ abstract class TagParser implements ITagParser
     }
 
     /**
-     * Method returns array of content between tags on needed deep level
+     * Method returns array of strings between tags on needed deep level
      *
      * @param string $data
      * @param int    $deepLvl
@@ -76,7 +76,7 @@ abstract class TagParser implements ITagParser
     abstract public function parseDeepLvlNoCase(string $data, int $deepLvl): array;
 
     /**
-     * Method returns array of content between tags on needed deep level
+     * Method returns array of strings between tags on needed deep level
      *
      * @param string $data
      * @param int    $deepLvl

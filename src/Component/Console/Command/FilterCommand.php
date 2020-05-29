@@ -53,7 +53,7 @@ class FilterCommand extends Command
     }
 
     /**
-     * Clear
+     * Filter
      *
      * @param InputInterface  $input
      * @param OutputInterface $output
@@ -82,12 +82,8 @@ class FilterCommand extends Command
      *
      * @throws GLoggerException
      */
-    private function start(
-        OutputInterface $output,
-        string $path,
-        string $dest = null,
-        string $factoryName = null
-    ) {
+    private function start(OutputInterface $output, string $path, string $dest = null, string $factoryName = null): void
+    {
         $factoryName = is_null($factoryName) ? BaseFilterFactory::class : "Chopper\Gear\Factory\Filter\\".$factoryName;
         if (!class_exists($factoryName, true)) {
             throw new \RuntimeException(sprintf("Factory %s is not exists!", $factoryName));
@@ -115,7 +111,7 @@ class FilterCommand extends Command
     }
 
     /**
-     * Method clears html file and puts it to the dir
+     * Method clears html file and puts it to the final dir
      *
      * @param string         $path
      * @param string         $dest

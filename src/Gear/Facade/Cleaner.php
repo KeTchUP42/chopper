@@ -18,11 +18,11 @@ class Cleaner
     /**
      * Method filts file
      *
-     * @param string              $path
+     * @param string         $path
      *
-     * @param string              $dest
+     * @param string         $dest
      *
-     * @param IFilterFactory|null $factory
+     * @param IFilterFactory $factory
      *
      * @return bool
      * @throws GLoggerExceptionAlias

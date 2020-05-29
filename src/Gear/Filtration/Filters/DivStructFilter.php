@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Filtration\Filters;
 
-use Chopper\Component\Tag\BaseTagParser;
+use Chopper\Component\TagParser\BaseTagParser;
 use Chopper\Gear\Filtration\Filters\BaseFilter\Filter;
 
 /**

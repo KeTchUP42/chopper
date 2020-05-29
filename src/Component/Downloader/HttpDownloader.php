@@ -66,8 +66,13 @@ class HttpDownloader implements IDownloader
         if (!filter_var($url, FILTER_VALIDATE_URL)) {
             throw new \RuntimeException(sprintf("URL %s is not valid!", $url));
         }
+        $builder = $this->curl->init($url)
+            ->setTimeOut(300)
+            ->setBaseUserAgent()
+            ->buildHeader()
+            ->setBaseHeader()
+            ->applyHeader();
 
-        $builder = $this->curl->init($url)->setTimeOut(300)->setBaseHeader()->applyHeader()->setBaseUserAgent();
         if (!is_null($this->logFilePath)) {
             $builder->setLogFile($this->logFilePath);
         }

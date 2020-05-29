@@ -3,6 +3,8 @@ declare(strict_types = 1);
 
 namespace Chopper\Component\Curl\CurlStatement;
 
+use Chopper\Component\Curl\HeaderStatement\HeaderStatement;
+use Chopper\Component\Curl\HeaderStatement\IHeaderStatement;
 use Chopper\Component\Curl\Response\CurlResponse;
 use Chopper\Component\Curl\Response\ICurlResponse;
 
@@ -15,11 +17,6 @@ class CurlStatement implements ICurlStatement
      * @var resource
      */
     private $ch;
-
-    /**
-     * @var array
-     */
-    private $header = [];
 
     /**
      * Конструктор.
@@ -38,12 +35,10 @@ class CurlStatement implements ICurlStatement
      */
     public function exec(): ICurlResponse
     {
-        $response = curl_exec($this->ch);
-        $error    = curl_error($this->ch);
+        $response   = curl_exec($this->ch);
+        $curl_error = curl_error($this->ch);
 
-        if ($error !== "") {
-            $curl_error = $error;
-
+        if ($curl_error !== "") {
             return new CurlResponse('', '', $curl_error, -1, '');
         }
 
@@ -53,7 +48,17 @@ class CurlStatement implements ICurlStatement
         $http_code   = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);
         $last_url    = curl_getinfo($this->ch, CURLINFO_EFFECTIVE_URL);
 
-        return new CurlResponse($header, $body, '', $http_code, $last_url);
+        return new CurlResponse($header, $body, $curl_error, $http_code, $last_url);
+    }
+
+    /**
+     * Получить CurlDescriptor
+     *
+     * @return resource
+     */
+    public function getCurlDescriptor()
+    {
+        return $this->ch;
     }
 
     /**
@@ -94,36 +99,6 @@ class CurlStatement implements ICurlStatement
     public function logIn(string $login, string $password): ICurlStatement
     {
         curl_setopt($this->ch, CURLOPT_USERPWD, $login.':'.$password);
-
-        return $this;
-    }
-
-    /**
-     * Method adds field to header
-     *
-     * @param string $fieled
-     *
-     * @return $this|ICurlStatement
-     */
-    public function addHeader(string $fieled): ICurlStatement
-    {
-        $this->header[] = $fieled;
-
-        return $this;
-    }
-
-    /**
-     * Method sets Curl host
-     *
-     * @param string $host
-     *
-     * @return $this|ICurlStatement
-     */
-    public function setHost(string $host): ICurlStatement
-    {
-        if (!empty($this->header)) {
-            $this->header[] = "Host: ".$host;
-        }
 
         return $this;
     }
@@ -195,42 +170,13 @@ class CurlStatement implements ICurlStatement
     }
 
     /**
-     * Установка Header.
+     * Method builds header
      *
-     * @param array $header
-     *
-     * @return $this|ICurlStatement
+     * @return IHeaderStatement
      */
-    public function setHeader(array $header): ICurlStatement
+    public function buildHeader(): IHeaderStatement
     {
-        $this->header = $header;
-
-        return $this;
-    }
-
-    /**
-     * Method resets header
-     *
-     * @return $this|ICurlStatement
-     */
-    public function setBaseHeader(): ICurlStatement
-    {
-        $this->header = CurlBaseInfo::HEADER;
-
-        return $this;
-    }
-
-    /**
-     * Method applies header
-     *
-     * @return $this|ICurlStatement
-     */
-    public function applyHeader(): ICurlStatement
-    {
-        curl_setopt($this->ch, CURLOPT_HEADER, true);
-        curl_setopt($this->ch, CURLOPT_HTTPHEADER, $this->header);
-
-        return $this;
+        return new HeaderStatement($this);
     }
 
     /**

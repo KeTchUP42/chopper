@@ -68,6 +68,7 @@ class DownloadCommand extends Command
     }
 
     /**
+     * Method logs input vars
      *
      * @param OutputInterface $output
      * @param string          $url
@@ -80,7 +81,7 @@ class DownloadCommand extends Command
     }
 
     /**
-     * Method downloads file
+     * Method downloads file to the resource dir
      *
      * @param string      $url
      * @param string|null $dest

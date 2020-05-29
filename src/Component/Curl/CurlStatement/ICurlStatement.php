@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\Component\Curl\CurlStatement;
 
+use Chopper\Component\Curl\HeaderStatement\IHeaderStatement;
 use Chopper\Component\Curl\Response\ICurlResponse;
 
 /**
@@ -42,24 +43,6 @@ interface ICurlStatement
      * @return $this|ICurlStatement
      */
     public function logIn(string $login, string $password): ICurlStatement;
-
-    /**
-     * Method adds field to header
-     *
-     * @param string $fieled
-     *
-     * @return $this|ICurlStatement
-     */
-    public function addHeader(string $fieled): ICurlStatement;
-
-    /**
-     * Method sets Curl host
-     *
-     * @param string $host
-     *
-     * @return $this|ICurlStatement
-     */
-    public function setHost(string $host): ICurlStatement;
 
     /**
      * Method sets referer
@@ -112,29 +95,6 @@ interface ICurlStatement
     public function setLogFile(string $logFilePath): ICurlStatement;
 
     /**
-     * Установка Header.
-     *
-     * @param array $header
-     *
-     * @return $this|ICurlStatement
-     */
-    public function setHeader(array $header): ICurlStatement;
-
-    /**
-     * Method resets header
-     *
-     * @return $this|ICurlStatement
-     */
-    public function setBaseHeader(): ICurlStatement;
-
-    /**
-     * Method applies header
-     *
-     * @return $this|ICurlStatement
-     */
-    public function applyHeader(): ICurlStatement;
-
-    /**
      * Method sets Curl timeout
      *
      * @param int $timeOut
@@ -142,4 +102,18 @@ interface ICurlStatement
      * @return $this|ICurlStatement
      */
     public function setTimeOut(int $timeOut): ICurlStatement;
+
+    /**
+     * Method builds header
+     *
+     * @return IHeaderStatement
+     */
+    public function buildHeader(): IHeaderStatement;
+
+    /**
+     * Получить CurlDescriptor
+     *
+     * @return resource
+     */
+    public function getCurlDescriptor();
 }

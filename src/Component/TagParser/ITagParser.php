@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Component\Tag;
+namespace Chopper\Component\TagParser;
 
 /**
  * ITagParser
@@ -18,7 +18,7 @@ interface ITagParser
     public function parseTagStruct(string $data): array;
 
     /**
-     * Method returns array of content between tags on needed deep level
+     * Method returns array of strings between tags on needed deep level
      *
      * @param string $data
      * @param int    $deepLvl
@@ -28,7 +28,7 @@ interface ITagParser
     public function parseDeepLvl(string $data, int $deepLvl): array;
 
     /**
-     * Method returns array of content between tags on needed deep level
+     * Method returns array of strings between tags on needed deep level
      *
      * @param string $data
      * @param int    $deepLvl
