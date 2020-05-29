@@ -43,16 +43,16 @@ abstract class TagParser implements ITagParser
     }
 
     /**
-     * Method searches content between tags recursive
+     * Method analysing tag struct and searches content between tags recursive
      *
-     * @param array $baseTagStruct
+     * @param array $tagData
      *
      * @return array
      */
-    protected function rhandle(array $baseTagStruct): array
+    protected function rhandle(array $tagData): array
     {
         $result = [];
-        foreach ($baseTagStruct as $value) {
+        foreach ($tagData as $value) {
             $blocks = $this->parseDeepLvlNoCase($value, 2);
             if (empty($blocks)) {
                 $result[] = $value;

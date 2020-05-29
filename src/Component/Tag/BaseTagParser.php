@@ -16,7 +16,7 @@ class BaseTagParser extends TagParser
      */
     public function __construct(string $openTag, string $closeTag)
     {
-        $this->tagCheck($openTag, $closeTag);
+        $this->tagValidation($openTag, $closeTag);
         parent::__construct($openTag, $closeTag);
     }
 
@@ -26,10 +26,10 @@ class BaseTagParser extends TagParser
      * @param string $openTag
      * @param string $closeTag
      */
-    protected function tagCheck(string $openTag, string $closeTag): void
+    protected function tagValidation(string $openTag, string $closeTag): void
     {
         if ($openTag === $closeTag) {
-            throw new \RuntimeException(sprintf('Tags %s and %s can not be same', $openTag, $closeTag));
+            throw new \RuntimeException(sprintf('Tags can\'t be same'));
         }
     }
 
@@ -43,6 +43,9 @@ class BaseTagParser extends TagParser
      */
     public function parseDeepLvl(string $data, int $deepLvl): array
     {
+        if ($deepLvl <= 0) {
+            return [$data];
+        }
         $dataMaxLen      = strlen($data);
         $result          = [];
         $resultIndex     = -1;
@@ -87,6 +90,9 @@ class BaseTagParser extends TagParser
      */
     public function parseDeepLvlNoCase(string $data, int $deepLvl): array
     {
+        if ($deepLvl <= 0) {
+            return [$data];
+        }
         $dataMaxLen      = strlen($data);
         $result          = [];
         $resultIndex     = -1;

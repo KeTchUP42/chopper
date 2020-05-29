@@ -9,7 +9,7 @@ use Chopper\Gear\Filtration\Filters\BaseFilter\Filter;
 /**
  * DivSearchFilter
  */
-class DivSearchFilter extends Filter
+class DivStructFilter extends Filter
 {
     /**
      * @param string $data

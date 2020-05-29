@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Chopper\Component\Tag;
 
 /**
- *  ITagParser
+ * ITagParser
  */
 interface ITagParser
 {

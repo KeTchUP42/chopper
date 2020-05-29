@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Facade;
 
-use Chopper\Component\Curl\CurlRequest;
+use Chopper\Component\Curl\Request\CurlRequest;
 use Chopper\Component\Downloader\HttpDownloader;
 use Chopper\Component\Logger\GlobalLogger\Exception\GLoggerException as GLoggerExceptionAlias;
 use Chopper\Component\Logger\GlobalLogger\GLogger;
@@ -35,7 +35,7 @@ class Cleaner
             file_put_contents(
                 $dest,
                 $filtrator->handle(
-                    (new HttpDownloader(new CurlRequest(), GLogger::getLogFilePath()))->download($path)['body']
+                    (new HttpDownloader(new CurlRequest(), GLogger::getLogFilePath()))->download($path)->getBody()
                 )
             );
 

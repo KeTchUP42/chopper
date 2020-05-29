@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Chopper\Component\Console\Command;
 
 use Chopper\Component\Console\ColoredConsole\Console;
-use Chopper\Component\Curl\CurlRequest;
+use Chopper\Component\Curl\Request\CurlRequest;
 use Chopper\Component\Downloader\HttpDownloader;
 use Chopper\Component\Logger\GlobalLogger\GLogger;
 use Symfony\Component\Console\Command\Command;
