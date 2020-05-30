@@ -5,7 +5,6 @@ namespace Chopper\Gear\Facade;
 
 use Chopper\Component\Curl\Request\CurlRequest;
 use Chopper\Component\Downloader\HttpDownloader;
-use Chopper\Component\Logger\GlobalLogger\Exception\GLoggerException as GLoggerExceptionAlias;
 use Chopper\Component\Logger\GlobalLogger\GLogger;
 use Chopper\Gear\Factory\Filter\IFilterFactory;
 use Chopper\Gear\Filtration\Filtrator\Filtrator;
@@ -19,13 +18,10 @@ class Cleaner
      * Method filts file
      *
      * @param string         $path
-     *
      * @param string         $dest
-     *
      * @param IFilterFactory $factory
      *
      * @return bool
-     * @throws GLoggerExceptionAlias
      */
     public function filtFile(string $path, string $dest, IFilterFactory $factory): bool
     {

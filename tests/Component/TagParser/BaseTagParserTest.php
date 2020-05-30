@@ -15,7 +15,7 @@ class BaseTagParserTest extends TestCase
     {
         $parser = new BaseTagParser('<diV', '</DiV>');
         $result = $parser->parseDeepLvlNoCase(file_get_contents(__DIR__.'/templates/page.html'), 6);
-        $actual = file_get_contents(__DIR__.'/templates/DeepLvlNoCase_6.txt');
+        $actual = file_get_contents(__DIR__.'/templates/DeepLvlNoCase_6.json');
         static::assertSame(json_encode($result), $actual);
     }
 
@@ -23,7 +23,7 @@ class BaseTagParserTest extends TestCase
     {
         $parser = new BaseTagParser('<div', '</div>');
         $result = $parser->parseDeepLvl(file_get_contents(__DIR__.'/templates/page.html'), 3);
-        $actual = file_get_contents(__DIR__.'/templates/DeepLvl_3.txt');
+        $actual = file_get_contents(__DIR__.'/templates/DeepLvl_3.json');
         static::assertSame(json_encode($result), $actual);
     }
 }

@@ -15,7 +15,7 @@ class TagParserTest extends TestCase
     {
         $parser = new BaseTagParser('<div', '</div>');
         $result = $parser->parseTagStruct(file_get_contents(__DIR__.'/templates/page.html'));
-        $actual = file_get_contents(__DIR__.'/templates/TagStruct.txt');
+        $actual = file_get_contents(__DIR__.'/templates/TagStruct.json');
         static::assertSame(json_encode($result), $actual);
     }
 }

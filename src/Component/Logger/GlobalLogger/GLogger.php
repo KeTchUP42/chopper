@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 namespace Chopper\Component\Logger\GlobalLogger;
 
-use Chopper\Component\Logger\GlobalLogger\Exception\GLoggerException;
 use Chopper\Component\Traits\SingletonTrait;
 use Zend\Log\Logger;
 use Zend\Log\LoggerInterface;
@@ -57,7 +56,7 @@ class GLogger
     public static function getLogger(): LoggerInterface
     {
         if (self::$logger === null) {
-            throw new GLoggerException(sprintf('%s did not configured.', self::class));
+            throw new \RuntimeException(sprintf('%s did not configured.', self::class));
         }
 
         return self::$logger;

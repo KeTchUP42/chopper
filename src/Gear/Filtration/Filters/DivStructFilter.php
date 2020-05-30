@@ -21,6 +21,6 @@ class DivStructFilter extends Filter
         $parser = new BaseTagParser('<div', '</div>');
         $result = $parser->parseTagStruct($data);
 
-        return parent::handle(json_encode($result));
+        return parent::handle(serialize($result));
     }
 }
