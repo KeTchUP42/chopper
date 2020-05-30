@@ -61,10 +61,12 @@ class BaseTagParser extends TagParser
             }
 
             if (substr($data, $index, strlen($this->closeTag)) === $this->closeTag) {
-                if ($currentDeeptLvl === $deepLvl) {
-                    $result[$resultIndex] .= $this->closeTag;
-                }
                 $currentDeeptLvl--;
+                if ($currentDeeptLvl + 1 === $deepLvl) {
+                    $result[$resultIndex] .= $this->closeTag;
+                    $index                += strlen($this->closeTag) - 1;
+                    continue;
+                }
             }
 
             if ($currentDeeptLvl >= $deepLvl) {
@@ -100,18 +102,20 @@ class BaseTagParser extends TagParser
 
         for ($index = 0; $index < $dataMaxLen; $index++) {
 
-            if (strtolower(substr($data, $index, strlen($this->openTag))) === strtolower($this->openTag)) {
+            if (strcasecmp(substr($data, $index, strlen($this->openTag)), $this->openTag) === 0) {
                 $currentDeeptLvl++;
                 if ($currentDeeptLvl === $deepLvl) {
                     $resultIndex++;
                 }
             }
 
-            if (strtolower(substr($data, $index, strlen($this->closeTag))) === strtolower($this->closeTag)) {
-                if ($currentDeeptLvl === $deepLvl) {
-                    $result[$resultIndex] .= substr($data, $index, strlen($this->closeTag));
-                }
+            if (strcasecmp(substr($data, $index, strlen($this->closeTag)), $this->closeTag) === 0) {
                 $currentDeeptLvl--;
+                if ($currentDeeptLvl + 1 === $deepLvl) {
+                    $result[$resultIndex] .= substr($data, $index, strlen($this->closeTag));
+                    $index                += strlen($this->closeTag) - 1;
+                    continue;
+                }
             }
 
             if ($currentDeeptLvl >= $deepLvl) {
