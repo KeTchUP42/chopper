@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-use Chopper\Component\Logger\GlobalLogger\GLogger;
+use Chopper\Logger\GlobalLogger\GLogger;
 
 $_ENV['PROJECT_DIR'] = dirname(__DIR__.'/../', 2).'/';
 

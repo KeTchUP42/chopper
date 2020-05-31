@@ -3,11 +3,11 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Facade;
 
-use Chopper\Component\Curl\Request\CurlRequest;
-use Chopper\Component\Downloader\HttpDownloader;
-use Chopper\Component\Logger\GlobalLogger\GLogger;
+use Chopper\Curl\Request\CurlRequest;
+use Chopper\Downloader\HttpDownloader;
 use Chopper\Gear\Factory\Filter\IFilterFactory;
 use Chopper\Gear\Filtration\Filtrator\Filtrator;
+use Chopper\Logger\GlobalLogger\GLogger;
 
 /**
  * Cleaner

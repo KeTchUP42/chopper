@@ -2,9 +2,9 @@
 <?php
 declare(strict_types = 1);
 
-use Chopper\Component\Console\App\Application;
-use Chopper\Component\Console\ColoredConsole\Console;
-use Chopper\Component\Debug\Debug;
+use Chopper\Console\App\Application;
+use Chopper\Console\ColoredConsole\Console;
+use Chopper\Debug\Debug;
 
 require_once __DIR__ . '/../configs/composer-autoload.php';
 
