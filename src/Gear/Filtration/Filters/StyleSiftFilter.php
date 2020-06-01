@@ -4,12 +4,11 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Filtration\Filters;
 
 use Chopper\Gear\Filtration\Filters\BaseFilter\Filter;
-use Chopper\TagParser\BaseTagParser;
 
 /**
- * DivSearchFilter
+ * StyleFilter
  */
-class DivStructFilter extends Filter
+class StyleSiftFilter extends Filter
 {
     /**
      * @param string $data
@@ -18,9 +17,9 @@ class DivStructFilter extends Filter
      */
     public function handle(string $data): string
     {
-        $parser = new BaseTagParser('<div', '</div>');
-        $result = $parser->parseTagStruct($data);
+        $style = [];
+        preg_match_all("~<style[^>]*?>.*?</style>~si", $data, $style);
 
-        return serialize($result);
+        return serialize($style[0]);
     }
 }

@@ -4,12 +4,11 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Filtration\Filters;
 
 use Chopper\Gear\Filtration\Filters\BaseFilter\Filter;
-use Chopper\TagParser\BaseTagParser;
 
 /**
- * DivSearchFilter
+ * CommentsCleanerFilter
  */
-class DivStructFilter extends Filter
+class CommentsCleanerFilter extends Filter
 {
     /**
      * @param string $data
@@ -18,9 +17,9 @@ class DivStructFilter extends Filter
      */
     public function handle(string $data): string
     {
-        $parser = new BaseTagParser('<div', '</div>');
-        $result = $parser->parseTagStruct($data);
+        $data = preg_replace("~/\**?.*?\*/~s", '', $data);
+        $data = preg_replace("~<!--*?.*?-->~s", '', $data);
 
-        return serialize($result);
+        return parent::handle($data);
     }
 }

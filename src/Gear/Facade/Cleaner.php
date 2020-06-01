@@ -23,7 +23,7 @@ class Cleaner
      *
      * @return bool
      */
-    public function filtFile(string $path, string $dest, IFilterFactory $factory): bool
+    public function filterFile(string $path, string $dest, IFilterFactory $factory): bool
     {
         $filtrator = new Filtrator($factory, GLogger::getLogger());
 

@@ -5,23 +5,20 @@ namespace Chopper\Gear\Factory\Filter;
 
 use Chopper\Gear\Filtration\Filters\BaseFilter\IFilter;
 use Chopper\Gear\Filtration\Filters\CommentsCleanerFilter;
-use Chopper\Gear\Filtration\Filters\DivStructFilter;
-use Chopper\Gear\Filtration\Filters\StyleCleanerFilter;
+use Chopper\Gear\Filtration\Filters\StyleSiftFilter;
 
 /**
- * OnlyDivFilterFactory
+ * StyleFilterFactory
  */
-class DivStructFilterFactory implements IFilterFactory
+class StyleFilterFactory implements IFilterFactory
 {
     /**
-     * Method creates new filter
-     *
      * @return IFilter
      */
     public function createFilter(): IFilter
     {
         $filter = new CommentsCleanerFilter();
-        $filter->setFilter(new StyleCleanerFilter())->setFilter(new DivStructFilter());
+        $filter->setFilter(new StyleSiftFilter());
 
         return $filter;
     }

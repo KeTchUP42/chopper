@@ -113,7 +113,7 @@ class FilterCommand extends Command
     }
 
     /**
-     * Method clears html file and puts it to the final dir
+     * Method clears file and puts it to the template's dir
      *
      * @param string         $path
      * @param string         $dest
@@ -122,7 +122,7 @@ class FilterCommand extends Command
     protected function filter(string $path, string $dest, IFilterFactory $factory): void
     {
         Console::out()->color(Console::GREEN)->writeln('Processing..');
-        if ((new Cleaner())->filtFile($path, $this->finalDir.$dest, $factory)) {
+        if ((new Cleaner())->filterFile($path, $this->finalDir.$dest, $factory)) {
             Console::out()->color(Console::GREEN)->writeln('Done');
         }
         else {
