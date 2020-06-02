@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-use Chopper\Logger\GlobalLogger\GLogger;
+use Chopper\Logger\GlobalLogger\GlobalLogger;
 
 $_ENV['PROJECT_DIR'] = dirname(__DIR__.'/../', 2).'/';
 
@@ -13,7 +13,7 @@ $_ENV['MAIN_RESOURCES'] = $_ENV['PROJECT_DIR'].$_ENV['MAIN_RESOURCES'].'/';
 $_ENV['TEMPLATES']      = $_ENV['PROJECT_DIR'].$_ENV['TEMPLATES'].'/';
 $_ENV['FINAL_DIR']      = $_ENV['PROJECT_DIR'].$_ENV['FINAL_DIR'].'/';
 
-GLogger::configureGlobalLogger($_ENV['LOG_FILE_PATH']);
+GlobalLogger::configureGlobalLogger($_ENV['LOG_FILE_PATH']);
 
 $_SERVER              = array_merge($_SERVER, $_ENV);
 $_SERVER['APP_ENV']   = $_ENV['APP_ENV'] = ($_SERVER['APP_ENV'] ?? $_ENV['APP_ENV'] ?? null) ?: 'dev';

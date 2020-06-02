@@ -7,6 +7,7 @@ use Chopper\Console\ColoredConsole\Console;
 use Chopper\Gear\Facade\Cleaner;
 use Chopper\Gear\Factory\Filter\BaseFilterFactory;
 use Chopper\Gear\Factory\Filter\IFilterFactory;
+use Chopper\Logger\GlobalLogger\GlobalLogger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -61,32 +62,11 @@ class FilterCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->start(
-            $output,
-            $input->getArgument('Path'),
-            $input->getArgument('Dest'),
-            $input->getArgument('FilterFactoryName')
-        );
+        $path    = $input->getArgument('Path');
+        $factory = $input->getArgument('FilterFactoryName');
+        $dest    = $input->getArgument('Dest');
 
-        return 0;
-    }
-
-    /**
-     * Entry point
-     *
-     * @param OutputInterface $output
-     * @param string          $path
-     * @param string|null     $dest
-     * @param string|null     $factoryName
-     *
-     */
-    protected function start(
-        OutputInterface $output,
-        string $path,
-        string $dest = null,
-        string $factoryName = null
-    ): void {
-        $factoryName = is_null($factoryName) ? BaseFilterFactory::class : "Chopper\Gear\Factory\Filter\\".$factoryName;
+        $factoryName = is_null($factory) ? BaseFilterFactory::class : "Chopper\Gear\Factory\Filter\\".$factory;
         if (!class_exists($factoryName, true)) {
             throw new \RuntimeException(sprintf("Factory %s is not exists!", $factoryName));
         }
@@ -95,6 +75,8 @@ class FilterCommand extends Command
 
         $this->log($output, $path, $dest, $factoryName);
         $this->filter($path, $dest, new $factoryName());
+
+        return 0;
     }
 
     /**
@@ -113,7 +95,7 @@ class FilterCommand extends Command
     }
 
     /**
-     * Method clears file and puts it to the template's dir
+     * Method clears file and puts it to the needed dir
      *
      * @param string         $path
      * @param string         $dest
@@ -122,7 +104,7 @@ class FilterCommand extends Command
     protected function filter(string $path, string $dest, IFilterFactory $factory): void
     {
         Console::out()->color(Console::GREEN)->writeln('Processing..');
-        if ((new Cleaner())->filterFile($path, $this->finalDir.$dest, $factory)) {
+        if ((new Cleaner(GlobalLogger::getGlobalLogger()))->filterFile($path, $this->finalDir.$dest, $factory)) {
             Console::out()->color(Console::GREEN)->writeln('Done');
         }
         else {

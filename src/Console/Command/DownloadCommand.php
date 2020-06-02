@@ -6,7 +6,7 @@ namespace Chopper\Console\Command;
 use Chopper\Console\ColoredConsole\Console;
 use Chopper\Curl\Request\CurlRequest;
 use Chopper\Downloader\HttpDownloader;
-use Chopper\Logger\GlobalLogger\GLogger;
+use Chopper\Logger\GlobalLogger\GlobalLogger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -89,7 +89,7 @@ class DownloadCommand extends Command
     protected function download(string $url, string $dest): void
     {
         Console::out()->color(Console::GREEN)->writeln('Downloading..');
-        (new HttpDownloader(new CurlRequest(), GLogger::getLogFilePath()))->downloadtofile($url, $this->resourceDir.$dest);
+        (new HttpDownloader(new CurlRequest(), GlobalLogger::getGlobalLogger()->getLogFilePath()))->downloadtofile($url,$this->resourceDir.$dest);
         Console::out()->color(Console::GREEN)->writeln('Done');
     }
 }

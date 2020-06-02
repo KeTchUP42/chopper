@@ -7,13 +7,28 @@ use Chopper\Curl\Request\CurlRequest;
 use Chopper\Downloader\HttpDownloader;
 use Chopper\Gear\Factory\Filter\IFilterFactory;
 use Chopper\Gear\Filtration\Filtrator\Filtrator;
-use Chopper\Logger\GlobalLogger\GLogger;
+use Chopper\Logger\GlobalLogger\IGlobalLogger;
 
 /**
  * Cleaner
  */
 class Cleaner
 {
+    /**
+     * @var IGlobalLogger
+     */
+    private $globalLogger;
+
+    /**
+     * Конструктор.
+     *
+     * @param IGlobalLogger $globalLogger
+     */
+    public function __construct(IGlobalLogger $globalLogger)
+    {
+        $this->globalLogger = $globalLogger;
+    }
+
     /**
      * Method filts file
      *
@@ -25,13 +40,14 @@ class Cleaner
      */
     public function filterFile(string $path, string $dest, IFilterFactory $factory): bool
     {
-        $filtrator = new Filtrator($factory, GLogger::getLogger());
+        $filtrator = new Filtrator($factory, $this->globalLogger->getLogger());
 
         if (filter_var($path, FILTER_VALIDATE_URL)) {
             file_put_contents(
                 $dest,
                 $filtrator->handle(
-                    (new HttpDownloader(new CurlRequest(), GLogger::getLogFilePath()))->download($path)->getBody()
+                    (new HttpDownloader(new CurlRequest(), $this->globalLogger->getLogFilePath()))->download($path)
+                        ->getBody()
                 )
             );
 

@@ -16,7 +16,7 @@ class CurlStatement implements ICurlStatement
     /**
      * @var resource
      */
-    protected $ch;
+    private $ch;
 
     /**
      * Конструктор.
@@ -66,7 +66,7 @@ class CurlStatement implements ICurlStatement
      *
      * @return $this|ICurlStatement
      */
-    public function applyHeadMethod(): ICurlStatement
+    public function useHeadMethod(): ICurlStatement
     {
         curl_setopt($this->ch, CURLOPT_NOBODY, true);
 
@@ -76,11 +76,11 @@ class CurlStatement implements ICurlStatement
     /**
      * Method enables post method
      *
-     * @param string $postFields
+     * @param mixed $postFields
      *
      * @return $this|ICurlStatement
      */
-    public function applyPostMethod(string $postFields): ICurlStatement
+    public function usePostMethod($postFields): ICurlStatement
     {
         curl_setopt($this->ch, CURLOPT_POST, true);
         curl_setopt($this->ch, CURLOPT_POSTFIELDS, $postFields);
@@ -206,6 +206,20 @@ class CurlStatement implements ICurlStatement
     public function setTimeOut(int $timeOut): ICurlStatement
     {
         curl_setopt($this->ch, CURLOPT_TIMEOUT, $timeOut);
+
+        return $this;
+    }
+
+    /**
+     * Method sets curl encoding
+     *
+     * @param string $encoding
+     *
+     * @return $this|ICurlStatement
+     */
+    public function setEncoding(string $encoding): ICurlStatement
+    {
+        curl_setopt($this->ch, CURLOPT_ENCODING, $encoding);
 
         return $this;
     }

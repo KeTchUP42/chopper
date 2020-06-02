@@ -23,7 +23,7 @@ interface ICurlStatement
      *
      * @return $this|ICurlStatement
      */
-    public function applyHeadMethod(): ICurlStatement;
+    public function useHeadMethod(): ICurlStatement;
 
     /**
      * Method enables post method
@@ -32,7 +32,14 @@ interface ICurlStatement
      *
      * @return $this|ICurlStatement
      */
-    public function applyPostMethod(string $postFields): ICurlStatement;
+    public function usePostMethod(string $postFields): ICurlStatement;
+
+    /**
+     * Получить CurlDescriptor
+     *
+     * @return resource
+     */
+    public function getCurlDescriptor();
 
     /**
      * Method sets Curl pasw and login
@@ -86,6 +93,13 @@ interface ICurlStatement
     public function setCookie(string $cookie): ICurlStatement;
 
     /**
+     * Method builds header
+     *
+     * @return IHeaderStatement
+     */
+    public function buildHeader(): IHeaderStatement;
+
+    /**
      * Method sets log file
      *
      * @param string $logFilePath
@@ -104,16 +118,11 @@ interface ICurlStatement
     public function setTimeOut(int $timeOut): ICurlStatement;
 
     /**
-     * Method builds header
+     * Method sets curl encoding
      *
-     * @return IHeaderStatement
-     */
-    public function buildHeader(): IHeaderStatement;
-
-    /**
-     * Получить CurlDescriptor
+     * @param string $encoding
      *
-     * @return resource
+     * @return $this|ICurlStatement
      */
-    public function getCurlDescriptor();
+    public function setEncoding(string $encoding): ICurlStatement;
 }

@@ -19,7 +19,7 @@ class Application
     {
         $app = new App();
         $app->add(new DownloadCommand($_ENV['MAIN_RESOURCES']));
-        $app->add(new FilterCommand($_ENV['MAIN_RESOURCES'], $_ENV['TEMPLATES']));
+        $app->add(new FilterCommand($_ENV['MAIN_RESOURCES'], $_ENV['FINAL_DIR']));
         $app->run();
     }
 }

@@ -8,6 +8,7 @@ use Chopper\Gear\Filtration\Filters\BodyIsolatorFilter;
 use Chopper\Gear\Filtration\Filters\CommentsCleanerFilter;
 use Chopper\Gear\Filtration\Filters\ScriptCleanerFilter;
 use Chopper\Gear\Filtration\Filters\StyleCleanerFilter;
+use Chopper\Gear\Filtration\Filters\SvgCleanerFilter;
 
 /**
  * BaseFilterFactory
@@ -21,9 +22,11 @@ class BaseFilterFactory implements IFilterFactory
      */
     public function createFilter(): IFilter
     {
-        $filter = new CommentsCleanerFilter();
-        $filter->setFilter(new BodyIsolatorFilter())->setFilter(new ScriptCleanerFilter())
-            ->setFilter(new StyleCleanerFilter());
+        $filter = new BodyIsolatorFilter();
+        $filter->setFilter(new CommentsCleanerFilter())
+            ->setFilter(new ScriptCleanerFilter())
+            ->setFilter(new StyleCleanerFilter())
+            ->setFilter(new SvgCleanerFilter());
 
         return $filter;
     }
