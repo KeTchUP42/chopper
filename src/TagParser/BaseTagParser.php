@@ -6,7 +6,7 @@ namespace Chopper\TagParser;
 /**
  * TagParser
  */
-class BaseTagParser extends TagParser
+class BaseTagParser extends AbstractTagParser
 {
     /**
      * Конструктор.

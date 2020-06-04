@@ -4,12 +4,12 @@ declare(strict_types = 1);
 namespace Chopper\Curl\HeaderStatement;
 
 use Chopper\Curl\CurlStatement\CurlBaseInfo;
-use Chopper\Curl\CurlStatement\ICurlStatement;
+use Chopper\Curl\CurlStatement\CurlStatementInterface;
 
 /**
  *  HeaderStatement
  */
-class HeaderStatement implements IHeaderStatement
+class HeaderStatement implements HeaderStatementInterface
 {
     /**
      * @var array
@@ -17,16 +17,16 @@ class HeaderStatement implements IHeaderStatement
     private $header = [];
 
     /**
-     * @var ICurlStatement
+     * @var CurlStatementInterface
      */
     private $curlStatement;
 
     /**
      * Конструктор.
      *
-     * @param ICurlStatement $curlStatement
+     * @param CurlStatementInterface $curlStatement
      */
-    public function __construct(ICurlStatement $curlStatement)
+    public function __construct(CurlStatementInterface $curlStatement)
     {
         $this->curlStatement = $curlStatement;
     }
@@ -34,9 +34,9 @@ class HeaderStatement implements IHeaderStatement
     /**
      * Method resets header
      *
-     * @return $this|IHeaderStatement
+     * @return $this|HeaderStatementInterface
      */
-    public function setBaseHeader(): IHeaderStatement
+    public function setBaseHeader(): HeaderStatementInterface
     {
         $this->header = CurlBaseInfo::HEADER;
 
@@ -48,9 +48,9 @@ class HeaderStatement implements IHeaderStatement
      *
      * @param array $header
      *
-     * @return $this|IHeaderStatement
+     * @return $this|HeaderStatementInterface
      */
-    public function setHeader(array $header): IHeaderStatement
+    public function setHeader(array $header): HeaderStatementInterface
     {
         $this->header = $header;
 
@@ -62,9 +62,9 @@ class HeaderStatement implements IHeaderStatement
      *
      * @param string $fieled
      *
-     * @return $this|IHeaderStatement
+     * @return $this|HeaderStatementInterface
      */
-    public function addHeader(string $fieled): IHeaderStatement
+    public function addHeader(string $fieled): HeaderStatementInterface
     {
         $this->header[] = $fieled;
 
@@ -76,9 +76,9 @@ class HeaderStatement implements IHeaderStatement
      *
      * @param string $host
      *
-     * @return $this|IHeaderStatement
+     * @return $this|HeaderStatementInterface
      */
-    public function setHost(string $host): IHeaderStatement
+    public function setHost(string $host): HeaderStatementInterface
     {
         if (!empty($this->header)) {
             $this->header[] = "Host: ".$host;
@@ -90,9 +90,9 @@ class HeaderStatement implements IHeaderStatement
     /**
      * Methof applies header
      *
-     * @return ICurlStatement
+     * @return CurlStatementInterface
      */
-    public function applyHeader(): ICurlStatement
+    public function applyHeader(): CurlStatementInterface
     {
         curl_setopt($this->curlStatement->getCurlDescriptor(), CURLOPT_HEADER, true);
         curl_setopt($this->curlStatement->getCurlDescriptor(), CURLOPT_HTTPHEADER, $this->header);

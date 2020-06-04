@@ -3,13 +3,13 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Filtration\Filters;
 
-use Chopper\Gear\Filtration\Filters\BaseFilter\Filter;
+use Chopper\Gear\Filtration\Filters\BaseFilter\AbstractFilter;
 use Chopper\TagParser\BaseTagParser;
 
 /**
  * DivSearchFilter
  */
-class DivStructFilter extends Filter
+class DivStructFilter extends AbstractFilter
 {
     /**
      * @param string $data

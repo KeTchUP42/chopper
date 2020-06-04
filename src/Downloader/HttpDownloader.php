@@ -3,17 +3,17 @@ declare(strict_types = 1);
 
 namespace Chopper\Downloader;
 
-use Chopper\Curl\Request\ICurlRequest;
-use Chopper\Curl\Response\ICurlResponse;
-use Chopper\Downloader\Base\IDownloader;
+use Chopper\Curl\Request\CurlRequestInterface;
+use Chopper\Curl\Response\CurlResponseInterface;
+use Chopper\Downloader\Base\DownloaderInterface;
 
 /**
  * HttpDownloader
  */
-class HttpDownloader implements IDownloader
+class HttpDownloader implements DownloaderInterface
 {
     /**
-     * @var ICurlRequest
+     * @var CurlRequestInterface
      */
     protected $curl;
 
@@ -25,10 +25,10 @@ class HttpDownloader implements IDownloader
     /**
      * Конструктор.
      *
-     * @param ICurlRequest $curl
-     * @param string       $logFilePath
+     * @param CurlRequestInterface $curl
+     * @param string               $logFilePath
      */
-    public function __construct(ICurlRequest $curl, string $logFilePath = null)
+    public function __construct(CurlRequestInterface $curl, string $logFilePath = null)
     {
         $this->curl        = $curl;
         $this->logFilePath = $logFilePath;
@@ -59,9 +59,9 @@ class HttpDownloader implements IDownloader
      *
      * @param string $url
      *
-     * @return ICurlResponse
+     * @return CurlResponseInterface
      */
-    public function download(string $url): ICurlResponse
+    public function download(string $url): CurlResponseInterface
     {
         if (!filter_var($url, FILTER_VALIDATE_URL)) {
             throw new \RuntimeException(sprintf("URL %s is not valid!", $url));

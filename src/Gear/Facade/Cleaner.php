@@ -5,9 +5,9 @@ namespace Chopper\Gear\Facade;
 
 use Chopper\Curl\Request\CurlRequest;
 use Chopper\Downloader\HttpDownloader;
-use Chopper\Gear\Factory\Filter\IFilterFactory;
+use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
 use Chopper\Gear\Filtration\Filtrator\Filtrator;
-use Chopper\Logger\GlobalLogger\IGlobalLogger;
+use Chopper\Logger\GlobalLogger\GlobalLoggerInterface;
 
 /**
  * Cleaner
@@ -15,16 +15,16 @@ use Chopper\Logger\GlobalLogger\IGlobalLogger;
 class Cleaner
 {
     /**
-     * @var IGlobalLogger
+     * @var GlobalLoggerInterface
      */
     private $globalLogger;
 
     /**
      * Конструктор.
      *
-     * @param IGlobalLogger $globalLogger
+     * @param GlobalLoggerInterface $globalLogger
      */
-    public function __construct(IGlobalLogger $globalLogger)
+    public function __construct(GlobalLoggerInterface $globalLogger)
     {
         $this->globalLogger = $globalLogger;
     }
@@ -32,13 +32,13 @@ class Cleaner
     /**
      * Method filts file
      *
-     * @param string         $path
-     * @param string         $dest
-     * @param IFilterFactory $factory
+     * @param string                 $path
+     * @param string                 $dest
+     * @param FilterFactoryInterface $factory
      *
      * @return bool
      */
-    public function filterFile(string $path, string $dest, IFilterFactory $factory): bool
+    public function filterFile(string $path, string $dest, FilterFactoryInterface $factory): bool
     {
         $filtrator = new Filtrator($factory, $this->globalLogger->getLogger());
 

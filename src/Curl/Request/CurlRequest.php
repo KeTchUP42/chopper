@@ -4,21 +4,21 @@ declare(strict_types = 1);
 namespace Chopper\Curl\Request;
 
 use Chopper\Curl\CurlStatement\CurlStatement;
-use Chopper\Curl\CurlStatement\ICurlStatement;
+use Chopper\Curl\CurlStatement\CurlStatementInterface;
 
 /**
  * CurlRequest
  */
-class CurlRequest implements ICurlRequest
+class CurlRequest implements CurlRequestInterface
 {
     /**
      * Init curl session
      *
      * @param string $url
      *
-     * @return ICurlStatement
+     * @return CurlStatementInterface
      */
-    public function init(string $url): ICurlStatement
+    public function init(string $url): CurlStatementInterface
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

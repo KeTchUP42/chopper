@@ -11,12 +11,12 @@ use Zend\Log\Writer\Stream;
 /**
  * GlobalLogger
  */
-final class GlobalLogger implements IGlobalLogger
+final class GlobalLogger implements GlobalLoggerInterface
 {
     use SingletonTrait;
 
     /**
-     * @var IGlobalLogger
+     * @var GlobalLoggerInterface
      */
     private static $globalLogger;
 
@@ -33,9 +33,9 @@ final class GlobalLogger implements IGlobalLogger
     /**
      * Получить GlobalLogger
      *
-     * @return IGlobalLogger
+     * @return GlobalLoggerInterface
      */
-    public static function getGlobalLogger(): IGlobalLogger
+    public static function getGlobalLogger(): GlobalLoggerInterface
     {
         return self::$globalLogger ?? new self();
     }

@@ -4,16 +4,16 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Filtration\Filters\BaseFilter;
 
 /**
- * IFilter
+ * FilterInterface
  */
-interface IFilter
+interface FilterInterface
 {
     /**
-     * @param IFilter $filter
+     * @param FilterInterface $filter
      *
-     * @return IFilter
+     * @return FilterInterface
      */
-    public function setFilter(IFilter $filter): IFilter;
+    public function setFilter(FilterInterface $filter): FilterInterface;
 
     /**
      * @param string $data

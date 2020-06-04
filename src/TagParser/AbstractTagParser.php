@@ -4,9 +4,9 @@ declare(strict_types = 1);
 namespace Chopper\TagParser;
 
 /**
- * TagParser
+ * AbstractTagParser
  */
-abstract class TagParser implements ITagParser
+abstract class AbstractTagParser implements TagParserInterface
 {
     /**
      * @var string

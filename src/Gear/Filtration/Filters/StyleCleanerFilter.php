@@ -3,12 +3,12 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Filtration\Filters;
 
-use Chopper\Gear\Filtration\Filters\BaseFilter\Filter;
+use Chopper\Gear\Filtration\Filters\BaseFilter\AbstractFilter;
 
 /**
  *  StyleCleanerFilter
  */
-class StyleCleanerFilter extends Filter
+class StyleCleanerFilter extends AbstractFilter
 {
     /**
      * @param string $data

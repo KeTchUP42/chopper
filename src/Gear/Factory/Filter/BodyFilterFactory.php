@@ -3,20 +3,20 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Factory\Filter;
 
-use Chopper\Gear\Filtration\Filters\BaseFilter\IFilter;
+use Chopper\Gear\Filtration\Filters\BaseFilter\FilterInterface;
 use Chopper\Gear\Filtration\Filters\BodyIsolatorFilter;
 
 /**
  * BodyFilterFactory
  */
-class BodyFilterFactory implements IFilterFactory
+class BodyFilterFactory implements FilterFactoryInterface
 {
     /**
      * Method creates new filter
      *
-     * @return IFilter
+     * @return FilterInterface
      */
-    public function createFilter(): IFilter
+    public function createFilter(): FilterInterface
     {
         return new BodyIsolatorFilter();
     }

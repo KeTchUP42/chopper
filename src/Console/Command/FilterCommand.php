@@ -6,7 +6,7 @@ namespace Chopper\Console\Command;
 use Chopper\Console\ColoredConsole\Console;
 use Chopper\Gear\Facade\Cleaner;
 use Chopper\Gear\Factory\Filter\BaseFilterFactory;
-use Chopper\Gear\Factory\Filter\IFilterFactory;
+use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
 use Chopper\Logger\GlobalLogger\GlobalLogger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -99,9 +99,9 @@ class FilterCommand extends Command
      *
      * @param string         $path
      * @param string         $dest
-     * @param IFilterFactory $factory
+     * @param FilterFactoryInterface $factory
      */
-    protected function filter(string $path, string $dest, IFilterFactory $factory): void
+    protected function filter(string $path, string $dest, FilterFactoryInterface $factory): void
     {
         Console::out()->color(Console::GREEN)->writeln('Processing..');
         if ((new Cleaner(GlobalLogger::getGlobalLogger()))->filterFile($path, $this->finalDir.$dest, $factory)) {

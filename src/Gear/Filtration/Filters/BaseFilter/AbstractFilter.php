@@ -4,21 +4,21 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Filtration\Filters\BaseFilter;
 
 /**
- * Filter
+ * AbstractFilter
  */
-abstract class Filter implements IFilter
+abstract class AbstractFilter implements FilterInterface
 {
     /**
-     * @var IFilter
+     * @var FilterInterface
      */
     protected $nextFilter;
 
     /**
-     * @param IFilter $filter
+     * @param FilterInterface $filter
      *
-     * @return IFilter
+     * @return FilterInterface
      */
-    public function setFilter(IFilter $filter): IFilter
+    public function setFilter(FilterInterface $filter): FilterInterface
     {
         $this->nextFilter = $filter;
 

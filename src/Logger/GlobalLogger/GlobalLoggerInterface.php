@@ -6,9 +6,9 @@ namespace Chopper\Logger\GlobalLogger;
 use Zend\Log\LoggerInterface;
 
 /**
- * IGlobalLogger
+ * GlobalLoggerInterface
  */
-interface IGlobalLogger
+interface GlobalLoggerInterface
 {
     /**
      * Global logger configuring

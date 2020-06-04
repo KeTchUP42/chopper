@@ -4,14 +4,14 @@ declare(strict_types = 1);
 namespace Chopper\Curl\CurlStatement;
 
 use Chopper\Curl\HeaderStatement\HeaderStatement;
-use Chopper\Curl\HeaderStatement\IHeaderStatement;
+use Chopper\Curl\HeaderStatement\HeaderStatementInterface;
 use Chopper\Curl\Response\CurlResponse;
-use Chopper\Curl\Response\ICurlResponse;
+use Chopper\Curl\Response\CurlResponseInterface;
 
 /**
  * CurlStatement
  */
-class CurlStatement implements ICurlStatement
+class CurlStatement implements CurlStatementInterface
 {
     /**
      * @var resource
@@ -31,9 +31,9 @@ class CurlStatement implements ICurlStatement
     /**
      * Make Curl request
      *
-     * @return ICurlResponse
+     * @return CurlResponseInterface
      */
-    public function exec(): ICurlResponse
+    public function exec(): CurlResponseInterface
     {
         $response   = curl_exec($this->ch);
         $curl_error = curl_error($this->ch);
@@ -64,9 +64,9 @@ class CurlStatement implements ICurlStatement
     /**
      * Method enables head method
      *
-     * @return $this|ICurlStatement
+     * @return $this|CurlStatementInterface
      */
-    public function useHeadMethod(): ICurlStatement
+    public function useHeadMethod(): CurlStatementInterface
     {
         curl_setopt($this->ch, CURLOPT_NOBODY, true);
 
@@ -78,9 +78,9 @@ class CurlStatement implements ICurlStatement
      *
      * @param mixed $postFields
      *
-     * @return $this|ICurlStatement
+     * @return $this|CurlStatementInterface
      */
-    public function usePostMethod($postFields): ICurlStatement
+    public function usePostMethod($postFields): CurlStatementInterface
     {
         curl_setopt($this->ch, CURLOPT_POST, true);
         curl_setopt($this->ch, CURLOPT_POSTFIELDS, $postFields);
@@ -94,9 +94,9 @@ class CurlStatement implements ICurlStatement
      * @param string $login
      * @param string $password
      *
-     * @return $this|ICurlStatement
+     * @return $this|CurlStatementInterface
      */
-    public function logIn(string $login, string $password): ICurlStatement
+    public function logIn(string $login, string $password): CurlStatementInterface
     {
         curl_setopt($this->ch, CURLOPT_USERPWD, $login.':'.$password);
 
@@ -108,9 +108,9 @@ class CurlStatement implements ICurlStatement
      *
      * @param string $referer
      *
-     * @return $this|ICurlStatement
+     * @return $this|CurlStatementInterface
      */
-    public function setReferer(string $referer): ICurlStatement
+    public function setReferer(string $referer): CurlStatementInterface
     {
         curl_setopt($this->ch, CURLOPT_REFERER, $referer);
 
@@ -122,9 +122,9 @@ class CurlStatement implements ICurlStatement
      *
      * @param string $file
      *
-     * @return $this|ICurlStatement
+     * @return $this|CurlStatementInterface
      */
-    public function setCookieFile(string $file): ICurlStatement
+    public function setCookieFile(string $file): CurlStatementInterface
     {
         curl_setopt($this->ch, CURLOPT_COOKIEFILE, $file);
 
@@ -132,9 +132,9 @@ class CurlStatement implements ICurlStatement
     }
 
     /**
-     * @return $this|ICurlStatement
+     * @return $this|CurlStatementInterface
      */
-    public function setBaseUserAgent(): ICurlStatement
+    public function setBaseUserAgent(): CurlStatementInterface
     {
         curl_setopt($this->ch, CURLOPT_USERAGENT, CurlBaseInfo::USER_AGENT);
 
@@ -146,9 +146,9 @@ class CurlStatement implements ICurlStatement
      *
      * @param string $userAgent
      *
-     * @return $this|ICurlStatement
+     * @return $this|CurlStatementInterface
      */
-    public function setUserAgent(string $userAgent): ICurlStatement
+    public function setUserAgent(string $userAgent): CurlStatementInterface
     {
         curl_setopt($this->ch, CURLOPT_USERAGENT, $userAgent);
 
@@ -160,9 +160,9 @@ class CurlStatement implements ICurlStatement
      *
      * @param string $cookie
      *
-     * @return $this|ICurlStatement
+     * @return $this|CurlStatementInterface
      */
-    public function setCookie(string $cookie): ICurlStatement
+    public function setCookie(string $cookie): CurlStatementInterface
     {
         curl_setopt($this->ch, CURLOPT_COOKIE, $cookie);
 
@@ -172,9 +172,9 @@ class CurlStatement implements ICurlStatement
     /**
      * Method builds header
      *
-     * @return IHeaderStatement
+     * @return HeaderStatementInterface
      */
-    public function buildHeader(): IHeaderStatement
+    public function buildHeader(): HeaderStatementInterface
     {
         return new HeaderStatement($this);
     }
@@ -184,9 +184,9 @@ class CurlStatement implements ICurlStatement
      *
      * @param string $logFilePath
      *
-     * @return $this|ICurlStatement
+     * @return $this|CurlStatementInterface
      */
-    public function setLogFile(string $logFilePath): ICurlStatement
+    public function setLogFile(string $logFilePath): CurlStatementInterface
     {
         if (file_exists($logFilePath)) {
             curl_setopt($this->ch, CURLOPT_STDERR, fopen($logFilePath, 'wb+'));
@@ -201,9 +201,9 @@ class CurlStatement implements ICurlStatement
      *
      * @param int $timeOut
      *
-     * @return $this|ICurlStatement
+     * @return $this|CurlStatementInterface
      */
-    public function setTimeOut(int $timeOut): ICurlStatement
+    public function setTimeOut(int $timeOut): CurlStatementInterface
     {
         curl_setopt($this->ch, CURLOPT_TIMEOUT, $timeOut);
 
@@ -211,13 +211,13 @@ class CurlStatement implements ICurlStatement
     }
 
     /**
-     * Method sets curl encoding
+     * Method sets Curl encoding
      *
      * @param string $encoding
      *
-     * @return $this|ICurlStatement
+     * @return $this|CurlStatementInterface
      */
-    public function setEncoding(string $encoding): ICurlStatement
+    public function setEncoding(string $encoding): CurlStatementInterface
     {
         curl_setopt($this->ch, CURLOPT_ENCODING, $encoding);
 

@@ -4,9 +4,9 @@ declare(strict_types = 1);
 namespace Chopper\Curl\Response;
 
 /**
- *  ICurlResponse
+ * CurlResponseInterface
  */
-interface ICurlResponse
+interface CurlResponseInterface
 {
     /**
      * Получить Header

@@ -6,7 +6,7 @@ namespace Chopper\Curl\Response;
 /**
  * CurlRespone
  */
-class CurlResponse implements ICurlResponse
+class CurlResponse implements CurlResponseInterface
 {
     /**
      * @var string

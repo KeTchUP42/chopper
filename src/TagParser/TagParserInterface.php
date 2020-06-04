@@ -4,9 +4,9 @@ declare(strict_types = 1);
 namespace Chopper\TagParser;
 
 /**
- * ITagParser
+ * TagParserInterface
  */
-interface ITagParser
+interface TagParserInterface
 {
     /**
      * Method starts analysing tag struct

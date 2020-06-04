@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Factory\Filter;
 
-use Chopper\Gear\Filtration\Filters\BaseFilter\IFilter;
+use Chopper\Gear\Filtration\Filters\BaseFilter\FilterInterface;
 use Chopper\Gear\Filtration\Filters\BodyIsolatorFilter;
 use Chopper\Gear\Filtration\Filters\CommentsCleanerFilter;
 use Chopper\Gear\Filtration\Filters\ScriptCleanerFilter;
@@ -13,14 +13,14 @@ use Chopper\Gear\Filtration\Filters\SvgCleanerFilter;
 /**
  * BaseFilterFactory
  */
-class BaseFilterFactory implements IFilterFactory
+class BaseFilterFactory implements FilterFactoryInterface
 {
     /**
      * Method creates new filter
      *
-     * @return IFilter
+     * @return FilterInterface
      */
-    public function createFilter(): IFilter
+    public function createFilter(): FilterInterface
     {
         $filter = new BodyIsolatorFilter();
         $filter->setFilter(new CommentsCleanerFilter())

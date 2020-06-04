@@ -3,16 +3,16 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Filtration\Filtrator;
 
-use Chopper\Gear\Factory\Filter\IFilterFactory;
+use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
 use Zend\Log\LoggerInterface;
 
 /**
  * Filtrator
  */
-class Filtrator implements IFiltrator
+class Filtrator implements FiltratorInterface
 {
     /**
-     * @var IFilterFactory
+     * @var FilterFactoryInterface
      */
     protected $factory;
 
@@ -24,10 +24,10 @@ class Filtrator implements IFiltrator
     /**
      * Конструктор.
      *
-     * @param IFilterFactory  $factory
-     * @param LoggerInterface $logger
+     * @param FilterFactoryInterface $factory
+     * @param LoggerInterface        $logger
      */
-    public function __construct(IFilterFactory $factory, LoggerInterface $logger)
+    public function __construct(FilterFactoryInterface $factory, LoggerInterface $logger)
     {
         $this->factory = $factory;
         $this->logger  = $logger;
@@ -36,11 +36,11 @@ class Filtrator implements IFiltrator
     /**
      * Установка Factory.
      *
-     * @param IFilterFactory $factory
+     * @param FilterFactoryInterface $factory
      *
      * @return Filtrator
      */
-    public function setFactory(IFilterFactory $factory): Filtrator
+    public function setFactory(FilterFactoryInterface $factory): Filtrator
     {
         $this->factory = $factory;
 

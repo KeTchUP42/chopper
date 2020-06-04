@@ -3,21 +3,21 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Filtration\Filtrator;
 
-use Chopper\Gear\Factory\Filter\IFilterFactory;
+use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
 
 /**
- * IFiltrator
+ * FiltratorInterface
  */
-interface IFiltrator
+interface FiltratorInterface
 {
     /**
      * Установка Factory.
      *
-     * @param IFilterFactory $factory
+     * @param FilterFactoryInterface $factory
      *
      * @return Filtrator
      */
-    public function setFactory(IFilterFactory $factory): Filtrator;
+    public function setFactory(FilterFactoryInterface $factory): Filtrator;
 
     /**
      * @param string $data

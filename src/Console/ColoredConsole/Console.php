@@ -22,11 +22,6 @@ final class Console
     public const WHITE     = 'white';
 
     /**
-     * @var string
-     */
-    private static $resetCode = "\e[0m";
-
-    /**
      * @var string[]
      */
     private $colors = [
@@ -55,7 +50,12 @@ final class Console
     ];
 
     /**
-     * @var
+     * @var string
+     */
+    private static $resetCode = "\e[0m";
+
+    /**
+     * @var string
      */
     private $color = "\x1b[30";
 
