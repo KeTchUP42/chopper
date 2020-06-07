@@ -11,11 +11,22 @@ use PHPUnit\Framework\TestCase;
  */
 class TagParserTest extends TestCase
 {
+    private $tagParser;
+
+    private $divTagStruct;
+
+    private $pageTemplate;
+
     public function testParseTagStruct()
     {
-        $parser = new BaseTagParser('<div', '</div>');
-        $result = $parser->parseTagStruct(file_get_contents(__DIR__.'/templates/page.html'));
-        $actual = file_get_contents(__DIR__.'/templates/DivTagStruct.json');
-        static::assertSame(json_encode($result), $actual);
+        $result = $this->tagParser->parseTagStruct($this->pageTemplate);
+        static::assertSame(json_encode($result), $this->divTagStruct);
+    }
+
+    protected function setUp(): void
+    {
+        $this->tagParser    = new BaseTagParser('<div', '</div>');
+        $this->pageTemplate = file_get_contents(__DIR__.'/Templates/PageTemplate.txt');
+        $this->divTagStruct = file_get_contents(__DIR__.'/Templates/DivTagStruct.json');
     }
 }

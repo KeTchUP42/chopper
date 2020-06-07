@@ -15,7 +15,7 @@ class Application
     /**
      * Console app starts
      */
-    public function start(): void
+    public function run(): void
     {
         $app = new App();
         $app->add(new DownloadCommand($_ENV['MAIN_RESOURCES']));

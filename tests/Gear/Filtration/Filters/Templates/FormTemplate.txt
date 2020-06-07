@@ -1,0 +1,61 @@
+<form action="/signup" method="POST">
+  <p>
+    <label>Обращение</label>
+    <label>
+      <input type="radio" name="title" value="mr">
+      Г-н
+    </label>
+    <label>
+      <input type="radio" name="title" value="mrs">
+      Г-жа
+    </label>
+  </p>
+  <p>
+    <label>Имя</label>
+    <input type="text" name="first_name">
+  </p>
+  <p>
+    <label>Фамилия</label>
+    <input type="text" name="last_name">
+  </p>
+  <p>
+    <label>Email</label>
+    <input type="email" name="email">
+  </p>
+  <p>
+    <label>Телефон</label>
+    <input type="tel" name="phone">
+  </p>
+  <p>
+    <label>Пароль</label>
+    <input type="password" name="password">
+  </p>
+  <p>
+    <label>Подтвердите пароль</label>
+    <input type="password" name="password_confirm">
+  </p>
+  <p>
+    <label>Страна</label>
+    <select name="country">
+      <option>Канада</option>
+      <option>Франция</option>
+      <option>Германия</option>
+      <option>Италия</option>
+      <option>Япония</option>
+      <option>Россия</option>
+      <option>Великобритания</option>
+      <option>США</option>
+    </select>
+  </p>
+  <p>
+    <label>
+      <input type="checkbox" name="terms">
+      Я согласен с <a href="/terms">условиями использования</a>
+    </label>
+  </p>
+  <p>
+    <button>
+      Зарегистрироваться
+    </button>
+  </p>
+</form>

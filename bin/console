@@ -28,4 +28,4 @@ if ($_ENV['APP_DEBUG']) {
         Debug::enable();
     }
 }
-(new Application())->start();
+(new Application())->run();

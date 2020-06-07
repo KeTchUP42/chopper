@@ -1,0 +1,30 @@
+<style>
+.progressBackgroundBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.volumeStack {
+  max-width: 60px;
+  min-width: var(--volumeStack-width);
+  flex-grow: 1;
+  flex-shrink: 0;
+  margin-right: 6px;
+  margin-left: 4px;
+}
+</style><style>
+.volumeControl::-moz-range-progress,
+.volumeControl::-moz-range-track {
+  height: var(--track-size);
+  border-radius: calc(var(--track-size) / 2);
+}
+
+.volumeControl::-moz-range-progress {
+  background-color: #fff;
+}
+
+.volumeControl::-moz-range-track {
+  background-color: rgba(0,0,0,0.7);
+}
+</style>
