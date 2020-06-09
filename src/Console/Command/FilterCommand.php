@@ -4,7 +4,8 @@ declare(strict_types = 1);
 namespace Chopper\Console\Command;
 
 use Chopper\Console\ColoredConsole\Console;
-use Chopper\Gear\Facade\Cleaner;
+use Chopper\Exceptions\RuntimeException;
+use Chopper\Gear\Facade\FileFilter;
 use Chopper\Gear\Factory\Filter\BaseFilterFactory;
 use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
 use Chopper\Logger\GlobalLogger\GlobalLogger;
@@ -14,31 +15,31 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * ClearFileCommand
+ * FilterCommand
  */
-class FilterCommand extends Command
+final class FilterCommand extends Command
 {
     /**
      * @var string
      */
-    protected $resourceDir;
+    private $resourceDirectory;
 
     /**
      * @var string
      */
-    protected $finalDir;
+    private $finalDirectory;
 
     /**
      * Конструктор.
      *
-     * @param string $resourceDir
-     * @param string $finalDir
+     * @param string $resourceDirectory
+     * @param string $finalDirectory
      */
-    public function __construct(string $resourceDir, string $finalDir)
+    public function __construct(string $resourceDirectory, string $finalDirectory)
     {
         parent::__construct();
-        $this->resourceDir = $resourceDir;
-        $this->finalDir    = $finalDir;
+        $this->resourceDirectory = $resourceDirectory;
+        $this->finalDirectory    = $finalDirectory;
     }
 
     protected function configure()
@@ -47,13 +48,13 @@ class FilterCommand extends Command
             ->setAliases(["f"])
             ->setDescription('Filter out file.')
             ->setHelp('This command downloads file, filter out it with filter and puts it to the target directory.');
-        $this->addArgument('Path', InputArgument::REQUIRED, 'URL or local file path');
+        $this->addArgument('Path', InputArgument::REQUIRED, 'URL or file name in the resource directory.');
         $this->addArgument('FilterFactoryName', InputArgument::OPTIONAL, 'Name of filter factory.');
         $this->addArgument('Dest', InputArgument::OPTIONAL, 'New file name.');
     }
 
     /**
-     * Filter
+     * Filter execute
      *
      * @param InputInterface  $input
      * @param OutputInterface $output
@@ -68,10 +69,10 @@ class FilterCommand extends Command
 
         $factoryName = is_null($factory) ? BaseFilterFactory::class : "Chopper\Gear\Factory\Filter\\".$factory;
         if (!class_exists($factoryName, true)) {
-            throw new \RuntimeException(sprintf("Factory %s is not exists!", $factoryName));
+            throw new RuntimeException(sprintf("Factory %s is not exists!", $factoryName));
         }
         $dest = is_null($dest) ? uniqid('file', false) : basename($dest);
-        $path = !filter_var($path, FILTER_VALIDATE_URL) ? $this->resourceDir.$path : $path;
+        $path = !filter_var($path, FILTER_VALIDATE_URL) ? $this->resourceDirectory.$path : $path;
 
         $this->log($output, $path, $dest, $factoryName);
         $this->filter($path, $dest, new $factoryName());
@@ -80,14 +81,14 @@ class FilterCommand extends Command
     }
 
     /**
-     * Method logs input vars
+     * Method logs input vars info
      *
      * @param OutputInterface $output
      * @param string          $path
      * @param string          $dest
      * @param string          $factoryName
      */
-    protected function log(OutputInterface $output, string $path, string $dest, string $factoryName): void
+    private function log(OutputInterface $output, string $path, string $dest, string $factoryName): void
     {
         $output->writeln(sprintf('PATH: %s', $path));
         $output->writeln(sprintf('NEW FILE NAME: %s', $dest));
@@ -97,18 +98,22 @@ class FilterCommand extends Command
     /**
      * Method clears file and puts it to the needed dir
      *
-     * @param string         $path
-     * @param string         $dest
+     * @param string                 $path
+     * @param string                 $dest
      * @param FilterFactoryInterface $factory
      */
-    protected function filter(string $path, string $dest, FilterFactoryInterface $factory): void
+    private function filter(string $path, string $dest, FilterFactoryInterface $factory): void
     {
         Console::out()->color(Console::GREEN)->writeln('Processing..');
-        if ((new Cleaner(GlobalLogger::getGlobalLogger()))->filterFile($path, $this->finalDir.$dest, $factory)) {
+        if ((new FileFilter(GlobalLogger::getGlobalLogger()))->filtering(
+            $path,
+            $this->finalDirectory.$dest,
+            $factory
+        )) {
             Console::out()->color(Console::GREEN)->writeln('Done');
         }
         else {
-            throw new \RuntimeException(sprintf("File %s not found.", $path));
+            throw new RuntimeException(sprintf("File %s not found.", $path));
         }
     }
 }

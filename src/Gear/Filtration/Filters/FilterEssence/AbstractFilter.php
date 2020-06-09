@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Filtration\Filters\BaseFilter;
+namespace Chopper\Gear\Filtration\Filters\FilterEssence;
 
 /**
  * AbstractFilter

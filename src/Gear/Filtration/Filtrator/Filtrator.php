@@ -48,6 +48,8 @@ class Filtrator implements FiltratorInterface
     }
 
     /**
+     * Method starts handling
+     *
      * @param string $data
      *
      * @return string

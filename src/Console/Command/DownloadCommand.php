@@ -15,22 +15,22 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * DownloadFileCommand
  */
-class DownloadCommand extends Command
+final class DownloadCommand extends Command
 {
     /**
      * @var string
      */
-    protected $resourceDir;
+    private $resourceDirectory;
 
     /**
      * Конструктор.
      *
-     * @param string $resourceDir
+     * @param string $resourceDirectory
      */
-    public function __construct(string $resourceDir)
+    public function __construct(string $resourceDirectory)
     {
         parent::__construct();
-        $this->resourceDir = $resourceDir;
+        $this->resourceDirectory = $resourceDirectory;
     }
 
     /**
@@ -43,12 +43,12 @@ class DownloadCommand extends Command
             ->setAliases(["d"])
             ->setDescription('Downloads file.')
             ->setHelp('This command downloads file to the target directory.');
-        $this->addArgument('url', InputArgument::REQUIRED, 'File url');
+        $this->addArgument('url', InputArgument::REQUIRED, 'File url.');
         $this->addArgument('dest', InputArgument::OPTIONAL, 'New file name.');
     }
 
     /**
-     * Download
+     * Download execute
      *
      * @param InputInterface  $input
      * @param OutputInterface $output
@@ -68,28 +68,31 @@ class DownloadCommand extends Command
     }
 
     /**
-     * Method logs input vars
+     * Method logs input vars info
      *
      * @param OutputInterface $output
      * @param string          $url
      * @param string          $dest
      */
-    protected function log(OutputInterface $output, string $url, string $dest): void
+    private function log(OutputInterface $output, string $url, string $dest): void
     {
         $output->writeln(sprintf('URL: %s', $url));
         $output->writeln(sprintf('NEW FILE NAME: %s', $dest));
     }
 
     /**
-     * Method downloads file to the resource dir
+     * Method downloads file to the resource directory
      *
      * @param string      $url
      * @param string|null $dest
      */
-    protected function download(string $url, string $dest): void
+    private function download(string $url, string $dest): void
     {
         Console::out()->color(Console::GREEN)->writeln('Downloading..');
-        (new HttpDownloader(new CurlRequest(), GlobalLogger::getGlobalLogger()->getLogFilePath()))->downloadtofile($url,$this->resourceDir.$dest);
+        (new HttpDownloader(new CurlRequest(), GlobalLogger::getGlobalLogger()->getLogFilePath()))->downloadtofile(
+            $url,
+            $this->resourceDirectory.$dest
+        );
         Console::out()->color(Console::GREEN)->writeln('Done');
     }
 }

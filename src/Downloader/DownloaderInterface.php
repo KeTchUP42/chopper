@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Downloader\Base;
+namespace Chopper\Downloader;
 
 use Chopper\Curl\Response\CurlResponseInterface;
 

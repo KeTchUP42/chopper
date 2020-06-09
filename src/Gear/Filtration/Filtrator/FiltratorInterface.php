@@ -20,6 +20,8 @@ interface FiltratorInterface
     public function setFactory(FilterFactoryInterface $factory): Filtrator;
 
     /**
+     * Method starts handling
+     *
      * @param string $data
      *
      * @return string

@@ -5,7 +5,6 @@ namespace Chopper\Downloader;
 
 use Chopper\Curl\Request\CurlRequestInterface;
 use Chopper\Curl\Response\CurlResponseInterface;
-use Chopper\Downloader\Base\DownloaderInterface;
 
 /**
  * HttpDownloader
@@ -18,7 +17,7 @@ class HttpDownloader implements DownloaderInterface
     protected $curl;
 
     /**
-     * @var string?
+     * @var ?string
      */
     protected $logFilePath;
 

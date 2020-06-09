@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\Logger\GlobalLogger;
 
+use Chopper\Exceptions\RuntimeException;
 use Chopper\Traits\SingletonTrait;
 use Zend\Log\Logger;
 use Zend\Log\LoggerInterface;
@@ -84,7 +85,7 @@ final class GlobalLogger implements GlobalLoggerInterface
     public function getLogger(): LoggerInterface
     {
         if ($this->logger === null) {
-            throw new \RuntimeException(sprintf('%s did not configured.', self::class));
+            throw new RuntimeException(sprintf('%s did not configured.', self::class));
         }
 
         return $this->logger;

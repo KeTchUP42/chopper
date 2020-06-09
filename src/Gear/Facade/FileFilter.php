@@ -10,9 +10,9 @@ use Chopper\Gear\Filtration\Filtrator\Filtrator;
 use Chopper\Logger\GlobalLogger\GlobalLoggerInterface;
 
 /**
- * Cleaner
+ * FileFilter
  */
-class Cleaner
+final class FileFilter
 {
     /**
      * @var GlobalLoggerInterface
@@ -38,7 +38,7 @@ class Cleaner
      *
      * @return bool
      */
-    public function filterFile(string $path, string $dest, FilterFactoryInterface $factory): bool
+    public function filtering(string $path, string $dest, FilterFactoryInterface $factory): bool
     {
         $filtrator = new Filtrator($factory, $this->globalLogger->getLogger());
 

@@ -3,6 +3,8 @@ declare(strict_types = 1);
 
 namespace Chopper\TagParser;
 
+use Chopper\Exceptions\RuntimeException;
+
 /**
  * TagParser
  */
@@ -29,7 +31,7 @@ class BaseTagParser extends AbstractTagParser
     protected function tagValidation(string $openTag, string $closeTag): void
     {
         if ($openTag === $closeTag) {
-            throw new \RuntimeException(sprintf('Tags can\'t be same'));
+            throw new RuntimeException(sprintf('Tags can\'t be same!'));
         }
     }
 
