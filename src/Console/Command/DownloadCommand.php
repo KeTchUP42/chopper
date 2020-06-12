@@ -42,7 +42,7 @@ final class DownloadCommand extends Command
             ->setName('download')
             ->setAliases(["d"])
             ->setDescription('Downloads file.')
-            ->setHelp('This command downloads file to the target directory.');
+            ->setHelp('This command downloads file to the resource directory.');
         $this->addArgument('url', InputArgument::REQUIRED, 'File url.');
         $this->addArgument('dest', InputArgument::OPTIONAL, 'New file name.');
     }

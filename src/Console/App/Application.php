@@ -18,8 +18,8 @@ class Application
     public function run(): void
     {
         $app = new App();
-        $app->add(new DownloadCommand($_ENV['MAIN_RESOURCES']));
-        $app->add(new FilterCommand($_ENV['MAIN_RESOURCES'], $_ENV['FINAL_DIR']));
+        $app->add(new DownloadCommand($_ENV['RESOURCE_DIR']));
+        $app->add(new FilterCommand($_ENV['RESOURCE_DIR'], $_ENV['TEMPLATES_DIR']));
         $app->run();
     }
 }

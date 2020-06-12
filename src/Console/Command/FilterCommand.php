@@ -27,19 +27,19 @@ final class FilterCommand extends Command
     /**
      * @var string
      */
-    private $finalDirectory;
+    private $templatesDirectory;
 
     /**
      * Конструктор.
      *
      * @param string $resourceDirectory
-     * @param string $finalDirectory
+     * @param string $templatesDirectory
      */
-    public function __construct(string $resourceDirectory, string $finalDirectory)
+    public function __construct(string $resourceDirectory, string $templatesDirectory)
     {
         parent::__construct();
-        $this->resourceDirectory = $resourceDirectory;
-        $this->finalDirectory    = $finalDirectory;
+        $this->resourceDirectory  = $resourceDirectory;
+        $this->templatesDirectory = $templatesDirectory;
     }
 
     protected function configure()
@@ -47,9 +47,9 @@ final class FilterCommand extends Command
         $this->setName('filter')
             ->setAliases(["f"])
             ->setDescription('Filter out file.')
-            ->setHelp('This command downloads file, filter out it with filter and puts it to the target directory.');
+            ->setHelp('This command downloads file, filter out it with filter and puts it to the needed directory.');
         $this->addArgument('Path', InputArgument::REQUIRED, 'URL or file name in the resource directory.');
-        $this->addArgument('FilterFactoryName', InputArgument::OPTIONAL, 'Name of filter factory.');
+        $this->addArgument('FilterFactoryName', InputArgument::OPTIONAL, 'Filter factory name.');
         $this->addArgument('Dest', InputArgument::OPTIONAL, 'New file name.');
     }
 
@@ -96,7 +96,7 @@ final class FilterCommand extends Command
     }
 
     /**
-     * Method clears file and puts it to the needed dir
+     * Method clears file and puts it to the needed directory
      *
      * @param string                 $path
      * @param string                 $dest
@@ -107,7 +107,7 @@ final class FilterCommand extends Command
         Console::out()->color(Console::GREEN)->writeln('Processing..');
         if ((new FileFilter(GlobalLogger::getGlobalLogger()))->filtering(
             $path,
-            $this->finalDirectory.$dest,
+            $this->templatesDirectory.$dest,
             $factory
         )) {
             Console::out()->color(Console::GREEN)->writeln('Done');

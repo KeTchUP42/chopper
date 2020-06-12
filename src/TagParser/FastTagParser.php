@@ -21,6 +21,11 @@ class FastTagParser extends AbstractTagParser
         if ($deepLvl <= 0) {
             return [$data];
         }
+
+        if ($this->openTag === $this->closeTag) {
+            return [];
+        }
+
         $dataMaxLen      = strlen($data);
         $result          = [];
         $resultIndex     = -1;
@@ -32,6 +37,9 @@ class FastTagParser extends AbstractTagParser
                 $currentDeeptLvl++;
                 if ($currentDeeptLvl === $deepLvl) {
                     $resultIndex++;
+                    $result[] .= $this->openTag;
+                    $index    += strlen($this->openTag) - 1;
+                    continue;
                 }
             }
 
@@ -45,12 +53,7 @@ class FastTagParser extends AbstractTagParser
             }
 
             if ($currentDeeptLvl >= $deepLvl) {
-                if (isset($result[$resultIndex])) {
-                    $result[$resultIndex] .= $data[$index];
-                }
-                else {
-                    $result[] = $data[$index];
-                }
+                $result[$resultIndex] .= $data[$index];
             }
         }
 
