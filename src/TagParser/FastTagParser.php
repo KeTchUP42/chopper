@@ -4,12 +4,12 @@ declare(strict_types = 1);
 namespace Chopper\TagParser;
 
 /**
- * TagParser
+ * FastTagParser
  */
-class BaseTagParser extends AbstractTagParser
+class FastTagParser extends AbstractTagParser
 {
     /**
-     * Method returns array of strings between tags on needed deep level with nocase validation
+     * Method returns array of strings between tags on needed deep level
      *
      * @param string $data
      * @param int    $deepLvl
@@ -28,17 +28,17 @@ class BaseTagParser extends AbstractTagParser
 
         for ($index = 0; $index < $dataMaxLen; $index++) {
 
-            if (strcasecmp(substr($data, $index, strlen($this->openTag)), $this->openTag) === 0) {
+            if (substr($data, $index, strlen($this->openTag)) === $this->openTag) {
                 $currentDeeptLvl++;
                 if ($currentDeeptLvl === $deepLvl) {
                     $resultIndex++;
                 }
             }
 
-            if (strcasecmp(substr($data, $index, strlen($this->closeTag)), $this->closeTag) === 0) {
+            if (substr($data, $index, strlen($this->closeTag)) === $this->closeTag) {
                 $currentDeeptLvl--;
                 if ($currentDeeptLvl + 1 === $deepLvl) {
-                    $result[$resultIndex] .= substr($data, $index, strlen($this->closeTag));
+                    $result[$resultIndex] .= $this->closeTag;
                     $index                += strlen($this->closeTag) - 1;
                     continue;
                 }

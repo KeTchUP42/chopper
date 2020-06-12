@@ -41,7 +41,7 @@ class HttpDownloader implements DownloaderInterface
      *
      * @return bool
      */
-    public function downloadtofile(string $url, string $dest): bool
+    public function downloadfile(string $url, string $dest): bool
     {
         $data = $this->download($url)->getBody();
         if ($data) {

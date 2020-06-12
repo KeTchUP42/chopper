@@ -39,21 +39,21 @@ abstract class AbstractTagParser implements TagParserInterface
      */
     public function parseTagStruct(string $data): array
     {
-        return $this->rhandle($this->parseDeepLvlNoCase($data, 1));
+        return $this->rhandle($this->parseDeepLvl($data, 1));
     }
 
     /**
      * Method analysing tag struct and searches content between tags recursive
      *
-     * @param array $tagData
+     * @param array $baseTagData
      *
      * @return array
      */
-    protected function rhandle(array $tagData): array
+    protected function rhandle(array $baseTagData): array
     {
         $result = [];
-        foreach ($tagData as $value) {
-            $blocks = $this->parseDeepLvlNoCase($value, 2);
+        foreach ($baseTagData as $value) {
+            $blocks = $this->parseDeepLvl($value, 2);
             if (empty($blocks)) {
                 $result[] = $value;
             }
@@ -64,16 +64,6 @@ abstract class AbstractTagParser implements TagParserInterface
 
         return $result;
     }
-
-    /**
-     * Method returns array of strings between tags on needed deep level
-     *
-     * @param string $data
-     * @param int    $deepLvl
-     *
-     * @return array
-     */
-    abstract public function parseDeepLvlNoCase(string $data, int $deepLvl): array;
 
     /**
      * Method returns array of strings between tags on needed deep level

@@ -26,14 +26,4 @@ interface TagParserInterface
      * @return array
      */
     public function parseDeepLvl(string $data, int $deepLvl): array;
-
-    /**
-     * Method returns array of strings between tags on needed deep level
-     *
-     * @param string $data
-     * @param int    $deepLvl
-     *
-     * @return array
-     */
-    public function parseDeepLvlNoCase(string $data, int $deepLvl): array;
 }

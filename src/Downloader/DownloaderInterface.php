@@ -11,14 +11,14 @@ use Chopper\Curl\Response\CurlResponseInterface;
 interface DownloaderInterface
 {
     /**
-     * Method downloads content with Curl to file
+     * Method downloads file with Curl to file
      *
      * @param string $url
      * @param string $dest
      *
      * @return bool
      */
-    public function downloadtofile(string $url, string $dest): bool;
+    public function downloadfile(string $url, string $dest): bool;
 
     /**
      * Method downloads content with Curl
