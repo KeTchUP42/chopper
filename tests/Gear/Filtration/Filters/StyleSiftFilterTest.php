@@ -17,7 +17,7 @@ class StyleSiftFilterTest extends TestCase
 
     private $expected;
 
-    public function testHandle()
+    public function testHandle(): void
     {
         $result = $this->filter->handle($this->data);
         static::assertSame($this->expected, $result);

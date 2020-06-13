@@ -15,7 +15,7 @@ class BodyIsolatorFilterTest extends TestCase
 
     private $data;
 
-    public function testHandle()
+    public function testHandle(): void
     {
         $result = $this->filter->handle($this->data);
         static::assertSame('<body>Content: Test </body>', $result);

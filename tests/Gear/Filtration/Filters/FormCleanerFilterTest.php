@@ -15,7 +15,7 @@ class FormCleanerFilterTest extends TestCase
 
     private $data;
 
-    public function testHandle()
+    public function testHandle(): void
     {
         $result = $this->filter->handle($this->data);
         static::assertEmpty($result);

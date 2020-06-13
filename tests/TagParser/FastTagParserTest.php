@@ -19,13 +19,13 @@ class FastTagParserTest extends TestCase
 
     private $divTagStruct;
 
-    public function testParseTagStruct()
+    public function testParseTagStruct(): void
     {
         $result = $this->tagParser->parseTagStruct($this->pageTemplate);
         static::assertSame(json_encode($result), $this->divTagStruct);
     }
 
-    public function testParseDeepLvl()
+    public function testParseDeepLvl(): void
     {
         $result = $this->tagParser->parseDeepLvl($this->pageTemplate, 3);
         static::assertSame(json_encode($result), $this->divDeepLvl3);

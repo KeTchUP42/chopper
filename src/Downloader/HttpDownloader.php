@@ -84,7 +84,7 @@ class HttpDownloader implements DownloaderInterface
             throw new \RuntimeException(sprintf("HTTP Code = %s", $result->getHttpCode()));
         }
         if (!$result->getBody()) {
-            throw new \RuntimeException("Body of file is empty");
+            throw new \RuntimeException(sprintf("Body of %s is empty!", get_class($result)));
         }
 
         return $result;

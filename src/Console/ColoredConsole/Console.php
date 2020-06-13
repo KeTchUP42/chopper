@@ -22,6 +22,11 @@ final class Console
     public const WHITE     = 'white';
 
     /**
+     * @var string
+     */
+    private static $resetCode = "\e[0m";
+
+    /**
      * @var string[]
      */
     private $colors = [
@@ -48,11 +53,6 @@ final class Console
         'blue'      => ";46",
         'white'     => ";47",
     ];
-
-    /**
-     * @var string
-     */
-    private static $resetCode = "\e[0m";
 
     /**
      * @var string
@@ -100,7 +100,7 @@ final class Console
     }
 
     /**
-     * Method configures back ground color
+     * Method configures background color
      *
      * @param string $color
      *
