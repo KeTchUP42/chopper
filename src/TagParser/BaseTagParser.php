@@ -4,12 +4,12 @@ declare(strict_types = 1);
 namespace Chopper\TagParser;
 
 /**
- * TagParser
+ * BaseTagParser
  */
 class BaseTagParser extends AbstractTagParser
 {
     /**
-     * Method returns array of strings between tags on needed deep level without case difference
+     * Method returns an array of strings between tags at the required level of nesting without case difference
      *
      * @param string $data
      * @param int    $deepLvl

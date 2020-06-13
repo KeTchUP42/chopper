@@ -5,11 +5,13 @@ namespace Chopper\TagParser;
 
 /**
  * FastTagParser
+ *
+ * This class has faster algorithm but tag case matters
  */
 class FastTagParser extends AbstractTagParser
 {
     /**
-     * Method returns array of strings between tags on needed deep level
+     * Method returns an array of strings between tags at the required level of nesting
      *
      * @param string $data
      * @param int    $deepLvl

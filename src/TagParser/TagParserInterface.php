@@ -18,7 +18,7 @@ interface TagParserInterface
     public function parseTagStruct(string $data): array;
 
     /**
-     * Method returns array of strings between tags on needed deep level
+     * Method returns an array of strings between tags at the required level of nesting
      *
      * @param string $data
      * @param int    $deepLvl

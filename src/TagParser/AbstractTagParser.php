@@ -43,7 +43,7 @@ abstract class AbstractTagParser implements TagParserInterface
     }
 
     /**
-     * Method analysing tag struct and searches content between tags recursive
+     * Method analyses struct of tags and recursively searches for content between tags
      *
      * @param array $baseTagData
      *
@@ -66,7 +66,7 @@ abstract class AbstractTagParser implements TagParserInterface
     }
 
     /**
-     * Method returns array of strings between tags on needed deep level
+     * Method returns an array of strings between tags at the required level of nesting
      *
      * @param string $data
      * @param int    $deepLvl
