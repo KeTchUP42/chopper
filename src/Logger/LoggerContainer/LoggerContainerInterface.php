@@ -1,17 +1,17 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Logger\GlobalLogger;
+namespace Chopper\Logger\LoggerContainer;
 
 use Zend\Log\LoggerInterface;
 
 /**
- * GlobalLoggerInterface
+ * LoggerContainerInterface
  */
-interface GlobalLoggerInterface
+interface LoggerContainerInterface
 {
     /**
-     * Global logger configuring
+     * Logger configuring
      *
      * @param string $logFilePath
      */
@@ -20,12 +20,12 @@ interface GlobalLoggerInterface
     /**
      * Получить LogFilePath
      *
-     * @return mixed
+     * @return string
      */
     public function getLogFilePath(): string;
 
     /**
-     * Method returns system logger
+     * Method returns containers logger
      *
      * @return LoggerInterface
      */

@@ -7,7 +7,7 @@ use Chopper\Curl\Request\CurlRequest;
 use Chopper\Downloader\HttpDownloader;
 use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
 use Chopper\Gear\Filtration\Filtrator\Filtrator;
-use Chopper\Logger\GlobalLogger\GlobalLoggerInterface;
+use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 
 /**
  * FileFilter
@@ -15,22 +15,22 @@ use Chopper\Logger\GlobalLogger\GlobalLoggerInterface;
 final class FileFilter
 {
     /**
-     * @var GlobalLoggerInterface
+     * @var LoggerContainerInterface
      */
-    private $globalLogger;
+    private $loggerContainer;
 
     /**
      * Конструктор.
      *
-     * @param GlobalLoggerInterface $globalLogger
+     * @param LoggerContainerInterface $loggerContainer
      */
-    public function __construct(GlobalLoggerInterface $globalLogger)
+    public function __construct(LoggerContainerInterface $loggerContainer)
     {
-        $this->globalLogger = $globalLogger;
+        $this->loggerContainer = $loggerContainer;
     }
 
     /**
-     * Method filts file
+     * File filtering method
      *
      * @param string                 $path
      * @param string                 $dest
@@ -40,13 +40,13 @@ final class FileFilter
      */
     public function filtering(string $path, string $dest, FilterFactoryInterface $factory): bool
     {
-        $filtrator = new Filtrator($factory, $this->globalLogger->getLogger());
+        $filtrator = new Filtrator($factory, $this->loggerContainer->getLogger());
 
         if (filter_var($path, FILTER_VALIDATE_URL)) {
             file_put_contents(
                 $dest,
                 $filtrator->handle(
-                    (new HttpDownloader(new CurlRequest(), $this->globalLogger->getLogFilePath()))->download($path)
+                    (new HttpDownloader(new CurlRequest(), $this->loggerContainer->getLogFilePath()))->download($path)
                         ->getBody()
                 )
             );
@@ -58,6 +58,9 @@ final class FileFilter
 
             return true;
         }
+        $this->loggerContainer->getLogger()->warn(
+            sprintf("Filtering error! %s is not valid.", $path)
+        );
 
         return false;
     }

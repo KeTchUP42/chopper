@@ -1,28 +1,20 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Logger\GlobalLogger;
+namespace Chopper\Logger\LoggerContainer;
 
 use Chopper\Exceptions\RuntimeException;
-use Chopper\Traits\SingletonTrait;
 use Zend\Log\Logger;
 use Zend\Log\LoggerInterface;
 use Zend\Log\Writer\Stream;
 
 /**
- * GlobalLogger
+ * LoggerContainer
  */
-final class GlobalLogger implements GlobalLoggerInterface
+class LoggerContainer implements LoggerContainerInterface
 {
-    use SingletonTrait;
-
     /**
-     * @var GlobalLoggerInterface
-     */
-    private static $globalLogger;
-
-    /**
-     * @var LoggerInterface
+     * @var Logger
      */
     private $logger;
 
@@ -32,28 +24,7 @@ final class GlobalLogger implements GlobalLoggerInterface
     private $logFilePath;
 
     /**
-     * Получить GlobalLogger
-     *
-     * @return GlobalLoggerInterface
-     */
-    public static function getGlobalLogger(): GlobalLoggerInterface
-    {
-        return self::$globalLogger ?? new self();
-    }
-
-    /**
-     * Method configures global logger
-     *
-     * @param string $logFilePath
-     */
-    public static function configureGlobalLogger(string $logFilePath): void
-    {
-        self::$globalLogger = new self();
-        self::$globalLogger->configureLogger($logFilePath);
-    }
-
-    /**
-     * Global logger configuring
+     * Logger configuring
      *
      * @param string $logFilePath
      */
@@ -63,7 +34,7 @@ final class GlobalLogger implements GlobalLoggerInterface
             unlink($logFilePath);
         }
         $this->logFilePath = $logFilePath;
-        $this->logger      = new Logger;
+        $this->logger      = new Logger();
         $this->logger->addWriter(new Stream($logFilePath));
     }
 
@@ -78,7 +49,7 @@ final class GlobalLogger implements GlobalLoggerInterface
     }
 
     /**
-     * Method returns system logger
+     * Method returns containers logger
      *
      * @return LoggerInterface
      */
