@@ -8,6 +8,7 @@ use Chopper\Exceptions\RuntimeException;
 use Chopper\Gear\Facade\FileFilter;
 use Chopper\Gear\Factory\Filter\BaseFilterFactory;
 use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
+use Chopper\Gear\Filtration\FilterCell\StandardFilterCell;
 use Chopper\Logger\GlobalLogger\SystemLogger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -108,7 +109,7 @@ final class FilterCommand extends Command
         if ((new FileFilter(SystemLogger::getGlobalLoggerContainer()))->filtering(
             $path,
             $this->templatesDirectory.$dest,
-            $factory
+            new StandardFilterCell($factory)
         )) {
             Console::out()->color(Console::GREEN)->writeln('Done');
         }

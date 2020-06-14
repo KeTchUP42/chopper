@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Filtration\Filtrator;
 
-use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
+use Chopper\Gear\Filtration\FilterCell\FilterCellInterface;
 
 /**
  * FiltratorInterface
@@ -11,13 +11,13 @@ use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
 interface FiltratorInterface
 {
     /**
-     * Установка Factory.
+     * Установка FilterCell.
      *
-     * @param FilterFactoryInterface $factory
+     * @param FilterCellInterface $filterCell
      *
-     * @return Filtrator
+     * @return FiltratorInterface
      */
-    public function setFactory(FilterFactoryInterface $factory): Filtrator;
+    public function setFilterCell(FilterCellInterface $filterCell): FiltratorInterface;
 
     /**
      * Method starts handling

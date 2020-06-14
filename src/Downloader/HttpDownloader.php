@@ -27,7 +27,7 @@ class HttpDownloader implements DownloaderInterface
      * @param CurlRequestInterface $curl
      * @param string               $logFilePath
      */
-    public function __construct(CurlRequestInterface $curl, string $logFilePath = null)
+    public function __construct(CurlRequestInterface $curl, string $logFilePath = '')
     {
         $this->curl        = $curl;
         $this->logFilePath = $logFilePath;

@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Filtration\Filtrator;
 
-use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
+use Chopper\Gear\Filtration\FilterCell\FilterCellInterface;
 use Zend\Log\LoggerInterface;
 
 /**
@@ -12,9 +12,9 @@ use Zend\Log\LoggerInterface;
 class Filtrator implements FiltratorInterface
 {
     /**
-     * @var FilterFactoryInterface
+     * @var FilterCellInterface
      */
-    protected $factory;
+    protected $filterCell;
 
     /**
      * @var LoggerInterface
@@ -24,25 +24,25 @@ class Filtrator implements FiltratorInterface
     /**
      * Конструктор.
      *
-     * @param FilterFactoryInterface $factory
-     * @param LoggerInterface        $logger
+     * @param FilterCellInterface $filterCell
+     * @param LoggerInterface     $logger
      */
-    public function __construct(FilterFactoryInterface $factory, LoggerInterface $logger)
+    public function __construct(FilterCellInterface $filterCell, LoggerInterface $logger)
     {
-        $this->factory = $factory;
-        $this->logger  = $logger;
+        $this->filterCell = $filterCell;
+        $this->logger     = $logger;
     }
 
     /**
-     * Установка Factory.
+     * Установка FilterCell.
      *
-     * @param FilterFactoryInterface $factory
+     * @param FilterCellInterface $filterCell
      *
-     * @return Filtrator
+     * @return FiltratorInterface
      */
-    public function setFactory(FilterFactoryInterface $factory): Filtrator
+    public function setFilterCell(FilterCellInterface $filterCell): FiltratorInterface
     {
-        $this->factory = $factory;
+        $this->filterCell = $filterCell;
 
         return $this;
     }
@@ -56,10 +56,10 @@ class Filtrator implements FiltratorInterface
      */
     public function handle(string $data): string
     {
-        $this->logger->info(sprintf("%s is creating filter with %s.", self::class, get_class($this->factory)));
-        $this->logger->info(sprintf("%s is calling filter's handle method.", self::class));
+        $this->logger->info(sprintf("%s is calling %s handle method.", self::class, get_class($this->filterCell)));
+        $this->logger->info(sprintf("%s is calling filter's handle method.", get_class($this->filterCell)));
         try {
-            $data = $this->factory->createFilter()->handle($data);
+            $data = $this->filterCell->handle($data);
             $this->logger->info(sprintf('Success!'));
         } catch (\Exception $exception) {
             $this->logger->err(sprintf('Error! %s', $exception->getMessage()));

@@ -5,7 +5,7 @@ namespace Chopper\Gear\Facade;
 
 use Chopper\Curl\Request\CurlRequest;
 use Chopper\Downloader\HttpDownloader;
-use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
+use Chopper\Gear\Filtration\FilterCell\FilterCellInterface;
 use Chopper\Gear\Filtration\Filtrator\Filtrator;
 use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 
@@ -32,15 +32,15 @@ final class FileFilter
     /**
      * File filtering method
      *
-     * @param string                 $path
-     * @param string                 $dest
-     * @param FilterFactoryInterface $factory
+     * @param string              $path
+     * @param string              $dest
+     * @param FilterCellInterface $cell
      *
      * @return bool
      */
-    public function filtering(string $path, string $dest, FilterFactoryInterface $factory): bool
+    public function filtering(string $path, string $dest, FilterCellInterface $cell): bool
     {
-        $filtrator = new Filtrator($factory, $this->loggerContainer->getLogger());
+        $filtrator = new Filtrator($cell, $this->loggerContainer->getLogger());
 
         if (filter_var($path, FILTER_VALIDATE_URL)) {
             file_put_contents(

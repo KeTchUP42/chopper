@@ -11,7 +11,8 @@ use Chopper\Curl\Response\CurlResponseInterface;
 interface DownloaderInterface
 {
     /**
-     * Method downloads file with Curl to file
+     * Method downloads file
+     *
      *
      * @param string $url
      * @param string $dest
@@ -21,7 +22,7 @@ interface DownloaderInterface
     public function downloadfile(string $url, string $dest): bool;
 
     /**
-     * Method downloads content with Curl
+     * Method downloads content
      *
      * @param string $url
      *

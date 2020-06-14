@@ -18,22 +18,22 @@ final class TemplateMixer
     /**
      * @var string
      */
-    private $templatesPath;
+    private $templDir;
 
     /**
      * Конструктор.
      *
-     * @param string          $templatesPath
+     * @param string          $templDir
      * @param LoggerInterface $logger
      */
-    public function __construct(string $templatesPath, LoggerInterface $logger)
+    public function __construct(string $templDir, LoggerInterface $logger)
     {
-        $this->templatesPath = $templatesPath;
-        $this->logger        = $logger;
+        $this->templDir = $templDir;
+        $this->logger   = $logger;
     }
 
     /**
-     * Method generates new file from some templates
+     * Method executes mixer
      *
      * @param string $filename
      *
