@@ -3,12 +3,13 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Filtration\FilterCell;
 
+use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
 use Chopper\Gear\Filtration\Filters\FilterEssence\FilterInterface;
 
 /**
- * StandardFilterCell
+ * FormingFilterCell
  */
-class StandardFilterCell implements FilterCellInterface
+class FormingFilterCell implements FilterCellInterface
 {
     /**
      * @var FilterInterface
@@ -18,11 +19,11 @@ class StandardFilterCell implements FilterCellInterface
     /**
      * Конструктор.
      *
-     * @param $filter
+     * @param $filterFactory
      */
-    public function __construct(FilterInterface $filter)
+    public function __construct(FilterFactoryInterface $filterFactory)
     {
-        $this->filter = $filter;
+        $this->filter = $filterFactory->createFilter();
     }
 
     /**

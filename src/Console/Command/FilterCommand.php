@@ -4,11 +4,11 @@ declare(strict_types = 1);
 namespace Chopper\Console\Command;
 
 use Chopper\Console\ColoredConsole\Console;
+use Chopper\Constant\ConsoleAliasList;
 use Chopper\Exceptions\RuntimeException;
 use Chopper\Gear\Facade\FileFilter;
-use Chopper\Gear\Factory\Filter\BaseFilterFactory;
 use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
-use Chopper\Gear\Filtration\FilterCell\StandardFilterCell;
+use Chopper\Gear\Filtration\FilterCell\FormingFilterCell;
 use Chopper\Logger\GlobalLogger\SystemLogger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -50,7 +50,7 @@ final class FilterCommand extends Command
             ->setDescription('Filter out file.')
             ->setHelp('This command downloads file, filter out it with filter and puts it to the needed directory.');
         $this->addArgument('Path', InputArgument::REQUIRED, 'URL or file name in the resource directory.');
-        $this->addArgument('FilterFactoryName', InputArgument::OPTIONAL, 'Filter factory name.');
+        $this->addArgument('FilterFactoryAlias', InputArgument::OPTIONAL, 'Filter factory alias.');
         $this->addArgument('Dest', InputArgument::OPTIONAL, 'New file name.');
     }
 
@@ -64,21 +64,30 @@ final class FilterCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $path    = $input->getArgument('Path');
-        $factory = $input->getArgument('FilterFactoryName');
-        $dest    = $input->getArgument('Dest');
+        $path         = $input->getArgument('Path');
+        $factoryAlias = $input->getArgument('FilterFactoryAlias');
+        $dest         = $input->getArgument('Dest');
 
-        $factoryName = is_null($factory) ? BaseFilterFactory::class : "Chopper\Gear\Factory\Filter\\".$factory;
-        if (!class_exists($factoryName, true)) {
-            throw new RuntimeException(sprintf("Factory %s is not exists!", $factoryName));
-        }
-        $dest = is_null($dest) ? uniqid('file', false) : basename($dest);
-        $path = !filter_var($path, FILTER_VALIDATE_URL) ? $this->resourceDirectory.$path : $path;
+        $factoryName = $this->factoryChoose($factoryAlias);
+        $dest        = is_null($dest) ? uniqid('file', false) : basename($dest);
+        $path        = !filter_var($path, FILTER_VALIDATE_URL) ? $this->resourceDirectory.$path : $path;
 
         $this->log($output, $path, $dest, $factoryName);
         $this->filter($path, $dest, new $factoryName());
 
         return 0;
+    }
+
+    /**
+     * Method choose correct factory with alias
+     *
+     * @param string|null $alias
+     *
+     * @return string
+     */
+    private function factoryChoose($alias): string
+    {
+        return ConsoleAliasList::FILTER_FACTORY_ALIAS[$alias] ?? ConsoleAliasList::FILTER_FACTORY_ALIAS[null];
     }
 
     /**
@@ -109,7 +118,7 @@ final class FilterCommand extends Command
         if ((new FileFilter(SystemLogger::getGlobalLoggerContainer()))->filtering(
             $path,
             $this->templatesDirectory.$dest,
-            new StandardFilterCell($factory)
+            new FormingFilterCell($factory)
         )) {
             Console::out()->color(Console::GREEN)->writeln('Done');
         }
