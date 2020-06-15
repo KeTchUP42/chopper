@@ -16,18 +16,18 @@ class FileContainer implements FileContainerInterface
     /**
      * @var string
      */
-    private $fileContents;
+    private $fileData;
 
     /**
      * Конструктор.
      *
      * @param string $filePath
-     * @param string $fileContents
+     * @param string $fileData
      */
-    public function __construct(string $filePath, string $fileContents = '')
+    public function __construct(string $filePath, string $fileData = '')
     {
-        $this->filePath     = $filePath;
-        $this->fileContents = $fileContents;
+        $this->filePath = $filePath;
+        $this->fileData = $fileData;
     }
 
     /**
@@ -35,7 +35,7 @@ class FileContainer implements FileContainerInterface
      */
     public function write(): bool
     {
-        return (bool) file_put_contents($this->filePath, $this->fileContents);
+        return (bool) file_put_contents($this->filePath, $this->fileData);
     }
 
     /**
@@ -43,12 +43,12 @@ class FileContainer implements FileContainerInterface
      */
     public function read(): bool
     {
-        $fileContents = file_get_contents($this->filePath);
-        if (is_bool($fileContents)) {
+        $fileData = file_get_contents($this->filePath);
+        if (!$fileData) {
             return false;
         }
 
-        $this->fileContents = $fileContents;
+        $this->fileData = $fileData;
 
         return true;
     }
@@ -78,25 +78,25 @@ class FileContainer implements FileContainerInterface
     }
 
     /**
-     * Получить FileContents
+     * Получить FileData
      *
      * @return string
      */
-    public function getFileContents(): string
+    public function getFileData(): string
     {
-        return $this->fileContents;
+        return $this->fileData;
     }
 
     /**
-     * Установка FileContents.
+     * Установка FileData.
      *
-     * @param string $fileContents
+     * @param string $fileData
      *
      * @return FileContainer
      */
-    public function setFileContents(string $fileContents): FileContainerInterface
+    public function setFileData(string $fileData): FileContainerInterface
     {
-        $this->fileContents = $fileContents;
+        $this->fileData = $fileData;
 
         return $this;
     }

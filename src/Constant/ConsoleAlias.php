@@ -10,9 +10,9 @@ use Chopper\Gear\Factory\Filter\FastDivStructFilterFactory;
 use Chopper\Gear\Factory\Filter\StyleFilterFactory;
 
 /**
- * ConsoleAliasList
+ * ConsoleAlias
  */
-interface ConsoleAliasList
+interface ConsoleAlias
 {
     public const FILTER_FACTORY_ALIAS =
         [

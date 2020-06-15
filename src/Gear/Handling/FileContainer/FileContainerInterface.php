@@ -16,11 +16,11 @@ interface FileContainerInterface
     public function getFilePath(): string;
 
     /**
-     * Получить FileContents
+     * Получить FileData
      *
      * @return string
      */
-    public function getFileContents(): string;
+    public function getFileData(): string;
 
     /**
      * Установка FilePath.
@@ -32,13 +32,13 @@ interface FileContainerInterface
     public function setFilePath(string $filePath): FileContainerInterface;
 
     /**
-     * Установка FileContents.
+     * Установка FileData.
      *
-     * @param string $fileContents
+     * @param string $fileData
      *
      * @return FileContainer
      */
-    public function setFileContents(string $fileContents): FileContainerInterface;
+    public function setFileData(string $fileData): FileContainerInterface;
 
     /**
      * Method writes file contents to file

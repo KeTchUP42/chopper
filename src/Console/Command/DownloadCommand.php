@@ -36,7 +36,7 @@ final class DownloadCommand extends Command
     /**
      * Configuring
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('download')

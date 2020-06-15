@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Chopper\Console\Command;
 
 use Chopper\Console\ColoredConsole\Console;
-use Chopper\Constant\ConsoleAliasList;
+use Chopper\Constant\ConsoleAlias;
 use Chopper\Exceptions\RuntimeException;
 use Chopper\Gear\Facade\FileFilter;
 use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
@@ -43,7 +43,10 @@ final class FilterCommand extends Command
         $this->templatesDirectory = $templatesDirectory;
     }
 
-    protected function configure()
+    /**
+     * Configuring
+     */
+    protected function configure(): void
     {
         $this->setName('filter')
             ->setAliases(["f"])
@@ -87,7 +90,7 @@ final class FilterCommand extends Command
      */
     private function factoryChoose($alias): string
     {
-        return ConsoleAliasList::FILTER_FACTORY_ALIAS[$alias] ?? ConsoleAliasList::FILTER_FACTORY_ALIAS[null];
+        return ConsoleAlias::FILTER_FACTORY_ALIAS[$alias] ?? ConsoleAlias::FILTER_FACTORY_ALIAS[null];
     }
 
     /**

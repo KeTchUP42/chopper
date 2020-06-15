@@ -8,7 +8,7 @@ use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 use Chopper\Traits\SingletonTrait;
 
 /**
- * StaticLogger
+ * SystemLogger
  */
 final class SystemLogger
 {
