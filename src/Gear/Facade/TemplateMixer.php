@@ -40,11 +40,15 @@ final class TemplateMixer
     {
         $data = (new Mixer($mixerCell, $this->logger))->handle();
         if (is_null($data)) {
+            $this->logger->warn(sprintf("Result is null!"));
+
             return false;
         }
 
         file_put_contents($filePath, $data);
         if (!file_exists($filePath)) {
+            $this->logger->warn(sprintf("%s is not valid file path!", $filePath));
+
             return false;
         }
 
