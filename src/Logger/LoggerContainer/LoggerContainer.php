@@ -24,9 +24,7 @@ class LoggerContainer implements LoggerContainerInterface
     private $logFilePath;
 
     /**
-     * Logger configuring
-     *
-     * @param string $logFilePath
+     * @inheritDoc
      */
     public function configureLogger(string $logFilePath): void
     {
@@ -39,9 +37,7 @@ class LoggerContainer implements LoggerContainerInterface
     }
 
     /**
-     * Получить LogFilePath
-     *
-     * @return string
+     * @inheritDoc
      */
     public function getLogFilePath(): string
     {
@@ -49,9 +45,7 @@ class LoggerContainer implements LoggerContainerInterface
     }
 
     /**
-     * Method returns logger from container
-     *
-     * @return LoggerInterface
+     * @inheritDoc
      */
     public function getLogger(): LoggerInterface
     {

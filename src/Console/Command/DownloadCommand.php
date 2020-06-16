@@ -88,10 +88,8 @@ final class DownloadCommand extends Command
     private function download(string $url, string $dest): void
     {
         Console::out()->color(Console::GREEN)->writeln('Downloading..');
-        (new HttpDownloader(new CurlRequest(), SystemLogger::getGlobalLoggerContainer()->getLogFilePath()
-        ))->downloadfile($url,
-            $this->resourceDirectory.$dest
-        );
+        $downloader = new HttpDownloader(new CurlRequest(), SystemLogger::getGlobalLoggerContainer()->getLogFilePath());
+        $downloader->downloadfile($url, $this->resourceDirectory.$dest);
         Console::out()->color(Console::GREEN)->writeln('Done');
     }
 }

@@ -14,7 +14,7 @@ use Symfony\Component\Console\Application as App;
 class Application
 {
     /**
-     * Console app starts
+     * App starts
      */
     public function run(): void
     {

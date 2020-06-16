@@ -34,20 +34,17 @@ final class FileFilter
      *
      * @param string              $path
      * @param string              $dest
-     * @param FilterCellInterface $cell
+     * @param FilterCellInterface $filterCell
      *
      * @return bool
      */
-    public function filtering(string $path, string $dest, FilterCellInterface $cell): bool
+    public function filtering(string $path, string $dest, FilterCellInterface $filterCell): bool
     {
-        $filtrator = new Filtrator($cell, $this->loggerContainer->getLogger());
+        $filtrator = new Filtrator($filterCell, $this->loggerContainer->getLogger());
 
         if (filter_var($path, FILTER_VALIDATE_URL)) {
-            file_put_contents($dest,
-                $filtrator->handle((new HttpDownloader(new CurlRequest(), $this->loggerContainer->getLogFilePath()
-                ))->download($path)->getBody()
-                )
-            );
+            $downloader = new HttpDownloader(new CurlRequest(), $this->loggerContainer->getLogFilePath());
+            file_put_contents($dest, $filtrator->handle($downloader->download($path)->getBody()));
 
             return true;
         }

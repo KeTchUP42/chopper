@@ -13,7 +13,7 @@ use Chopper\Gear\Filtration\Filters\StyleSiftFilter;
 class StyleFilterFactory implements FilterFactoryInterface
 {
     /**
-     * @return FilterInterface
+     * @inheritDoc
      */
     public function createFilter(): FilterInterface
     {

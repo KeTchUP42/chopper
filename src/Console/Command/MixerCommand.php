@@ -115,13 +115,13 @@ final class MixerCommand extends Command
     private function mix(string $fileName, MixerCellInterface $mixerCell): void
     {
         Console::out()->color(Console::GREEN)->writeln('Processing..');
-        if ((new TemplateMixer(SystemLogger::getGlobalLoggerContainer()->getLogger()
-        ))->mix($this->resultDirectory.$fileName,
-            $mixerCell
-        )) {
+        $templateMixer = new TemplateMixer(SystemLogger::getGlobalLoggerContainer()->getLogger());
+        if ($templateMixer->mix($this->resultDirectory.$fileName, $mixerCell)) {
             Console::out()->color(Console::GREEN)->writeln('Done');
         }
         else {
+            Console::out()->color(Console::GREEN)->write('Notice: ');
+            Console::out()->color(Console::BLUE)->writeln('check templates and input file name!');
             Console::out()->color(Console::RED)->writeln('Err');
         }
     }

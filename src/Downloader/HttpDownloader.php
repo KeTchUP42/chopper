@@ -5,6 +5,7 @@ namespace Chopper\Downloader;
 
 use Chopper\Curl\Request\CurlRequestInterface;
 use Chopper\Curl\Response\CurlResponseInterface;
+use Chopper\Exceptions\RuntimeException;
 
 /**
  * HttpDownloader
@@ -63,7 +64,7 @@ class HttpDownloader implements DownloaderInterface
     public function download(string $url): CurlResponseInterface
     {
         if (!filter_var($url, FILTER_VALIDATE_URL)) {
-            throw new \RuntimeException(sprintf("URL %s is not valid!", $url));
+            throw new RuntimeException(sprintf("URL %s is not valid!", $url));
         }
         $builder = $this->curl->init($url)
             ->setTimeOut(300)
@@ -72,19 +73,19 @@ class HttpDownloader implements DownloaderInterface
             ->setBaseHeader()
             ->applyHeader();
 
-        if (!is_null($this->logFilePath)) {
+        if ($this->logFilePath) {
             $builder->setLogFile($this->logFilePath);
         }
         $result = $builder->exec();
 
         if ($result->getCurlError()) {
-            throw new \RuntimeException($result->getCurlError());
+            throw new RuntimeException($result->getCurlError());
         }
         if ($result->getHttpCode() !== 200) {
-            throw new \RuntimeException(sprintf("HTTP Code = %s", $result->getHttpCode()));
+            throw new RuntimeException(sprintf("HTTP Code = %s", $result->getHttpCode()));
         }
         if (!$result->getBody()) {
-            throw new \RuntimeException(sprintf("Body of %s is empty!", get_class($result)));
+            throw new RuntimeException(sprintf("Body of %s is empty!", get_class($result)));
         }
 
         return $result;

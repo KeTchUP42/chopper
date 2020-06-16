@@ -114,7 +114,7 @@ final class Console
     }
 
     /**
-     * Method writes message
+     * Method writes message with choosen color
      *
      * @param string $message
      */
@@ -125,7 +125,7 @@ final class Console
     }
 
     /**
-     * Method writes message
+     * Method writes message with choosen color
      *
      * @param string $message
      */

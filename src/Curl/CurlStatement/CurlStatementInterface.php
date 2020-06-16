@@ -26,7 +26,7 @@ interface CurlStatementInterface
     public function useHeadMethod(): CurlStatementInterface;
 
     /**
-     * Method enables post method
+     * Method enables using post method
      *
      * @param string $postFields
      *

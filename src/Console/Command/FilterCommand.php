@@ -122,10 +122,8 @@ final class FilterCommand extends Command
     private function filter(string $path, string $dest, FilterFactoryInterface $factory): void
     {
         Console::out()->color(Console::GREEN)->writeln('Processing..');
-        if ((new FileFilter(SystemLogger::getGlobalLoggerContainer()))->filtering($path,
-            $this->templatesDirectory.$dest,
-            new FormingFilterCell($factory)
-        )) {
+        $fileFilter = new FileFilter(SystemLogger::getGlobalLoggerContainer());
+        if ($fileFilter->filtering($path, $this->templatesDirectory.$dest, new FormingFilterCell($factory))) {
             Console::out()->color(Console::GREEN)->writeln('Done');
         }
         else {

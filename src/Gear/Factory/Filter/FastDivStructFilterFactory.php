@@ -17,9 +17,7 @@ use Chopper\Gear\Filtration\Filters\SvgCleanerFilter;
 class FastDivStructFilterFactory implements FilterFactoryInterface
 {
     /**
-     * Method creates new filter
-     *
-     * @return FilterInterface
+     * @inheritDoc
      */
     public function createFilter(): FilterInterface
     {

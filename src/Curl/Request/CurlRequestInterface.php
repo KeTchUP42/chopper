@@ -11,7 +11,7 @@ use Chopper\Curl\CurlStatement\CurlStatementInterface;
 interface CurlRequestInterface
 {
     /**
-     * Init Curl session
+     * Inits Curl session
      *
      * @param string $url
      *

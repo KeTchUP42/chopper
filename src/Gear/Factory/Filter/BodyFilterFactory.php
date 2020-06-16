@@ -12,9 +12,7 @@ use Chopper\Gear\Filtration\Filters\FilterEssence\FilterInterface;
 class BodyFilterFactory implements FilterFactoryInterface
 {
     /**
-     * Method creates new filter
-     *
-     * @return FilterInterface
+     * @inheritDoc
      */
     public function createFilter(): FilterInterface
     {

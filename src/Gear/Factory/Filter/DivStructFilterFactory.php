@@ -12,14 +12,12 @@ use Chopper\Gear\Filtration\Filters\StyleCleanerFilter;
 use Chopper\Gear\Filtration\Filters\SvgCleanerFilter;
 
 /**
- * OnlyDivFilterFactory
+ * DivStructFilterFactory
  */
 class DivStructFilterFactory implements FilterFactoryInterface
 {
     /**
-     * Method creates new filter
-     *
-     * @return FilterInterface
+     * @inheritDoc
      */
     public function createFilter(): FilterInterface
     {

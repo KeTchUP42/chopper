@@ -74,7 +74,7 @@ class CurlStatement implements CurlStatementInterface
     }
 
     /**
-     * Method enables post method
+     * Method enables using post method
      *
      * @param mixed $postFields
      *

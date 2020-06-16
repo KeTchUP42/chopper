@@ -16,7 +16,7 @@ use Chopper\Gear\Handling\MixerCell\TestMixerCell;
 interface ConsoleAlias
 {
     /**
-     * Filter command
+     * Aliases for filter command which uses for choosing correct filter
      */
     public const FILTER_FACTORY_ALIAS = [
         'base'            => BaseFilterFactory::class,
@@ -26,7 +26,7 @@ interface ConsoleAlias
         'style'           => StyleFilterFactory::class,
     ];
     /**
-     * Mixer command
+     * Aliases for mixer command which uses for choosing correct mix type
      */
     public const MIX_TYPE_ALIAS = [
         'test' => TestMixerCell::class,
