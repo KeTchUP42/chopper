@@ -14,43 +14,29 @@ class FileContainer implements FileContainerInterface
     private $filePath;
 
     /**
-     * @var string
-     */
-    private $fileData;
-
-    /**
      * Конструктор.
      *
      * @param string $filePath
-     * @param string $fileData
      */
-    public function __construct(string $filePath, string $fileData = '')
+    public function __construct(string $filePath)
     {
         $this->filePath = $filePath;
-        $this->fileData = $fileData;
     }
 
     /**
      * @inheritDoc
      */
-    public function write(): bool
+    public function write(string $fileData): bool
     {
-        return (bool) file_put_contents($this->filePath, $this->fileData);
+        return (bool) file_put_contents($this->filePath, $fileData);
     }
 
     /**
      * @inheritDoc
      */
-    public function read(): bool
+    public function read(): string
     {
-        $fileData = file_get_contents($this->filePath);
-        if (!$fileData) {
-            return false;
-        }
-
-        $this->fileData = $fileData;
-
-        return true;
+        return file_get_contents($this->filePath);
     }
 
     /**
@@ -64,40 +50,12 @@ class FileContainer implements FileContainerInterface
     }
 
     /**
-     * Установка FilePath.
-     *
-     * @param string $filePath
-     *
-     * @return FileContainer
-     */
-    public function setFilePath(string $filePath): FileContainerInterface
-    {
-        $this->filePath = $filePath;
-
-        return $this;
-    }
-
-    /**
-     * Получить FileData
+     * Получить FileName
      *
      * @return string
      */
-    public function getFileData(): string
+    public function getFileName(): string
     {
-        return $this->fileData;
-    }
-
-    /**
-     * Установка FileData.
-     *
-     * @param string $fileData
-     *
-     * @return FileContainer
-     */
-    public function setFileData(string $fileData): FileContainerInterface
-    {
-        $this->fileData = $fileData;
-
-        return $this;
+        return basename($this->filePath);
     }
 }

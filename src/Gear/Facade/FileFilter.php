@@ -43,11 +43,9 @@ final class FileFilter
         $filtrator = new Filtrator($cell, $this->loggerContainer->getLogger());
 
         if (filter_var($path, FILTER_VALIDATE_URL)) {
-            file_put_contents(
-                $dest,
-                $filtrator->handle(
-                    (new HttpDownloader(new CurlRequest(), $this->loggerContainer->getLogFilePath()))->download($path)
-                        ->getBody()
+            file_put_contents($dest,
+                $filtrator->handle((new HttpDownloader(new CurlRequest(), $this->loggerContainer->getLogFilePath()
+                ))->download($path)->getBody()
                 )
             );
 
@@ -58,8 +56,7 @@ final class FileFilter
 
             return true;
         }
-        $this->loggerContainer->getLogger()->warn(
-            sprintf("Filtering error! %s is not valid.", $path)
+        $this->loggerContainer->getLogger()->warn(sprintf("Filtering error! %s is not valid.", $path)
         );
 
         return false;

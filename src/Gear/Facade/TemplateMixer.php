@@ -3,6 +3,8 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Facade;
 
+use Chopper\Gear\Handling\Mixer\Mixer;
+use Chopper\Gear\Handling\MixerCell\MixerCellInterface;
 use Zend\Log\LoggerInterface;
 
 /**
@@ -16,32 +18,36 @@ final class TemplateMixer
     private $logger;
 
     /**
-     * @var string
-     */
-    private $templDir;
-
-    /**
      * Конструктор.
      *
-     * @param string          $templDir
      * @param LoggerInterface $logger
      */
-    public function __construct(string $templDir, LoggerInterface $logger)
+    public function __construct(LoggerInterface $logger)
     {
-        $this->templDir = $templDir;
-        $this->logger   = $logger;
+        $this->logger = $logger;
     }
 
     /**
      * Method executes mixer
      *
-     * @param string $filename
+     * @param string             $filePath
+     *
+     * @param MixerCellInterface $mixerCell
      *
      * @return bool
      */
-    public function mix(string $filename): bool
+    public function mix(string $filePath, MixerCellInterface $mixerCell): bool
     {
-        //todo
-        return false;
+        $data = (new Mixer($mixerCell, $this->logger))->handle();
+        if (is_null($data)) {
+            return false;
+        }
+
+        file_put_contents($filePath, $data);
+        if (!file_exists($filePath)) {
+            return false;
+        }
+
+        return true;
     }
 }

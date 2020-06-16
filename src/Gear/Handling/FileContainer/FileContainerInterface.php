@@ -9,6 +9,22 @@ namespace Chopper\Gear\Handling\FileContainer;
 interface FileContainerInterface
 {
     /**
+     * Method writes file contents to file
+     *
+     * @param string $fileData
+     *
+     * @return bool
+     */
+    public function write(string $fileData): bool;
+
+    /**
+     * Method reads file contents from file path
+     *
+     * @return string
+     */
+    public function read(): string;
+
+    /**
      * Получить FilePath
      *
      * @return string
@@ -16,37 +32,9 @@ interface FileContainerInterface
     public function getFilePath(): string;
 
     /**
-     * Получить FileData
+     * Получить FileName
      *
      * @return string
      */
-    public function getFileData(): string;
-
-    /**
-     * Установка FilePath.
-     *
-     * @param string $filePath
-     *
-     * @return FileContainer
-     */
-    public function setFilePath(string $filePath): FileContainerInterface;
-
-    /**
-     * Установка FileData.
-     *
-     * @param string $fileData
-     *
-     * @return FileContainer
-     */
-    public function setFileData(string $fileData): FileContainerInterface;
-
-    /**
-     * Method writes file contents to file
-     */
-    public function write(): bool;
-
-    /**
-     * Method reads file contents from file path
-     */
-    public function read(): bool;
+    public function getFileName(): string;
 }

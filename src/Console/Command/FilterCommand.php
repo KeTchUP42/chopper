@@ -90,7 +90,11 @@ final class FilterCommand extends Command
      */
     private function factoryChoose($alias): string
     {
-        return ConsoleAlias::FILTER_FACTORY_ALIAS[$alias] ?? ConsoleAlias::FILTER_FACTORY_ALIAS[null];
+        if (isset(ConsoleAlias::FILTER_FACTORY_ALIAS[$alias])) {
+            return ConsoleAlias::FILTER_FACTORY_ALIAS[$alias];
+        }
+
+        throw new RuntimeException(sprintf("No such alias: %s", $alias));
     }
 
     /**
@@ -118,8 +122,7 @@ final class FilterCommand extends Command
     private function filter(string $path, string $dest, FilterFactoryInterface $factory): void
     {
         Console::out()->color(Console::GREEN)->writeln('Processing..');
-        if ((new FileFilter(SystemLogger::getGlobalLoggerContainer()))->filtering(
-            $path,
+        if ((new FileFilter(SystemLogger::getGlobalLoggerContainer()))->filtering($path,
             $this->templatesDirectory.$dest,
             new FormingFilterCell($factory)
         )) {
