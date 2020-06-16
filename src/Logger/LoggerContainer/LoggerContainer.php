@@ -49,7 +49,7 @@ class LoggerContainer implements LoggerContainerInterface
     }
 
     /**
-     * Method returns containers logger
+     * Method returns logger from container
      *
      * @return LoggerInterface
      */

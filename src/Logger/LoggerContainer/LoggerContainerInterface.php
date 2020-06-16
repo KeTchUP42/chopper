@@ -25,7 +25,7 @@ interface LoggerContainerInterface
     public function getLogFilePath(): string;
 
     /**
-     * Method returns containers logger
+     * Method returns logger from container
      *
      * @return LoggerInterface
      */

@@ -11,9 +11,7 @@ use Chopper\Gear\Filtration\Filters\FilterEssence\AbstractFilter;
 class StyleSiftFilter extends AbstractFilter
 {
     /**
-     * @param string $data
-     *
-     * @return string
+     * @inheritDoc
      */
     public function handle(string $data): string
     {

@@ -56,8 +56,7 @@ final class FileFilter
 
             return true;
         }
-        $this->loggerContainer->getLogger()->warn(sprintf("Filtering error! %s is not valid.", $path)
-        );
+        $this->loggerContainer->getLogger()->warn(sprintf("Filtering error! %s is not valid.", $path));
 
         return false;
     }

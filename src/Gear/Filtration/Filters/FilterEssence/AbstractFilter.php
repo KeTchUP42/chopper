@@ -26,7 +26,7 @@ abstract class AbstractFilter implements FilterInterface
     }
 
     /**
-     * Method calls handle method recursive
+     * Method calls next handle method recursive
      *
      * @param string $data
      *

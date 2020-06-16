@@ -9,7 +9,7 @@ namespace Chopper\Gear\Handling\MixerCell\MixerCellEssence;
 interface MixerCellInterface
 {
     /**
-     * Mixer handle method to templates combining
+     * MixerCell handle method for templates combining
      *
      * @return string
      */

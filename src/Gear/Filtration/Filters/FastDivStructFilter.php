@@ -12,9 +12,7 @@ use Chopper\TagParser\FastTagParser;
 class FastDivStructFilter extends AbstractFilter
 {
     /**
-     * @param string $data
-     *
-     * @return string
+     * @inheritDoc
      */
     public function handle(string $data): string
     {

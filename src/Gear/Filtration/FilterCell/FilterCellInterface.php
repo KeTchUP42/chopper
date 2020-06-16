@@ -9,7 +9,7 @@ namespace Chopper\Gear\Filtration\FilterCell;
 interface FilterCellInterface
 {
     /**
-     * Mixer handle method to filtering
+     * Handle method to filtering
      *
      * @param string $data
      *

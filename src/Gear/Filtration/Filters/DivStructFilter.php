@@ -12,9 +12,7 @@ use Chopper\TagParser\BaseTagParser;
 class DivStructFilter extends AbstractFilter
 {
     /**
-     * @param string $data
-     *
-     * @return string
+     * @inheritDoc
      */
     public function handle(string $data): string
     {

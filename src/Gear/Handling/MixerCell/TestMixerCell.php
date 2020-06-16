@@ -20,6 +20,6 @@ class TestMixerCell extends AbstractMixerCell
             return $this->fileContainers[random_int(0, count($this->fileContainers))]->read();
         }
 
-        throw new RuntimeException(sprintf("No files found! %s", static::class));
+        throw new RuntimeException(sprintf("Files not found! %s", static::class));
     }
 }

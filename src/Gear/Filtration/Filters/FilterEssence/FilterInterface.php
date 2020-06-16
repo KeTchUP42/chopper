@@ -16,7 +16,7 @@ interface FilterInterface
     public function setFilter(FilterInterface $filter): FilterInterface;
 
     /**
-     * Method calls handle method recursive
+     * Method calls next handle method recursive
      *
      * @param string $data
      *
