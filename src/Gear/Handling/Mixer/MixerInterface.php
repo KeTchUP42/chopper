@@ -20,7 +20,7 @@ interface MixerInterface
     public function setMixerCell(MixerCellInterface $mixerCell): MixerInterface;
 
     /**
-     * Method starts handling
+     * Method starts handling files
      *
      * @return string
      */

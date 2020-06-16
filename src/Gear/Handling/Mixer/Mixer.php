@@ -53,8 +53,6 @@ class Mixer implements MixerInterface
     public function handle(): ?string
     {
         $this->logger->info(sprintf("%s is calling %s handle method.", self::class, get_class($this->mixerCell)));
-        $this->logger->info(sprintf("%s is calling mixer's handle method.", get_class($this->mixerCell)));
-
         try {
             $data = $this->mixerCell->handle();
             $this->logger->info(sprintf('Success!'));
