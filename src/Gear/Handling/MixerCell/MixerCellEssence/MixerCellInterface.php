@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Handling\MixerCell;
+namespace Chopper\Gear\Handling\MixerCell\MixerCellEssence;
 
 /**
  * MixerCellInterface

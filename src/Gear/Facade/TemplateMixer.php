@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Facade;
 
 use Chopper\Gear\Handling\Mixer\Mixer;
-use Chopper\Gear\Handling\MixerCell\MixerCellInterface;
+use Chopper\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
 use Zend\Log\LoggerInterface;
 
 /**

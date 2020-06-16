@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Handling\Mixer;
 
-use Chopper\Gear\Handling\MixerCell\MixerCellInterface;
+use Chopper\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
 
 /**
  * MixerInterface

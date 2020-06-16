@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Handling\MixerCell;
 
 use Chopper\Exceptions\RuntimeException;
+use Chopper\Gear\Handling\MixerCell\MixerCellEssence\AbstractMixerCell;
 
 /**
  * TestMixerCell

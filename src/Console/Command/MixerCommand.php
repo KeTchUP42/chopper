@@ -7,7 +7,7 @@ use Chopper\Console\ColoredConsole\Console;
 use Chopper\Constant\ConsoleAlias;
 use Chopper\Exceptions\RuntimeException;
 use Chopper\Gear\Facade\TemplateMixer;
-use Chopper\Gear\Handling\MixerCell\MixerCellInterface;
+use Chopper\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
 use Chopper\Logger\GlobalLogger\SystemLogger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
