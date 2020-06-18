@@ -33,23 +33,37 @@ class FastTagParser extends AbstractTagParser
         $resultIndex     = -1;
         $currentDeeptLvl = 0;
 
-        for ($index = 0; $index < $dataMaxLen; $index++) {
+        $openTagLen  = strlen($this->openTag);
+        $closeTagLen = strlen($this->closeTag);
 
-            if (substr($data, $index, strlen($this->openTag)) === $this->openTag) {
+        $openTagId  = 0;
+        $closeTagId = 0;
+
+        for ($index = 0; $index < $dataMaxLen; $index++, $openTagId = 0, $closeTagId = 0) {
+
+            while (($index + $openTagId < $dataMaxLen) && ($openTagId < $openTagLen)
+                && ($data[$index + $openTagId] === $this->openTag[$openTagId])) {
+                $openTagId++;
+            }
+            if ($openTagId === $openTagLen) {
                 $currentDeeptLvl++;
                 if ($currentDeeptLvl === $deepLvl) {
                     $resultIndex++;
                     $result[] .= $this->openTag;
-                    $index    += strlen($this->openTag) - 1;
+                    $index    += $openTagLen - 1;
                     continue;
                 }
             }
 
-            if (substr($data, $index, strlen($this->closeTag)) === $this->closeTag) {
+            while (($index + $closeTagId < $dataMaxLen) && ($closeTagId < $closeTagLen)
+                && ($data[$index + $closeTagId] === $this->closeTag[$closeTagId])) {
+                $closeTagId++;
+            }
+            if ($closeTagId === $closeTagLen) {
                 $currentDeeptLvl--;
                 if ($currentDeeptLvl + 1 === $deepLvl) {
                     $result[$resultIndex] .= $this->closeTag;
-                    $index                += strlen($this->closeTag) - 1;
+                    $index                += $closeTagLen - 1;
                     continue;
                 }
             }

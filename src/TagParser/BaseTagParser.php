@@ -31,23 +31,37 @@ class BaseTagParser extends AbstractTagParser
         $resultIndex     = -1;
         $currentDeeptLvl = 0;
 
-        for ($index = 0; $index < $dataMaxLen; $index++) {
+        $openTagLen  = strlen($this->openTag);
+        $closeTagLen = strlen($this->closeTag);
 
-            if (strcasecmp(substr($data, $index, strlen($this->openTag)), $this->openTag) === 0) {
+        $openTagId  = 0;
+        $closeTagId = 0;
+
+        for ($index = 0; $index < $dataMaxLen; $index++, $openTagId = 0, $closeTagId = 0) {
+
+            while (($index + $openTagId < $dataMaxLen) && ($openTagId < $openTagLen)
+                && (strcasecmp($data[$index + $openTagId], $this->openTag[$openTagId]) === 0)) {
+                $openTagId++;
+            }
+            if ($openTagId === $openTagLen) {
                 $currentDeeptLvl++;
                 if ($currentDeeptLvl === $deepLvl) {
                     $resultIndex++;
-                    $result[] .= substr($data, $index, strlen($this->openTag));
-                    $index    += strlen($this->openTag) - 1;
+                    $result[] .= substr($data, $index, $openTagLen);
+                    $index    += $openTagLen - 1;
                     continue;
                 }
             }
 
-            if (strcasecmp(substr($data, $index, strlen($this->closeTag)), $this->closeTag) === 0) {
+            while (($index + $closeTagId < $dataMaxLen) && ($closeTagId < $closeTagLen)
+                && (strcasecmp($data[$index + $closeTagId], $this->closeTag[$closeTagId]) === 0)) {
+                $closeTagId++;
+            }
+            if ($closeTagId === $closeTagLen) {
                 $currentDeeptLvl--;
                 if ($currentDeeptLvl + 1 === $deepLvl) {
-                    $result[$resultIndex] .= substr($data, $index, strlen($this->closeTag));
-                    $index                += strlen($this->closeTag) - 1;
+                    $result[$resultIndex] .= substr($data, $index, $closeTagLen);
+                    $index                += $closeTagLen - 1;
                     continue;
                 }
             }
