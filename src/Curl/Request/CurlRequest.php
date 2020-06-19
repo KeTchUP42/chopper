@@ -12,7 +12,7 @@ use Chopper\Curl\CurlStatement\CurlStatementInterface;
 class CurlRequest implements CurlRequestInterface
 {
     /**
-     * Inits curl session
+     * Inits Curl session
      *
      * @param string $url
      *

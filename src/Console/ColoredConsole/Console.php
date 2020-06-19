@@ -63,7 +63,7 @@ final class Console
     /**
      * @var string
      */
-    private $bgcolor = "";
+    private $bgcolor = '';
 
     /**
      * Entry point method
@@ -95,7 +95,7 @@ final class Console
      */
     public function color(string $color): self
     {
-        $this->color = $this->colors[$color] ?? $this->colors[self::BLACK];
+        $this->color = $this->colors[$color] ?? $this->colors[self::WHITE];
 
         return $this;
     }
@@ -118,26 +118,34 @@ final class Console
      * Method writes message with choosen color
      *
      * @param string $message
+     *
+     * @return Console
      */
-    public function writeln(string $message): void
+    public function writeln(string $message): self
     {
         $this->write($message);
         echo "\n";
+
+        return $this;
     }
 
     /**
      * Method writes message with choosen color
      *
      * @param string $message
+     *
+     * @return Console
      */
-    public function write(string $message): void
+    public function write(string $message): self
     {
         echo $this->colorPrefix().$message;
         echo self::$resetCode;
+
+        return $this;
     }
 
     /**
-     * Method returns color console code
+     * Method returns console color code
      *
      * @return string
      */

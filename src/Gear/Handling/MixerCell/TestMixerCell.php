@@ -16,8 +16,8 @@ class TestMixerCell extends AbstractMixerCell
      */
     public function handle(): string
     {
-        if (count($this->fileContainers) > 0) {
-            return $this->fileContainers[random_int(0, count($this->fileContainers))]->read() ?? "";
+        if (count($this->files) > 0) {
+            return $this->files[random_int(0, count($this->files) - 1)]->read();
         }
 
         throw new RuntimeException(sprintf("Files not found! %s", static::class));

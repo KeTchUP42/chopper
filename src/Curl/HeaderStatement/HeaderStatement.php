@@ -7,7 +7,7 @@ use Chopper\Curl\CurlStatement\CurlBaseInfo;
 use Chopper\Curl\CurlStatement\CurlStatementInterface;
 
 /**
- *  HeaderStatement
+ * HeaderStatement
  */
 class HeaderStatement implements HeaderStatementInterface
 {

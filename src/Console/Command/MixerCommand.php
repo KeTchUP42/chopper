@@ -51,7 +51,7 @@ final class MixerCommand extends Command
             ->setAliases(["m"])
             ->setDescription('Mix new file.')
             ->setHelp('This command mixs new file from templates.');
-        $this->addArgument('MixTypeAlias', InputArgument::OPTIONAL, 'Mix type alias.');
+        $this->addArgument('MixTypeAlias', InputArgument::REQUIRED, 'Mix type alias.');
         $this->addArgument('NewFileName', InputArgument::OPTIONAL, 'New file name.');
     }
 
@@ -120,9 +120,13 @@ final class MixerCommand extends Command
             Console::out()->color(Console::GREEN)->writeln('Done');
         }
         else {
-            Console::out()->color(Console::GREEN)->write('Notice: ');
-            Console::out()->color(Console::BLUE)->writeln('check templates and input file name!');
-            Console::out()->color(Console::RED)->writeln('Err');
+            Console::out()
+                ->color(Console::GREEN)
+                ->writeln('Please check:')
+                ->color(Console::YELLOW)
+                ->writeln('1. Template files.')
+                ->writeln('2. Input file name.')
+                ->writeln('3. Log.');
         }
     }
 }

@@ -25,6 +25,13 @@ interface FileContainerInterface
     public function read(): string;
 
     /**
+     * Method returns file object
+     *
+     * @return \SplFileObject
+     */
+    public function getFileObject(): \SplFileObject;
+
+    /**
      * Получить FilePath
      *
      * @return string

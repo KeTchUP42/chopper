@@ -9,9 +9,9 @@ namespace Chopper\Gear\Handling\FileContainer;
 class FileContainer implements FileContainerInterface
 {
     /**
-     * @var string
+     * @var \SplFileObject
      */
-    private $filePath;
+    private $fileObject;
 
     /**
      * Конструктор.
@@ -20,7 +20,7 @@ class FileContainer implements FileContainerInterface
      */
     public function __construct(string $filePath)
     {
-        $this->filePath = $filePath;
+        $this->fileObject = new \SplFileObject($filePath);
     }
 
     /**
@@ -28,7 +28,7 @@ class FileContainer implements FileContainerInterface
      */
     public function write(string $fileData): bool
     {
-        return (bool) file_put_contents($this->filePath, $fileData);
+        return (bool) file_put_contents($this->fileObject->getPathname(), $fileData);
     }
 
     /**
@@ -36,7 +36,17 @@ class FileContainer implements FileContainerInterface
      */
     public function read(): string
     {
-        return file_get_contents($this->filePath);
+        return file_get_contents($this->fileObject->getPathname());
+    }
+
+    /**
+     * Method returns file object
+     *
+     * @return \SplFileObject
+     */
+    public function getFileObject(): \SplFileObject
+    {
+        return $this->fileObject;
     }
 
     /**
@@ -46,7 +56,7 @@ class FileContainer implements FileContainerInterface
      */
     public function getFilePath(): string
     {
-        return $this->filePath;
+        return $this->fileObject->getPathname();
     }
 
     /**
@@ -56,6 +66,6 @@ class FileContainer implements FileContainerInterface
      */
     public function getFileName(): string
     {
-        return basename($this->filePath);
+        return $this->fileObject->getFilename();
     }
 }

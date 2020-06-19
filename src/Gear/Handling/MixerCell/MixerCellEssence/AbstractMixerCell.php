@@ -13,33 +13,33 @@ abstract class AbstractMixerCell implements MixerCellInterface
     /**
      * @var array
      */
-    protected $fileContainers;
+    protected $files;
 
     /**
      * Конструктор.
      *
-     * @param string $templatesDirPath
+     * @param string $directory
      */
-    public function __construct(string $templatesDirPath)
+    public function __construct(string $directory)
     {
-        $this->fillFileContainers($templatesDirPath);
+        $this->fillFileContainers($directory);
     }
 
     /**
      * Method fills file containers
      *
-     * @param string $templatesDirPath
+     * @param string $directory
      */
-    protected function fillFileContainers(string $templatesDirPath): void
+    protected function fillFileContainers(string $directory): void
     {
-        $this->fileContainers = [];
-        foreach (glob("$templatesDirPath*") as $filePath) {
-            $this->fileContainers[] = new FileContainer($filePath);
+        $this->files = [];
+        foreach (glob("$directory/*") as $filePath) {
+            $this->files[] = new FileContainer($filePath);
         }
     }
 
     /**
-     * MixerCell handle method for templates combining
+     * Handle method for templates combining
      *
      * @return string
      */
