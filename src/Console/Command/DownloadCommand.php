@@ -6,7 +6,7 @@ namespace Chopper\Console\Command;
 use Chopper\Console\ColoredConsole\Console;
 use Chopper\Curl\Request\CurlRequest;
 use Chopper\Downloader\HttpDownloader;
-use Chopper\Logger\GlobalLogger\SystemLogger;
+use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -23,14 +23,21 @@ final class DownloadCommand extends Command
     private $resourceDirectory;
 
     /**
+     * @var LoggerContainerInterface
+     */
+    private $loggerContainer;
+
+    /**
      * Конструктор.
      *
-     * @param string $resourceDirectory
+     * @param string                   $resourceDirectory
+     * @param LoggerContainerInterface $loggerContainer
      */
-    public function __construct(string $resourceDirectory)
+    public function __construct(string $resourceDirectory, LoggerContainerInterface $loggerContainer)
     {
         parent::__construct();
         $this->resourceDirectory = $resourceDirectory;
+        $this->loggerContainer   = $loggerContainer;
     }
 
     /**
@@ -88,7 +95,7 @@ final class DownloadCommand extends Command
     private function download(string $url, string $dest): void
     {
         Console::out()->color(Console::GREEN)->writeln('Downloading..');
-        $downloader = new HttpDownloader(new CurlRequest(), SystemLogger::getGlobalLoggerContainer()->getLogFilePath());
+        $downloader = new HttpDownloader(new CurlRequest(), $this->loggerContainer->getLogFilePath());
         $downloader->downloadfile($url, $this->resourceDirectory.$dest);
         Console::out()->color(Console::GREEN)->writeln('Done');
     }

@@ -8,7 +8,7 @@ use Chopper\Constant\ConsoleAlias;
 use Chopper\Exceptions\RuntimeException;
 use Chopper\Gear\Facade\TemplateMixer;
 use Chopper\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
-use Chopper\Logger\GlobalLogger\SystemLogger;
+use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -30,16 +30,26 @@ final class MixerCommand extends Command
     private $resultDirectory;
 
     /**
+     * @var LoggerContainerInterface
+     */
+    private $loggerContainer;
+
+    /**
      * Конструктор.
      *
-     * @param string $templatesDirectory
-     * @param string $resultDirectory
+     * @param string                   $templatesDirectory
+     * @param string                   $resultDirectory
+     * @param LoggerContainerInterface $loggerContainer
      */
-    public function __construct(string $templatesDirectory, string $resultDirectory)
-    {
+    public function __construct(
+        string $templatesDirectory,
+        string $resultDirectory,
+        LoggerContainerInterface $loggerContainer
+    ) {
         parent::__construct();
         $this->templatesDirectory = $templatesDirectory;
         $this->resultDirectory    = $resultDirectory;
+        $this->loggerContainer    = $loggerContainer;
     }
 
     /**
@@ -115,7 +125,7 @@ final class MixerCommand extends Command
     private function mix(string $fileName, MixerCellInterface $mixerCell): void
     {
         Console::out()->color(Console::GREEN)->writeln('Processing..');
-        $templateMixer = new TemplateMixer(SystemLogger::getGlobalLoggerContainer()->getLogger());
+        $templateMixer = new TemplateMixer($this->loggerContainer);
         if ($templateMixer->mix($this->resultDirectory.$fileName, $mixerCell)) {
             Console::out()->color(Console::GREEN)->writeln('Done');
         }

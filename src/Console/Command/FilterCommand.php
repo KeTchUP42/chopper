@@ -9,7 +9,7 @@ use Chopper\Exceptions\RuntimeException;
 use Chopper\Gear\Facade\FileFilter;
 use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
 use Chopper\Gear\Filtration\FilterCell\FormingFilterCell;
-use Chopper\Logger\GlobalLogger\SystemLogger;
+use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -31,16 +31,26 @@ final class FilterCommand extends Command
     private $templatesDirectory;
 
     /**
+     * @var LoggerContainerInterface
+     */
+    private $loggerContainer;
+
+    /**
      * Конструктор.
      *
-     * @param string $resourceDirectory
-     * @param string $templatesDirectory
+     * @param string                   $resourceDirectory
+     * @param string                   $templatesDirectory
+     * @param LoggerContainerInterface $loggerContainer
      */
-    public function __construct(string $resourceDirectory, string $templatesDirectory)
-    {
+    public function __construct(
+        string $resourceDirectory,
+        string $templatesDirectory,
+        LoggerContainerInterface $loggerContainer
+    ) {
         parent::__construct();
         $this->resourceDirectory  = $resourceDirectory;
         $this->templatesDirectory = $templatesDirectory;
+        $this->loggerContainer    = $loggerContainer;
     }
 
     /**
@@ -122,7 +132,7 @@ final class FilterCommand extends Command
     private function filter(string $path, string $dest, FilterFactoryInterface $factory): void
     {
         Console::out()->color(Console::GREEN)->writeln('Processing..');
-        $fileFilter = new FileFilter(SystemLogger::getGlobalLoggerContainer());
+        $fileFilter = new FileFilter($this->loggerContainer);
         if ($fileFilter->filtering($path, $this->templatesDirectory.$dest, new FormingFilterCell($factory))) {
             Console::out()->color(Console::GREEN)->writeln('Done');
         }

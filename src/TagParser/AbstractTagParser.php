@@ -45,14 +45,14 @@ abstract class AbstractTagParser implements TagParserInterface
     /**
      * Method analyses struct of tags and recursively searches for content between tags
      *
-     * @param array $baseTagData
+     * @param array $tagdata
      *
      * @return array
      */
-    protected function rhandle(array $baseTagData): array
+    protected function rhandle(array $tagdata): array
     {
         $result = [];
-        foreach ($baseTagData as $value) {
+        foreach ($tagdata as $value) {
             $blocks = $this->parseDeepLvl($value, 2);
             if (empty($blocks)) {
                 $result[] = $value;

@@ -5,6 +5,7 @@ namespace Chopper\Gear\Facade;
 
 use Chopper\Gear\Handling\Mixer\Mixer;
 use Chopper\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
+use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 use Zend\Log\LoggerInterface;
 
 /**
@@ -20,11 +21,11 @@ final class TemplateMixer
     /**
      * Конструктор.
      *
-     * @param LoggerInterface $logger
+     * @param LoggerContainerInterface $loggerContainer
      */
-    public function __construct(LoggerInterface $logger)
+    public function __construct(LoggerContainerInterface $loggerContainer)
     {
-        $this->logger = $logger;
+        $this->logger = $loggerContainer->getLogger();
     }
 
     /**

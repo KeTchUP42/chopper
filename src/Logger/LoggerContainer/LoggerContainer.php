@@ -14,7 +14,7 @@ use Zend\Log\Writer\Stream;
 class LoggerContainer implements LoggerContainerInterface
 {
     /**
-     * @var Logger
+     * @var LoggerInterface
      */
     private $logger;
 

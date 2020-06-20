@@ -17,16 +17,16 @@ final class SystemLogger
     /**
      * @var LoggerContainerInterface
      */
-    private static $globalLoggerContainer;
+    private static $loggerContainer;
 
     /**
      * Получить GlobalLoggerContainer
      *
      * @return LoggerContainerInterface
      */
-    public static function getGlobalLoggerContainer(): LoggerContainerInterface
+    public static function getLoggerContainer(): LoggerContainerInterface
     {
-        return self::$globalLoggerContainer ?? new LoggerContainer();
+        return self::$loggerContainer ?? new LoggerContainer();
     }
 
     /**
@@ -36,7 +36,7 @@ final class SystemLogger
      */
     public static function configureGlobalLogger(string $logFilePath): void
     {
-        self::$globalLoggerContainer = new LoggerContainer();
-        self::$globalLoggerContainer->configureLogger($logFilePath);
+        self::$loggerContainer = new LoggerContainer();
+        self::$loggerContainer->configureLogger($logFilePath);
     }
 }

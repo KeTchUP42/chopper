@@ -34,7 +34,7 @@ abstract class AbstractFilter implements FilterInterface
      */
     public function handle(string $data): string
     {
-        if ($this->nextFilter) {
+        if (isset($this->nextFilter)) {
             return $this->nextFilter->handle($data);
         }
 
