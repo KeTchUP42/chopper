@@ -6,7 +6,7 @@ namespace Chopper\Console\Command;
 use Chopper\Console\ColoredConsole\Console;
 use Chopper\Constant\ConsoleAlias;
 use Chopper\Exceptions\RuntimeException;
-use Chopper\Gear\Facade\TemplateMixer;
+use Chopper\Gear\Facade\FileMixer;
 use Chopper\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
 use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 use Symfony\Component\Console\Command\Command;
@@ -125,7 +125,7 @@ final class MixerCommand extends Command
     private function mix(string $fileName, MixerCellInterface $mixerCell): void
     {
         Console::out()->color(Console::GREEN)->writeln('Processing..');
-        $templateMixer = new TemplateMixer($this->loggerContainer);
+        $templateMixer = new FileMixer($this->loggerContainer);
         if ($templateMixer->mix($this->resultDirectory.$fileName, $mixerCell)) {
             Console::out()->color(Console::GREEN)->writeln('Done');
         }

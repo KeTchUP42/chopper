@@ -9,9 +9,9 @@ use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 use Zend\Log\LoggerInterface;
 
 /**
- * TemplateMixer
+ * FileMixer
  */
-final class TemplateMixer
+final class FileMixer
 {
     /**
      * @var LoggerInterface
