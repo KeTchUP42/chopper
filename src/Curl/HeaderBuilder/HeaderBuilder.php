@@ -1,15 +1,15 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Curl\HeaderStatement;
+namespace Chopper\Curl\HeaderBuilder;
 
-use Chopper\Curl\CurlStatement\CurlBaseInfo;
-use Chopper\Curl\CurlStatement\CurlStatementInterface;
+use Chopper\Curl\CurlBuilder\CurlBuilderInterface;
+use Chopper\Curl\CurlInfo\CurlBaseInfo;
 
 /**
- * HeaderStatement
+ * HeaderBuilder
  */
-class HeaderStatement implements HeaderStatementInterface
+class HeaderBuilder implements HeaderBuilderInterface
 {
     /**
      * @var array
@@ -17,16 +17,16 @@ class HeaderStatement implements HeaderStatementInterface
     private $header = [];
 
     /**
-     * @var CurlStatementInterface
+     * @var CurlBuilderInterface
      */
     private $curlStatement;
 
     /**
      * Конструктор.
      *
-     * @param CurlStatementInterface $curlStatement
+     * @param CurlBuilderInterface $curlStatement
      */
-    public function __construct(CurlStatementInterface $curlStatement)
+    public function __construct(CurlBuilderInterface $curlStatement)
     {
         $this->curlStatement = $curlStatement;
     }
@@ -34,9 +34,9 @@ class HeaderStatement implements HeaderStatementInterface
     /**
      * Method resets header
      *
-     * @return $this|HeaderStatementInterface
+     * @return $this|HeaderBuilderInterface
      */
-    public function setBaseHeader(): HeaderStatementInterface
+    public function setBaseHeader(): HeaderBuilderInterface
     {
         $this->header = CurlBaseInfo::HEADER;
 
@@ -48,9 +48,9 @@ class HeaderStatement implements HeaderStatementInterface
      *
      * @param array $header
      *
-     * @return $this|HeaderStatementInterface
+     * @return $this|HeaderBuilderInterface
      */
-    public function setHeader(array $header): HeaderStatementInterface
+    public function setHeader(array $header): HeaderBuilderInterface
     {
         $this->header = $header;
 
@@ -62,9 +62,9 @@ class HeaderStatement implements HeaderStatementInterface
      *
      * @param string $fieled
      *
-     * @return $this|HeaderStatementInterface
+     * @return $this|HeaderBuilderInterface
      */
-    public function addHeader(string $fieled): HeaderStatementInterface
+    public function addHeader(string $fieled): HeaderBuilderInterface
     {
         $this->header[] = $fieled;
 
@@ -76,9 +76,9 @@ class HeaderStatement implements HeaderStatementInterface
      *
      * @param string $host
      *
-     * @return $this|HeaderStatementInterface
+     * @return $this|HeaderBuilderInterface
      */
-    public function setHost(string $host): HeaderStatementInterface
+    public function setHost(string $host): HeaderBuilderInterface
     {
         if (!empty($this->header)) {
             $this->header[] = "Host: ".$host;
@@ -90,9 +90,9 @@ class HeaderStatement implements HeaderStatementInterface
     /**
      * Methof applies header
      *
-     * @return CurlStatementInterface
+     * @return CurlBuilderInterface
      */
-    public function applyHeader(): CurlStatementInterface
+    public function applyHeader(): CurlBuilderInterface
     {
         curl_setopt($this->curlStatement->getCurlDescriptor(), CURLOPT_HEADER, true);
         curl_setopt($this->curlStatement->getCurlDescriptor(), CURLOPT_HTTPHEADER, $this->header);

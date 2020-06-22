@@ -18,7 +18,7 @@ class HttpDownloader implements DownloaderInterface
     protected $curl;
 
     /**
-     * @var ?string
+     * @var string
      */
     protected $logFilePath;
 

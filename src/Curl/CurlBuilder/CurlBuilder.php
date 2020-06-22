@@ -1,17 +1,18 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Curl\CurlStatement;
+namespace Chopper\Curl\CurlBuilder;
 
-use Chopper\Curl\HeaderStatement\HeaderStatement;
-use Chopper\Curl\HeaderStatement\HeaderStatementInterface;
+use Chopper\Curl\CurlInfo\CurlBaseInfo;
+use Chopper\Curl\HeaderBuilder\HeaderBuilder;
+use Chopper\Curl\HeaderBuilder\HeaderBuilderInterface;
 use Chopper\Curl\Response\CurlResponse;
 use Chopper\Curl\Response\CurlResponseInterface;
 
 /**
- * CurlStatement
+ * CurlBuilder
  */
-class CurlStatement implements CurlStatementInterface
+class CurlBuilder implements CurlBuilderInterface
 {
     /**
      * @var resource
@@ -64,9 +65,9 @@ class CurlStatement implements CurlStatementInterface
     /**
      * Method enables head method
      *
-     * @return $this|CurlStatementInterface
+     * @return $this|CurlBuilderInterface
      */
-    public function useHeadMethod(): CurlStatementInterface
+    public function useHeadMethod(): CurlBuilderInterface
     {
         curl_setopt($this->ch, CURLOPT_NOBODY, true);
 
@@ -78,9 +79,9 @@ class CurlStatement implements CurlStatementInterface
      *
      * @param mixed $postFields
      *
-     * @return $this|CurlStatementInterface
+     * @return $this|CurlBuilderInterface
      */
-    public function usePostMethod($postFields): CurlStatementInterface
+    public function usePostMethod($postFields): CurlBuilderInterface
     {
         curl_setopt($this->ch, CURLOPT_POST, true);
         curl_setopt($this->ch, CURLOPT_POSTFIELDS, $postFields);
@@ -94,9 +95,9 @@ class CurlStatement implements CurlStatementInterface
      * @param string $login
      * @param string $password
      *
-     * @return $this|CurlStatementInterface
+     * @return $this|CurlBuilderInterface
      */
-    public function logIn(string $login, string $password): CurlStatementInterface
+    public function logIn(string $login, string $password): CurlBuilderInterface
     {
         curl_setopt($this->ch, CURLOPT_USERPWD, $login.':'.$password);
 
@@ -108,9 +109,9 @@ class CurlStatement implements CurlStatementInterface
      *
      * @param string $referer
      *
-     * @return $this|CurlStatementInterface
+     * @return $this|CurlBuilderInterface
      */
-    public function setReferer(string $referer): CurlStatementInterface
+    public function setReferer(string $referer): CurlBuilderInterface
     {
         curl_setopt($this->ch, CURLOPT_REFERER, $referer);
 
@@ -122,9 +123,9 @@ class CurlStatement implements CurlStatementInterface
      *
      * @param string $file
      *
-     * @return $this|CurlStatementInterface
+     * @return $this|CurlBuilderInterface
      */
-    public function setCookieFile(string $file): CurlStatementInterface
+    public function setCookieFile(string $file): CurlBuilderInterface
     {
         curl_setopt($this->ch, CURLOPT_COOKIEFILE, $file);
 
@@ -132,9 +133,9 @@ class CurlStatement implements CurlStatementInterface
     }
 
     /**
-     * @return $this|CurlStatementInterface
+     * @return $this|CurlBuilderInterface
      */
-    public function setBaseUserAgent(): CurlStatementInterface
+    public function setBaseUserAgent(): CurlBuilderInterface
     {
         curl_setopt($this->ch, CURLOPT_USERAGENT, CurlBaseInfo::USER_AGENT);
 
@@ -146,9 +147,9 @@ class CurlStatement implements CurlStatementInterface
      *
      * @param string $userAgent
      *
-     * @return $this|CurlStatementInterface
+     * @return $this|CurlBuilderInterface
      */
-    public function setUserAgent(string $userAgent): CurlStatementInterface
+    public function setUserAgent(string $userAgent): CurlBuilderInterface
     {
         curl_setopt($this->ch, CURLOPT_USERAGENT, $userAgent);
 
@@ -160,9 +161,9 @@ class CurlStatement implements CurlStatementInterface
      *
      * @param string $cookie
      *
-     * @return $this|CurlStatementInterface
+     * @return $this|CurlBuilderInterface
      */
-    public function setCookie(string $cookie): CurlStatementInterface
+    public function setCookie(string $cookie): CurlBuilderInterface
     {
         curl_setopt($this->ch, CURLOPT_COOKIE, $cookie);
 
@@ -172,11 +173,11 @@ class CurlStatement implements CurlStatementInterface
     /**
      * Method builds header
      *
-     * @return HeaderStatementInterface
+     * @return HeaderBuilderInterface
      */
-    public function buildHeader(): HeaderStatementInterface
+    public function buildHeader(): HeaderBuilderInterface
     {
-        return new HeaderStatement($this);
+        return new HeaderBuilder($this);
     }
 
     /**
@@ -184,9 +185,9 @@ class CurlStatement implements CurlStatementInterface
      *
      * @param string $logFilePath
      *
-     * @return $this|CurlStatementInterface
+     * @return $this|CurlBuilderInterface
      */
-    public function setLogFile(string $logFilePath): CurlStatementInterface
+    public function setLogFile(string $logFilePath): CurlBuilderInterface
     {
         if (file_exists($logFilePath)) {
             curl_setopt($this->ch, CURLOPT_STDERR, fopen($logFilePath, 'wb+'));
@@ -201,9 +202,9 @@ class CurlStatement implements CurlStatementInterface
      *
      * @param int $timeOut
      *
-     * @return $this|CurlStatementInterface
+     * @return $this|CurlBuilderInterface
      */
-    public function setTimeOut(int $timeOut): CurlStatementInterface
+    public function setTimeOut(int $timeOut): CurlBuilderInterface
     {
         curl_setopt($this->ch, CURLOPT_TIMEOUT, $timeOut);
 
@@ -215,9 +216,9 @@ class CurlStatement implements CurlStatementInterface
      *
      * @param string $encoding
      *
-     * @return $this|CurlStatementInterface
+     * @return $this|CurlBuilderInterface
      */
-    public function setEncoding(string $encoding): CurlStatementInterface
+    public function setEncoding(string $encoding): CurlBuilderInterface
     {
         curl_setopt($this->ch, CURLOPT_ENCODING, $encoding);
 

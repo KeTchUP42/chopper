@@ -3,8 +3,8 @@ declare(strict_types = 1);
 
 namespace Chopper\Curl\Request;
 
-use Chopper\Curl\CurlStatement\CurlStatement;
-use Chopper\Curl\CurlStatement\CurlStatementInterface;
+use Chopper\Curl\CurlBuilder\CurlBuilder;
+use Chopper\Curl\CurlBuilder\CurlBuilderInterface;
 
 /**
  * CurlRequest
@@ -16,9 +16,9 @@ class CurlRequest implements CurlRequestInterface
      *
      * @param string $url
      *
-     * @return CurlStatementInterface
+     * @return CurlBuilderInterface
      */
-    public function init(string $url): CurlStatementInterface
+    public function init(string $url): CurlBuilderInterface
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -26,6 +26,6 @@ class CurlRequest implements CurlRequestInterface
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
-        return new CurlStatement($ch);
+        return new CurlBuilder($ch);
     }
 }

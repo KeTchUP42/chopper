@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\Curl\Request;
 
-use Chopper\Curl\CurlStatement\CurlStatementInterface;
+use Chopper\Curl\CurlBuilder\CurlBuilderInterface;
 
 /**
  * CurlRequestInterface
@@ -15,7 +15,7 @@ interface CurlRequestInterface
      *
      * @param string $url
      *
-     * @return CurlStatementInterface
+     * @return CurlBuilderInterface
      */
-    public function init(string $url): CurlStatementInterface;
+    public function init(string $url): CurlBuilderInterface;
 }

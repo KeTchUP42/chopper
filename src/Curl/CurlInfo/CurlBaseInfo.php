@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Curl\CurlStatement;
+namespace Chopper\Curl\CurlInfo;
 
 /**
  * CurlBaseInfo
