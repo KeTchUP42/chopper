@@ -5,14 +5,14 @@ namespace Chopper\Logger\GlobalLogger;
 
 use Chopper\Logger\LoggerContainer\LoggerContainer;
 use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
-use Chopper\Traits\SingletonTrait;
+use Chopper\Traits\ClosedConstructorTrait;
 
 /**
  * SystemLogger
  */
 final class SystemLogger
 {
-    use SingletonTrait;
+    use ClosedConstructorTrait;
 
     /**
      * @var LoggerContainerInterface
