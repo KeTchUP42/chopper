@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\Gear\Handling\MixerCell\MixerCellEssence;
 
+use Chopper\Exceptions\RuntimeException;
 use Chopper\Gear\Handling\FileContainer\FileContainer;
 
 /**
@@ -23,6 +24,7 @@ abstract class AbstractMixerCell implements MixerCellInterface
     public function __construct(string $directory)
     {
         $this->fillFileContainers($directory);
+        $this->checkFilesAmount();
     }
 
     /**
@@ -35,6 +37,16 @@ abstract class AbstractMixerCell implements MixerCellInterface
         $this->files = [];
         foreach (glob("$directory/*") as $filePath) {
             $this->files[] = new FileContainer($filePath);
+        }
+    }
+
+    /**
+     * Method checks files amount
+     */
+    protected function checkFilesAmount(): void
+    {
+        if (count($this->files) === 0) {
+            throw new RuntimeException(sprintf("Files not found! %s", static::class));
         }
     }
 
