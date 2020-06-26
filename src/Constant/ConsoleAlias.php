@@ -8,6 +8,7 @@ use Chopper\Gear\Factory\Filter\BodyFilterFactory;
 use Chopper\Gear\Factory\Filter\DivStructFilterFactory;
 use Chopper\Gear\Factory\Filter\FastDivStructFilterFactory;
 use Chopper\Gear\Factory\Filter\StyleFilterFactory;
+use Chopper\Gear\Handling\MixerCell\DirtMixerCell;
 use Chopper\Gear\Handling\MixerCell\TestMixerCell;
 
 /**
@@ -30,5 +31,6 @@ interface ConsoleAlias
      */
     public const MIX_TYPE_ALIAS = [
         'test' => TestMixerCell::class,
+        'dirt' => DirtMixerCell::class,
     ];
 }
