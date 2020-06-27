@@ -5,20 +5,32 @@ namespace Chopper\Gear\Handling\MixerCell;
 
 use Chopper\Exceptions\ErrorException;
 use Chopper\Gear\Handling\MixerCell\MixerCellEssence\AbstractMixerCell;
+use Chopper\Gear\Handling\Wrapper\BaseHtmlWrapper;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 
 /**
  * DirtMixerCell
+ *
  * This mixer cell generates some dirt)
  */
 class DirtMixerCell extends AbstractMixerCell
 {
     /**
-     * Result wrap
+     * @var BaseHtmlWrapper
      */
-    private const HTML_WRAP_1 = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>Result</title>\n</head>\n<body>\n";
-    private const HTML_WRAP_2 = "\n</body>\n</html>";
+    private $wrapper;
+
+    /**
+     * Конструктор.
+     *
+     * @param string $directory
+     */
+    public function __construct(string $directory)
+    {
+        parent::__construct($directory);
+        $this->wrapper = new BaseHtmlWrapper();
+    }
 
     /**
      * @inheritDoc
@@ -30,6 +42,16 @@ class DirtMixerCell extends AbstractMixerCell
         $this->restoreHandler();
 
         return $result;
+    }
+
+    /**
+     * Method configures error handler
+     */
+    private function configuringWarningHandler(): void
+    {
+        set_error_handler(static function ($severity, $message, $file, $line) {
+            throw new  ErrorException($message, $severity, $severity, $file, $line);
+        });
     }
 
     /**
@@ -53,18 +75,7 @@ class DirtMixerCell extends AbstractMixerCell
         $data = iterator_to_array(new RecursiveIteratorIterator(new RecursiveArrayIterator($data)), false);
         shuffle($data);
 
-        return self::HTML_WRAP_1.implode('', $data).self::HTML_WRAP_2;
-    }
-
-    /**
-     * Method configures error handler
-     */
-    private function configuringWarningHandler(): void
-    {
-        set_error_handler(static function ($severity, $message, $file, $line) {
-            throw new  ErrorException($message, $severity, $severity, $file, $line);
-        }
-        );
+        return $this->wrapper->wrap(implode('', $data));
     }
 
     /**
