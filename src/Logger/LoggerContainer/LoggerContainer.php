@@ -26,9 +26,9 @@ class LoggerContainer implements LoggerContainerInterface
     /**
      * @inheritDoc
      */
-    public function configureLogger(string $logFilePath): void
+    public function configureLogger(string $logFilePath, bool $append = false): void
     {
-        if (file_exists($logFilePath)) {
+        if ((!$append) && file_exists($logFilePath)) {
             unlink($logFilePath);
         }
         $this->logFilePath = $logFilePath;

@@ -37,6 +37,6 @@ final class SystemLogger
     public static function configureGlobalLogger(string $logFilePath): void
     {
         self::$loggerContainer = new LoggerContainer();
-        self::$loggerContainer->configureLogger($logFilePath);
+        self::$loggerContainer->configureLogger($logFilePath, true);
     }
 }
