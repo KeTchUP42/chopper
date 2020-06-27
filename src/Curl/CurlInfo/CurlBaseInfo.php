@@ -5,6 +5,7 @@ namespace Chopper\Curl\CurlInfo;
 
 /**
  * CurlBaseInfo
+ *
  * Base Curl session information
  */
 interface CurlBaseInfo

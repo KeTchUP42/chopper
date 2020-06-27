@@ -7,7 +7,8 @@ use Chopper\Traits\ClosedConstructorTrait;
 
 /**
  * Console
- * Class uses to write colored text on console
+ *
+ * Class uses to write colored text on unix console.
  */
 final class Console
 {

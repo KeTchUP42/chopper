@@ -5,6 +5,8 @@ namespace Chopper\TagParser;
 
 /**
  * BaseTagParser
+ *
+ * Slow but not case sensitive.
  */
 class BaseTagParser extends AbstractTagParser
 {

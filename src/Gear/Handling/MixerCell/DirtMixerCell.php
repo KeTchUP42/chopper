@@ -9,6 +9,7 @@ use RecursiveIteratorIterator;
 
 /**
  * DirtMixerCell
+ * This mixer cell generates some dirt)
  */
 class DirtMixerCell extends AbstractMixerCell
 {

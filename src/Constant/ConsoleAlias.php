@@ -13,6 +13,8 @@ use Chopper\Gear\Handling\MixerCell\TestMixerCell;
 
 /**
  * ConsoleAlias
+ *
+ * Constants which uses in console commands.
  */
 interface ConsoleAlias
 {

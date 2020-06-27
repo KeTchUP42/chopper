@@ -66,12 +66,7 @@ abstract class AbstractTagParser implements TagParserInterface
     }
 
     /**
-     * Method returns an array of strings between tags at the required level of nesting
-     *
-     * @param string $data
-     * @param int    $deepLvl
-     *
-     * @return array
+     * @inheritDoc
      */
     abstract public function parseDeepLvl(string $data, int $deepLvl): array;
 }

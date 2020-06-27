@@ -8,7 +8,7 @@ use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 use Chopper\Traits\ClosedConstructorTrait;
 
 /**
- * SystemLogger
+ * Global system logger, it uses log file path form .env config.
  */
 final class SystemLogger
 {

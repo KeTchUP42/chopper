@@ -8,6 +8,7 @@ use Chopper\Curl\CurlInfo\CurlBaseInfo;
 
 /**
  * HeaderBuilder
+ * Http header builder, uses in CurlBuilder.
  */
 class HeaderBuilder implements HeaderBuilderInterface
 {

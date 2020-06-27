@@ -7,6 +7,8 @@ use Chopper\Curl\Response\CurlResponseInterface;
 
 /**
  * DownloaderInterface
+ * 
+ * Base downloader interface.
  */
 interface DownloaderInterface
 {

@@ -7,6 +7,8 @@ use Chopper\Curl\CurlBuilder\CurlBuilderInterface;
 
 /**
  * CurlRequestInterface
+ *
+ * Inits building of Curl session.
  */
 interface CurlRequestInterface
 {

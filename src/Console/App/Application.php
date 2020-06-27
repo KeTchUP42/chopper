@@ -10,7 +10,7 @@ use Chopper\Logger\GlobalLogger\SystemLogger;
 use Symfony\Component\Console\Application as App;
 
 /**
- * Application
+ * Application entry point.
  */
 class Application
 {
