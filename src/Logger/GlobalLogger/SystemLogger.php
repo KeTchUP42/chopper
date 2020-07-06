@@ -3,6 +3,7 @@ declare(strict_types = 1);
 
 namespace Chopper\Logger\GlobalLogger;
 
+use Chopper\Exceptions\RuntimeException;
 use Chopper\Logger\LoggerContainer\LoggerContainer;
 use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 use Chopper\Traits\ClosedConstructorTrait;
@@ -26,7 +27,11 @@ final class SystemLogger
      */
     public static function getLoggerContainer(): LoggerContainerInterface
     {
-        return self::$loggerContainer ?? new LoggerContainer();
+        if (self::$loggerContainer === null) {
+            throw new RuntimeException(sprintf('%s did not configured.', static::class));
+        }
+
+        return self::$loggerContainer;
     }
 
     /**

@@ -50,7 +50,7 @@ class LoggerContainer implements LoggerContainerInterface
     public function getLogger(): LoggerInterface
     {
         if ($this->logger === null) {
-            throw new RuntimeException(sprintf('%s did not configured.', self::class));
+            throw new RuntimeException(sprintf('%s did not configured.', static::class));
         }
 
         return $this->logger;
