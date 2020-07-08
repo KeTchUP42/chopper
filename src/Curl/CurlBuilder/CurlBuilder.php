@@ -189,8 +189,8 @@ class CurlBuilder implements CurlBuilderInterface
      */
     public function setLogFile(string $logFilePath): CurlBuilderInterface
     {
-        if (file_exists($logFilePath)) {
-            curl_setopt($this->ch, CURLOPT_STDERR, fopen($logFilePath, 'wb+'));
+        if (is_file($logFilePath)) {
+            curl_setopt($this->ch, CURLOPT_STDERR, fopen($logFilePath, 'ab'));
             curl_setopt($this->ch, CURLOPT_VERBOSE, 1);
         }
 
