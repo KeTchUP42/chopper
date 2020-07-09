@@ -63,7 +63,7 @@ final class FilterCommand extends Command
             ->setDescription('Filter out file.')
             ->setHelp('This command downloads file, filter out it with filter and puts it to the needed directory.');
         $this->addArgument('Path', InputArgument::REQUIRED, 'URL or file name in the resource directory.');
-        $this->addArgument('FilterFactoryAlias', InputArgument::OPTIONAL, 'Filter factory alias.');
+        $this->addArgument('FilterFactoryAlias', InputArgument::REQUIRED, 'Filter factory alias.');
         $this->addArgument('Dest', InputArgument::OPTIONAL, 'New file name.');
     }
 
