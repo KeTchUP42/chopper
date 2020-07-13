@@ -8,6 +8,7 @@ use Chopper\Curl\CurlInfo\CurlBaseInfo;
 
 /**
  * HeaderBuilder
+ *
  * Http header builder, uses in CurlBuilder.
  */
 class HeaderBuilder implements HeaderBuilderInterface
@@ -20,16 +21,16 @@ class HeaderBuilder implements HeaderBuilderInterface
     /**
      * @var CurlBuilderInterface
      */
-    private $curlStatement;
+    private $curlBuilder;
 
     /**
      * Конструктор.
      *
-     * @param CurlBuilderInterface $curlStatement
+     * @param CurlBuilderInterface $curlBuilder
      */
-    public function __construct(CurlBuilderInterface $curlStatement)
+    public function __construct(CurlBuilderInterface $curlBuilder)
     {
-        $this->curlStatement = $curlStatement;
+        $this->curlBuilder = $curlBuilder;
     }
 
     /**
@@ -89,15 +90,15 @@ class HeaderBuilder implements HeaderBuilderInterface
     }
 
     /**
-     * Methof applies header
+     * Method applies header
      *
      * @return CurlBuilderInterface
      */
     public function applyHeader(): CurlBuilderInterface
     {
-        curl_setopt($this->curlStatement->getCurlDescriptor(), CURLOPT_HEADER, true);
-        curl_setopt($this->curlStatement->getCurlDescriptor(), CURLOPT_HTTPHEADER, $this->header);
+        curl_setopt($this->curlBuilder->getCurlDescriptor(), CURLOPT_HEADER, true);
+        curl_setopt($this->curlBuilder->getCurlDescriptor(), CURLOPT_HTTPHEADER, $this->header);
 
-        return $this->curlStatement;
+        return $this->curlBuilder;
     }
 }
