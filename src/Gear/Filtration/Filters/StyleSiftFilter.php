@@ -6,6 +6,8 @@ namespace Chopper\Gear\Filtration\Filters;
 use Chopper\Gear\Filtration\Filters\FilterEssence\AbstractFilter;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * StyleFilter
  */
 class StyleSiftFilter extends AbstractFilter

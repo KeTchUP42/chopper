@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\Filters\FilterEssence\AbstractFilter;
 use Chopper\TagParser\FastTagParser;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * FastDivStructFilter
  */
 class FastDivStructFilter extends AbstractFilter

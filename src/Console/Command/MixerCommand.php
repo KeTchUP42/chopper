@@ -15,6 +15,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * MixerCommand
  */
 final class MixerCommand extends Command

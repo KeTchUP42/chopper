@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Chopper\TagParser;
 
 /**
- * BaseTagParser
+ * @author Roman Bondarenko <rom_bon@mail.ru>
  *
  * Slow but not case sensitive.
  */

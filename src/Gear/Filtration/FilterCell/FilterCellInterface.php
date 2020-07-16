@@ -4,6 +4,8 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Filtration\FilterCell;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * FilterCellInterface
  */
 interface FilterCellInterface

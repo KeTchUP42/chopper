@@ -6,8 +6,8 @@ namespace Chopper\Downloader;
 use Chopper\Curl\Response\CurlResponseInterface;
 
 /**
- * DownloaderInterface
- * 
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * Base downloader interface.
  */
 interface DownloaderInterface

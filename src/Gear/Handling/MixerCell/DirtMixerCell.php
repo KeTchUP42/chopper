@@ -10,7 +10,7 @@ use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 
 /**
- * DirtMixerCell
+ * @author Roman Bondarenko <rom_bon@mail.ru>
  *
  * This mixer cell generates some dirt)
  */

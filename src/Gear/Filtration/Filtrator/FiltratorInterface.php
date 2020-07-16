@@ -6,6 +6,8 @@ namespace Chopper\Gear\Filtration\Filtrator;
 use Chopper\Gear\Filtration\FilterCell\FilterCellInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * FiltratorInterface
  */
 interface FiltratorInterface

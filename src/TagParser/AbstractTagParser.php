@@ -4,6 +4,8 @@ declare(strict_types = 1);
 namespace Chopper\TagParser;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * AbstractTagParser
  */
 abstract class AbstractTagParser implements TagParserInterface

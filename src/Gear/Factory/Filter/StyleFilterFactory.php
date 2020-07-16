@@ -8,6 +8,8 @@ use Chopper\Gear\Filtration\Filters\FilterEssence\FilterInterface;
 use Chopper\Gear\Filtration\Filters\StyleSiftFilter;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * StyleFilterFactory
  */
 class StyleFilterFactory implements FilterFactoryInterface

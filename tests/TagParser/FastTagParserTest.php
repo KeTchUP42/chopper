@@ -7,6 +7,8 @@ use Chopper\TagParser\FastTagParser;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * FastTagParserTest
  */
 class FastTagParserTest extends TestCase

@@ -6,6 +6,8 @@ namespace Chopper\Logger\LoggerContainer;
 use Zend\Log\LoggerInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * LoggerContainerInterface
  */
 interface LoggerContainerInterface

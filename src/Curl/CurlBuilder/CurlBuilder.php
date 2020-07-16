@@ -8,6 +8,8 @@ use Chopper\Curl\HeaderBuilder\HeaderBuilder;
 use Chopper\Curl\HeaderBuilder\HeaderBuilderInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * CurlBuilder
  */
 class CurlBuilder extends AbstractCurlBuilder implements CurlBuilderInterface

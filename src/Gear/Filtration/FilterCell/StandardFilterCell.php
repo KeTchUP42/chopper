@@ -6,6 +6,8 @@ namespace Chopper\Gear\Filtration\FilterCell;
 use Chopper\Gear\Filtration\Filters\FilterEssence\FilterInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * StandardFilterCell
  */
 class StandardFilterCell implements FilterCellInterface

@@ -4,6 +4,8 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Filtration\Filters\FilterEssence;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * AbstractFilter
  */
 abstract class AbstractFilter implements FilterInterface

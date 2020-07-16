@@ -7,6 +7,8 @@ use Chopper\Curl\HeaderBuilder\HeaderBuilderInterface;
 use Chopper\Curl\Response\CurlResponseInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * CurlBuilderInterface
  */
 interface CurlBuilderInterface

@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Chopper\Curl\CurlInfo;
 
 /**
- * CurlBaseInfo
+ * @author Roman Bondarenko <rom_bon@mail.ru>
  *
  * Base Curl session information
  */

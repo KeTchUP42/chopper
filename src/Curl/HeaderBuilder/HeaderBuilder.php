@@ -7,7 +7,7 @@ use Chopper\Curl\CurlBuilder\CurlBuilderInterface;
 use Chopper\Curl\CurlInfo\CurlBaseInfo;
 
 /**
- * HeaderBuilder
+ * @author Roman Bondarenko <rom_bon@mail.ru>
  *
  * Http header builder, uses in CurlBuilder.
  */

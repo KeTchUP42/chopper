@@ -7,6 +7,8 @@ use Chopper\Exceptions\RuntimeException;
 use Chopper\Gear\Handling\FileContainer\FileContainer;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * AbstractMixerCell
  */
 abstract class AbstractMixerCell implements MixerCellInterface

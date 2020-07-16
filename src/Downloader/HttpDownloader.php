@@ -8,6 +8,8 @@ use Chopper\Curl\Response\CurlResponseInterface;
 use Chopper\Exceptions\RuntimeException;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * HttpDownloader
  */
 class HttpDownloader implements DownloaderInterface

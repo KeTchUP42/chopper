@@ -10,6 +10,8 @@ use Chopper\Logger\GlobalLogger\SystemLogger;
 use Symfony\Component\Console\Application as App;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * Application entry point.
  */
 class Application

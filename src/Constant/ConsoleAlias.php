@@ -12,7 +12,7 @@ use Chopper\Gear\Handling\MixerCell\DirtMixerCell;
 use Chopper\Gear\Handling\MixerCell\TestMixerCell;
 
 /**
- * ConsoleAlias
+ * @author Roman Bondarenko <rom_bon@mail.ru>
  *
  * Constants which uses in console commands.
  */

@@ -4,6 +4,8 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Handling\FileContainer;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * FileContainerInterface
  */
 interface FileContainerInterface

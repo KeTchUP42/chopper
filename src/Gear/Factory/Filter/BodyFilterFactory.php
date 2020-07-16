@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\Filters\BodyIsolatorFilter;
 use Chopper\Gear\Filtration\Filters\FilterEssence\FilterInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * BodyFilterFactory
  */
 class BodyFilterFactory implements FilterFactoryInterface

@@ -11,6 +11,8 @@ use Chopper\Gear\Filtration\Filters\StyleCleanerFilter;
 use Chopper\Gear\Filtration\Filters\SvgCleanerFilter;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * BaseFilterFactory
  */
 class BaseFilterFactory implements FilterFactoryInterface

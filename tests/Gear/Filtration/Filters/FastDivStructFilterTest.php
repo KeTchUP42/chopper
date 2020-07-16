@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\Filters\FastDivStructFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * FastDivStructFilterTest
  */
 class FastDivStructFilterTest extends TestCase

@@ -9,6 +9,8 @@ use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 use Chopper\Traits\ClosedConstructorTrait;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * Global system logger, it uses log file path form .env config.
  */
 final class SystemLogger

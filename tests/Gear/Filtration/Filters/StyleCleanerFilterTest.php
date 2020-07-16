@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\Filters\StyleCleanerFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * StyleCleanerFilterTest
  */
 class StyleCleanerFilterTest extends TestCase

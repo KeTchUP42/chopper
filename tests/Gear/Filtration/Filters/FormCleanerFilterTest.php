@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\Filters\FormCleanerFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * FormCleanerFilterTest
  */
 class FormCleanerFilterTest extends TestCase

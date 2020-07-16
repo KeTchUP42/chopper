@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\Filters\FilterEssence\AbstractFilter;
 use Chopper\TagParser\BaseTagParser;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * DivSearchFilter
  */
 class DivStructFilter extends AbstractFilter

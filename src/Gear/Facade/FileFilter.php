@@ -10,6 +10,8 @@ use Chopper\Gear\Filtration\Filtrator\Filtrator;
 use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * FileFilter
  */
 final class FileFilter

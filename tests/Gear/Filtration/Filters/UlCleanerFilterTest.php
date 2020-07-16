@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\Filters\UlCleanerFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * UlCleanerFilterTest
  */
 class UlCleanerFilterTest extends TestCase

@@ -6,6 +6,8 @@ namespace Chopper\Curl\HeaderBuilder;
 use Chopper\Curl\CurlBuilder\CurlBuilderInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * HeaderBuilderInterface
  */
 interface HeaderBuilderInterface

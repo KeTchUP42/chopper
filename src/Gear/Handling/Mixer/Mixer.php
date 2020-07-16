@@ -7,6 +7,8 @@ use Chopper\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
 use Zend\Log\LoggerInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * Mixer
  */
 class Mixer implements MixerInterface

@@ -6,7 +6,7 @@ namespace Chopper\Curl\Request;
 use Chopper\Curl\CurlBuilder\CurlBuilderInterface;
 
 /**
- * CurlRequestInterface
+ * @author Roman Bondarenko <rom_bon@mail.ru>
  *
  * Inits building of Curl session.
  */

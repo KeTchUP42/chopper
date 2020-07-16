@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\Filters\CommentsCleanerFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * CommentsCleanerFilterTest
  */
 class CommentsCleanerFilterTest extends TestCase

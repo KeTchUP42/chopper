@@ -7,6 +7,8 @@ use Chopper\TagParser\BaseTagParser;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * BaseTagParserTest
  */
 class BaseTagParserTest extends TestCase

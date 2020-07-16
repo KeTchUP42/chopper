@@ -6,6 +6,8 @@ namespace Chopper\Gear\Factory\Filter;
 use Chopper\Gear\Filtration\Filters\FilterEssence\FilterInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * FilterFactoryInterface
  */
 interface FilterFactoryInterface

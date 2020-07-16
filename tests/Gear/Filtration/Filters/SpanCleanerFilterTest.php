@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\Filters\SpanCleanerFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * SpanCleanerFilterTest
  */
 class SpanCleanerFilterTest extends TestCase

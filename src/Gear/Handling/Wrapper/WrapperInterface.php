@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Handling\Wrapper;
 
 /**
- * WrapperInterface
+ * @author Roman Bondarenko <rom_bon@mail.ru>
  *
  * Classes wraps data with something.
  */

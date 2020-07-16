@@ -7,6 +7,8 @@ use Chopper\Gear\Handling\Wrapper\BaseHtmlWrapper;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * BaseHtmlWrapperTest
  */
 class BaseHtmlWrapperTest extends TestCase

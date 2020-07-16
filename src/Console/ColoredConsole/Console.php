@@ -6,7 +6,7 @@ namespace Chopper\Console\ColoredConsole;
 use Chopper\Traits\ClosedConstructorTrait;
 
 /**
- * Console
+ * @author Roman Bondarenko <rom_bon@mail.ru>
  *
  * Class uses to write colored text on unix console.
  */

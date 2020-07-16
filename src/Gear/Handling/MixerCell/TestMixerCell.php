@@ -6,6 +6,8 @@ namespace Chopper\Gear\Handling\MixerCell;
 use Chopper\Gear\Handling\MixerCell\MixerCellEssence\AbstractMixerCell;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * TestMixerCell
  */
 class TestMixerCell extends AbstractMixerCell

@@ -6,7 +6,9 @@ namespace Chopper\Gear\Filtration\Filters;
 use Chopper\Gear\Filtration\Filters\FilterEssence\AbstractFilter;
 
 /**
- *  UlCleanerFilter
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
+ * UlCleanerFilter
  */
 class UlCleanerFilter extends AbstractFilter
 {

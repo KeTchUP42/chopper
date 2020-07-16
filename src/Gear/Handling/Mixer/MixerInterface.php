@@ -6,6 +6,8 @@ namespace Chopper\Gear\Handling\Mixer;
 use Chopper\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * MixerInterface
  */
 interface MixerInterface

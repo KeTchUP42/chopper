@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\FilterCell\FilterCellInterface;
 use Zend\Log\LoggerInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * Filtrator
  */
 class Filtrator implements FiltratorInterface

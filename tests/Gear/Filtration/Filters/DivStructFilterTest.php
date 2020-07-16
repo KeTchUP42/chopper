@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\Filters\DivStructFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * DivStructFilterTest
  */
 class DivStructFilterTest extends TestCase

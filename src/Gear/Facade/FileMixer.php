@@ -9,6 +9,8 @@ use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
 use Zend\Log\LoggerInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * FileMixer
  */
 final class FileMixer

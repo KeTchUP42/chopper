@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Chopper\TagParser;
 
 /**
- * FastTagParser
+ * @author Roman Bondarenko <rom_bon@mail.ru>
  *
  * This class has faster algorithm but tag case matters
  */

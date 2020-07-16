@@ -7,6 +7,8 @@ use Chopper\Curl\CurlBuilder\CurlBuilder;
 use Chopper\Curl\CurlBuilder\CurlBuilderInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * CurlRequest
  */
 class CurlRequest implements CurlRequestInterface

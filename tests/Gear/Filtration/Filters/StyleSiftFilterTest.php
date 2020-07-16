@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\Filters\StyleSiftFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * StyleSiftFilterTest
  */
 class StyleSiftFilterTest extends TestCase

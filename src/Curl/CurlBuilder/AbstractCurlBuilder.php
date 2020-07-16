@@ -7,7 +7,7 @@ use Chopper\Curl\Response\CurlResponse;
 use Chopper\Curl\Response\CurlResponseInterface;
 
 /**
- * AbstractCurlBuilder
+ * @author Roman Bondarenko <rom_bon@mail.ru>
  *
  * Class contains base builder code.
  */

@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\Filters\BodyIsolatorFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * BodyIsolatorFilterTest
  */
 class BodyIsolatorFilterTest extends TestCase

@@ -4,6 +4,8 @@ declare(strict_types = 1);
 namespace Chopper\Gear\Handling\MixerCell\MixerCellEssence;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * MixerCellInterface
  */
 interface MixerCellInterface

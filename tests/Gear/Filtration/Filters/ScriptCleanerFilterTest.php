@@ -7,6 +7,8 @@ use Chopper\Gear\Filtration\Filters\ScriptCleanerFilter;
 use PHPUnit\Framework\TestCase;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * ScriptCleanerFilterTest
  */
 class ScriptCleanerFilterTest extends TestCase

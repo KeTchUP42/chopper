@@ -7,6 +7,8 @@ use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
 use Chopper\Gear\Filtration\Filters\FilterEssence\FilterInterface;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * FormingFilterCell
  */
 class FormingFilterCell implements FilterCellInterface

@@ -4,6 +4,8 @@ declare(strict_types = 1);
 namespace Chopper\Curl\Response;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * CurlResponseInterface
  */
 interface CurlResponseInterface

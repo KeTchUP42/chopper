@@ -9,6 +9,8 @@ use Zend\Log\LoggerInterface;
 use Zend\Log\Writer\Stream;
 
 /**
+ * @author Roman Bondarenko <rom_bon@mail.ru>
+ *
  * LoggerContainer
  */
 class LoggerContainer implements LoggerContainerInterface
