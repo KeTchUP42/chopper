@@ -13,14 +13,32 @@ class BaseHtmlWrapper implements WrapperInterface
     /**
      * Result wrap
      */
-    private const HTML_WRAP_1 = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>Result</title>\n</head>\n<body>\n";
-    private const HTML_WRAP_2 = "\n</body>\n</html>";
+    private $htmlHeader;
+
+    private $htmlFooter;
+
+    /**
+     * Конструктор.
+     */
+    public function __construct()
+    {
+        $this->configure();
+    }
+
+    /**
+     * BaseHtmlWrapper configuring data from template files
+     */
+    private function configure(): void
+    {
+        $this->htmlHeader = file_get_contents(__DIR__.'/Templates/BaseHtmlWrapper/BasePageHeader.txt');
+        $this->htmlFooter = file_get_contents(__DIR__.'/Templates/BaseHtmlWrapper/BasePageFooter.txt');
+    }
 
     /**
      * @inheritDoc
      */
     public function wrap(string $data): string
     {
-        return self::HTML_WRAP_1.$data.self::HTML_WRAP_2;
+        return $this->htmlHeader.$data.$this->htmlFooter;
     }
 }
