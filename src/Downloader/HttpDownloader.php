@@ -15,6 +15,11 @@ use Chopper\Exceptions\RuntimeException;
 class HttpDownloader implements DownloaderInterface
 {
     /**
+     * Http success result code
+     */
+    public const HTTP_SUCCESS = 200;
+
+    /**
      * @var CurlRequestInterface
      */
     protected $curl;
@@ -83,7 +88,7 @@ class HttpDownloader implements DownloaderInterface
         if ($result->getCurlError()) {
             throw new RuntimeException($result->getCurlError());
         }
-        if ($result->getHttpCode() !== 200) {
+        if ($result->getHttpCode() !== self::HTTP_SUCCESS) {
             throw new RuntimeException(sprintf("HTTP Code = %s", $result->getHttpCode()));
         }
         if (!$result->getBody()) {
