@@ -17,4 +17,5 @@ interface CurlBaseInfo
         "Accept-Charset: windows-1251,utf-8;q=0.7,*;q=0.7",
         "Keep-Alive: 300"
     ];
+    public const MULTIPLIER = '*';
 }

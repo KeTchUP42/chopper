@@ -142,7 +142,11 @@ class CurlBuilder extends AbstractCurlBuilder implements CurlBuilderInterface
     public function setLogFile(string $logFilePath): CurlBuilderInterface
     {
         if (is_file($logFilePath)) {
-            curl_setopt($this->ch, CURLOPT_STDERR, fopen($logFilePath, 'ab'));
+            $file       = fopen($logFilePath, 'ab');
+            $multiplier = str_repeat(CurlBaseInfo::MULTIPLIER, 100);
+            fwrite($file, "\n$multiplier\n");
+
+            curl_setopt($this->ch, CURLOPT_STDERR, $file);
             curl_setopt($this->ch, CURLOPT_VERBOSE, 1);
         }
 
