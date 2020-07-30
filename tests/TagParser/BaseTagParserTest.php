@@ -17,7 +17,7 @@ class BaseTagParserTest extends TestCase
 
     private $pageTemplate;
 
-    private $divDeepLvl3;
+    private $divDepthLvl3;
 
     private $divTagStruct;
 
@@ -27,17 +27,17 @@ class BaseTagParserTest extends TestCase
         static::assertSame(json_encode($result), $this->divTagStruct);
     }
 
-    public function testParseDeepLvl(): void
+    public function testParseDepthLvl(): void
     {
-        $result = $this->tagParser->parseDeepLvl($this->pageTemplate, 3);
-        static::assertSame(json_encode($result), $this->divDeepLvl3);
+        $result = $this->tagParser->parseDepthLvl($this->pageTemplate, 3);
+        static::assertSame(json_encode($result), $this->divDepthLvl3);
     }
 
     protected function setUp(): void
     {
         $this->tagParser    = new BaseTagParser('<dIV', '</DiV>');
         $this->pageTemplate = file_get_contents(__DIR__.'/Templates/PageTemplate.txt');
-        $this->divDeepLvl3  = file_get_contents(__DIR__.'/Templates/DivDeepLvl_3.json');
+        $this->divDepthLvl3  = file_get_contents(__DIR__.'/Templates/DivDepthLvl3.json');
         $this->divTagStruct = file_get_contents(__DIR__.'/Templates/DivTagStruct.json');
     }
 }

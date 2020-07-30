@@ -14,13 +14,13 @@ class FastTagParser extends AbstractTagParser
      * Method returns an array of strings between tags at the required level of nesting
      *
      * @param string $data
-     * @param int    $deepLvl
+     * @param int    $depthLvl
      *
      * @return array
      */
-    public function parseDeepLvl(string $data, int $deepLvl): array
+    public function parseDepthLvl(string $data, int $depthLvl): array
     {
-        if ($deepLvl <= 0) {
+        if ($depthLvl <= 0) {
             return [$data];
         }
 
@@ -28,10 +28,10 @@ class FastTagParser extends AbstractTagParser
             return [];
         }
 
-        $dataMaxLen      = strlen($data);
-        $result          = [];
-        $resultIndex     = -1;
-        $currentDeeptLvl = 0;
+        $dataMaxLen       = strlen($data);
+        $result           = [];
+        $resultIndex      = -1;
+        $currentDepthtLvl = 0;
 
         $openTagLen  = strlen($this->openTag);
         $closeTagLen = strlen($this->closeTag);
@@ -46,8 +46,8 @@ class FastTagParser extends AbstractTagParser
                 $openTagId++;
             }
             if ($openTagId === $openTagLen) {
-                $currentDeeptLvl++;
-                if ($currentDeeptLvl === $deepLvl) {
+                $currentDepthtLvl++;
+                if ($currentDepthtLvl === $depthLvl) {
                     $resultIndex++;
                     $result[] .= $this->openTag;
                     $index    += $openTagLen - 1;
@@ -60,15 +60,15 @@ class FastTagParser extends AbstractTagParser
                 $closeTagId++;
             }
             if ($closeTagId === $closeTagLen) {
-                $currentDeeptLvl--;
-                if ($currentDeeptLvl + 1 === $deepLvl) {
+                $currentDepthtLvl--;
+                if ($currentDepthtLvl + 1 === $depthLvl) {
                     $result[$resultIndex] .= $this->closeTag;
                     $index                += $closeTagLen - 1;
                     continue;
                 }
             }
 
-            if ($currentDeeptLvl >= $deepLvl) {
+            if ($currentDepthtLvl >= $depthLvl) {
                 $result[$resultIndex] .= $data[$index];
             }
         }

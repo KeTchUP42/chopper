@@ -41,7 +41,7 @@ abstract class AbstractTagParser implements TagParserInterface
      */
     public function parseTagStruct(string $data): array
     {
-        return $this->rhandle($this->parseDeepLvl($data, 1));
+        return $this->rhandle($this->parseDepthLvl($data, 1));
     }
 
     /**
@@ -55,7 +55,7 @@ abstract class AbstractTagParser implements TagParserInterface
     {
         $result = [];
         foreach ($tagdata as $value) {
-            $blocks = $this->parseDeepLvl($value, 2);
+            $blocks = $this->parseDepthLvl($value, 2);
             if (empty($blocks)) {
                 $result[] = $value;
             }
@@ -70,5 +70,5 @@ abstract class AbstractTagParser implements TagParserInterface
     /**
      * @inheritDoc
      */
-    abstract public function parseDeepLvl(string $data, int $deepLvl): array;
+    abstract public function parseDepthLvl(string $data, int $depthLvl): array;
 }
