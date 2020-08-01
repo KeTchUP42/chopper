@@ -3,6 +3,8 @@ declare(strict_types = 1);
 
 namespace App\TagParser;
 
+use App\Exceptions\RuntimeException;
+
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>
  *
@@ -10,6 +12,17 @@ namespace App\TagParser;
  */
 class BaseTagParser extends AbstractTagParser
 {
+    /**
+     * @inheritDoc
+     */
+    protected function configure(string $openTag, string $closeTag)
+    {
+        if (strcasecmp($openTag, $closeTag) === 0) {
+            throw new RuntimeException(sprintf("Tags %s and %s are identical.", $openTag, $closeTag));
+        }
+        parent::configure($openTag, $closeTag);
+    }
+
     /**
      * Method returns an array of strings between tags at the required level of nesting without case difference
      *
@@ -22,10 +35,6 @@ class BaseTagParser extends AbstractTagParser
     {
         if ($depthLvl <= 0) {
             return [$data];
-        }
-
-        if ($this->openTag === $this->closeTag) {
-            return [];
         }
 
         $dataMaxLen       = strlen($data);

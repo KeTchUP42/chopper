@@ -28,6 +28,17 @@ abstract class AbstractTagParser implements TagParserInterface
      */
     public function __construct(string $openTag, string $closeTag)
     {
+        $this->configure($openTag, $closeTag);
+    }
+
+    /**
+     * Object configuring
+     *
+     * @param string $openTag
+     * @param string $closeTag
+     */
+    protected function configure(string $openTag, string $closeTag)
+    {
         $this->openTag  = $openTag;
         $this->closeTag = $closeTag;
     }
