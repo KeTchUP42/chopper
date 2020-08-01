@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Curl\CurlInfo;
+namespace App\Curl\CurlInfo;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

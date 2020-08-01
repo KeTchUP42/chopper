@@ -1,15 +1,15 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Factory\Filter;
+namespace App\Gear\Factory\Filter;
 
-use Chopper\Gear\Filtration\Filters\BodyIsolatorFilter;
-use Chopper\Gear\Filtration\Filters\CommentsCleanerFilter;
-use Chopper\Gear\Filtration\Filters\FastDivStructFilter;
-use Chopper\Gear\Filtration\Filters\FilterEssence\FilterInterface;
-use Chopper\Gear\Filtration\Filters\ScriptCleanerFilter;
-use Chopper\Gear\Filtration\Filters\StyleCleanerFilter;
-use Chopper\Gear\Filtration\Filters\SvgCleanerFilter;
+use App\Gear\Filtration\Filters\BodyIsolatorFilter;
+use App\Gear\Filtration\Filters\CommentsCleanerFilter;
+use App\Gear\Filtration\Filters\FastDivStructFilter;
+use App\Gear\Filtration\Filters\FilterEssence\FilterInterface;
+use App\Gear\Filtration\Filters\ScriptCleanerFilter;
+use App\Gear\Filtration\Filters\StyleCleanerFilter;
+use App\Gear\Filtration\Filters\SvgCleanerFilter;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

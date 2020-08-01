@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Handling\Mixer;
+namespace App\Gear\Handling\Mixer;
 
-use Chopper\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
+use App\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
 use Zend\Log\LoggerInterface;
 
 /**

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Handling\FileContainer;
+namespace App\Gear\Handling\FileContainer;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Curl\Response;
+namespace App\Curl\Response;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

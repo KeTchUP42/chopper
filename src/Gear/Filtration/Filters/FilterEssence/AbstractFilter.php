@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Filtration\Filters\FilterEssence;
+namespace App\Gear\Filtration\Filters\FilterEssence;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

@@ -1,15 +1,15 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Constant;
+namespace App\Constant;
 
-use Chopper\Gear\Factory\Filter\BaseFilterFactory;
-use Chopper\Gear\Factory\Filter\BodyFilterFactory;
-use Chopper\Gear\Factory\Filter\DivStructFilterFactory;
-use Chopper\Gear\Factory\Filter\FastDivStructFilterFactory;
-use Chopper\Gear\Factory\Filter\StyleFilterFactory;
-use Chopper\Gear\Handling\MixerCell\DirtMixerCell;
-use Chopper\Gear\Handling\MixerCell\TestMixerCell;
+use App\Gear\Factory\Filter\BaseFilterFactory;
+use App\Gear\Factory\Filter\BodyFilterFactory;
+use App\Gear\Factory\Filter\DivStructFilterFactory;
+use App\Gear\Factory\Filter\FastDivStructFilterFactory;
+use App\Gear\Factory\Filter\StyleFilterFactory;
+use App\Gear\Handling\MixerCell\DirtMixerCell;
+use App\Gear\Handling\MixerCell\TestMixerCell;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

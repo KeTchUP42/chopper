@@ -1,12 +1,12 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Logger\GlobalLogger;
+namespace App\Logger\GlobalLogger;
 
-use Chopper\Exceptions\RuntimeException;
-use Chopper\Logger\LoggerContainer\LoggerContainer;
-use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
-use Chopper\Traits\ClosedConstructorTrait;
+use App\Exceptions\RuntimeException;
+use App\Logger\LoggerContainer\LoggerContainer;
+use App\Logger\LoggerContainer\LoggerContainerInterface;
+use App\Traits\ClosedConstructorTrait;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>
@@ -30,7 +30,7 @@ final class SystemLogger
     public static function getLoggerContainer(): LoggerContainerInterface
     {
         if (self::$loggerContainer === null) {
-            throw new RuntimeException(sprintf('%s did not configured.', static::class));
+            throw new RuntimeException(sprintf('%s did not configured.', self::class));
         }
 
         return self::$loggerContainer;

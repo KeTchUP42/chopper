@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Filtration\Filters;
+namespace App\Gear\Filtration\Filters;
 
-use Chopper\Gear\Filtration\Filters\FilterEssence\AbstractFilter;
+use App\Gear\Filtration\Filters\FilterEssence\AbstractFilter;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

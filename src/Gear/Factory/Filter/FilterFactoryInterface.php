@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Factory\Filter;
+namespace App\Gear\Factory\Filter;
 
-use Chopper\Gear\Filtration\Filters\FilterEssence\FilterInterface;
+use App\Gear\Filtration\Filters\FilterEssence\FilterInterface;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

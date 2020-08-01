@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Filtration\FilterCell;
+namespace App\Gear\Filtration\FilterCell;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

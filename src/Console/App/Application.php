@@ -1,12 +1,12 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Console\App;
+namespace App\Console\App;
 
-use Chopper\Console\Command\DownloadCommand;
-use Chopper\Console\Command\FilterCommand;
-use Chopper\Console\Command\MixerCommand;
-use Chopper\Logger\GlobalLogger\SystemLogger;
+use App\Console\Command\DownloadCommand;
+use App\Console\Command\FilterCommand;
+use App\Console\Command\MixerCommand;
+use App\Logger\GlobalLogger\SystemLogger;
 use Symfony\Component\Console\Application as App;
 
 /**

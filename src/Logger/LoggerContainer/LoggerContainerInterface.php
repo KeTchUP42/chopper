@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Logger\LoggerContainer;
+namespace App\Logger\LoggerContainer;
 
 use Zend\Log\LoggerInterface;
 

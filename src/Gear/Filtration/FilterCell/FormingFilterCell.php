@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Filtration\FilterCell;
+namespace App\Gear\Filtration\FilterCell;
 
-use Chopper\Gear\Factory\Filter\FilterFactoryInterface;
-use Chopper\Gear\Filtration\Filters\FilterEssence\FilterInterface;
+use App\Gear\Factory\Filter\FilterFactoryInterface;
+use App\Gear\Filtration\Filters\FilterEssence\FilterInterface;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Traits;
+namespace App\Traits;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

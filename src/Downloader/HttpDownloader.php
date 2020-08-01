@@ -1,11 +1,11 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Downloader;
+namespace App\Downloader;
 
-use Chopper\Curl\Request\CurlRequestInterface;
-use Chopper\Curl\Response\CurlResponseInterface;
-use Chopper\Exceptions\RuntimeException;
+use App\Curl\Request\CurlRequestInterface;
+use App\Curl\Response\CurlResponseInterface;
+use App\Exceptions\RuntimeException;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

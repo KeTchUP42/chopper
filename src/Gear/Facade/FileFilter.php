@@ -1,13 +1,13 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Facade;
+namespace App\Gear\Facade;
 
-use Chopper\Curl\Request\CurlRequest;
-use Chopper\Downloader\HttpDownloader;
-use Chopper\Gear\Filtration\FilterCell\FilterCellInterface;
-use Chopper\Gear\Filtration\Filtrator\Filtrator;
-use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
+use App\Curl\Request\CurlRequest;
+use App\Downloader\HttpDownloader;
+use App\Gear\Filtration\FilterCell\FilterCellInterface;
+use App\Gear\Filtration\Filtrator\Filtrator;
+use App\Logger\LoggerContainer\LoggerContainerInterface;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

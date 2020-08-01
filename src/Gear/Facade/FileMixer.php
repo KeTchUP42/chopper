@@ -1,11 +1,11 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Facade;
+namespace App\Gear\Facade;
 
-use Chopper\Gear\Handling\Mixer\Mixer;
-use Chopper\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
-use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
+use App\Gear\Handling\Mixer\Mixer;
+use App\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
+use App\Logger\LoggerContainer\LoggerContainerInterface;
 use Zend\Log\LoggerInterface;
 
 /**

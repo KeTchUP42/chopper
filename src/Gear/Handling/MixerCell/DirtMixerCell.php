@@ -1,11 +1,11 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Handling\MixerCell;
+namespace App\Gear\Handling\MixerCell;
 
-use Chopper\Exceptions\ErrorException;
-use Chopper\Gear\Handling\MixerCell\MixerCellEssence\AbstractMixerCell;
-use Chopper\Gear\Handling\Wrapper\BaseHtmlWrapper;
+use App\Exceptions\ErrorException;
+use App\Gear\Handling\MixerCell\MixerCellEssence\AbstractMixerCell;
+use App\Gear\Handling\Wrapper\BaseHtmlWrapper;
 use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 

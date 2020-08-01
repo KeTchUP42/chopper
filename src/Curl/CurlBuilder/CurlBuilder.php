@@ -1,11 +1,11 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Curl\CurlBuilder;
+namespace App\Curl\CurlBuilder;
 
-use Chopper\Curl\CurlInfo\CurlBaseInfo;
-use Chopper\Curl\HeaderBuilder\HeaderBuilder;
-use Chopper\Curl\HeaderBuilder\HeaderBuilderInterface;
+use App\Curl\CurlInfo\CurlBaseInfo;
+use App\Curl\HeaderBuilder\HeaderBuilder;
+use App\Curl\HeaderBuilder\HeaderBuilderInterface;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

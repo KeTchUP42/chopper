@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Logger\LoggerContainer;
+namespace App\Logger\LoggerContainer;
 
-use Chopper\Exceptions\RuntimeException;
+use App\Exceptions\RuntimeException;
 use Zend\Log\Logger;
 use Zend\Log\LoggerInterface;
 use Zend\Log\Writer\Stream;

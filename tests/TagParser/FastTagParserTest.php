@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace TagParser;
+namespace App\Tests\TagParser;
 
-use Chopper\TagParser\FastTagParser;
+use App\TagParser\FastTagParser;
 use PHPUnit\Framework\TestCase;
 
 /**

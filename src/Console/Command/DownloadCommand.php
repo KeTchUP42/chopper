@@ -1,12 +1,12 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Console\Command;
+namespace App\Console\Command;
 
-use Chopper\Console\ColoredConsole\Console;
-use Chopper\Curl\Request\CurlRequest;
-use Chopper\Downloader\HttpDownloader;
-use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
+use App\Console\ColoredConsole\Console;
+use App\Curl\Request\CurlRequest;
+use App\Downloader\HttpDownloader;
+use App\Logger\LoggerContainer\LoggerContainerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

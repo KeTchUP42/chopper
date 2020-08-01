@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Handling\MixerCell;
+namespace App\Gear\Handling\MixerCell;
 
-use Chopper\Gear\Handling\MixerCell\MixerCellEssence\AbstractMixerCell;
+use App\Gear\Handling\MixerCell\MixerCellEssence\AbstractMixerCell;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

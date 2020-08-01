@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Gear\Filtration\Filters;
+namespace App\Tests\Gear\Filtration\Filters;
 
-use Chopper\Gear\Filtration\Filters\SpanCleanerFilter;
+use App\Gear\Filtration\Filters\SpanCleanerFilter;
 use PHPUnit\Framework\TestCase;
 
 /**

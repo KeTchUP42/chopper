@@ -20,12 +20,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Chopper\\": "src/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "Tests\\": "tests/"
-      }
+      "App\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Tests\\": "tests/"
     }
   }
 }

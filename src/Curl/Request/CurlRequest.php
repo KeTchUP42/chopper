@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Curl\Request;
+namespace App\Curl\Request;
 
-use Chopper\Curl\CurlBuilder\CurlBuilder;
-use Chopper\Curl\CurlBuilder\CurlBuilderInterface;
+use App\Curl\CurlBuilder\CurlBuilder;
+use App\Curl\CurlBuilder\CurlBuilderInterface;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

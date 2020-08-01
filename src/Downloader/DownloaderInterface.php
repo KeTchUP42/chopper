@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Downloader;
+namespace App\Downloader;
 
-use Chopper\Curl\Response\CurlResponseInterface;
+use App\Curl\Response\CurlResponseInterface;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

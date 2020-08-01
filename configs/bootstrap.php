@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-use Chopper\Logger\GlobalLogger\SystemLogger;
+use App\Logger\GlobalLogger\SystemLogger;
 
 $_ENV['PROJECT_DIR'] = dirname(__DIR__.'/../', 2).'/';
 

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Gear\Handling\Wrapper;
+namespace App\Tests\Gear\Handling\Wrapper;
 
-use Chopper\Gear\Handling\Wrapper\BaseHtmlWrapper;
+use App\Gear\Handling\Wrapper\BaseHtmlWrapper;
 use PHPUnit\Framework\TestCase;
 
 /**

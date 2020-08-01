@@ -1,14 +1,14 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Console\Command;
+namespace App\Console\Command;
 
-use Chopper\Console\ColoredConsole\Console;
-use Chopper\Constant\ConsoleAlias;
-use Chopper\Exceptions\RuntimeException;
-use Chopper\Gear\Facade\FileMixer;
-use Chopper\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
-use Chopper\Logger\LoggerContainer\LoggerContainerInterface;
+use App\Console\ColoredConsole\Console;
+use App\Constant\ConsoleAlias;
+use App\Exceptions\RuntimeException;
+use App\Gear\Facade\FileMixer;
+use App\Gear\Handling\MixerCell\MixerCellEssence\MixerCellInterface;
+use App\Logger\LoggerContainer\LoggerContainerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

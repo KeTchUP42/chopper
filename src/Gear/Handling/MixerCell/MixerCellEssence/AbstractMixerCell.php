@@ -1,10 +1,10 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Gear\Handling\MixerCell\MixerCellEssence;
+namespace App\Gear\Handling\MixerCell\MixerCellEssence;
 
-use Chopper\Exceptions\RuntimeException;
-use Chopper\Gear\Handling\FileContainer\FileContainer;
+use App\Exceptions\RuntimeException;
+use App\Gear\Handling\FileContainer\FileContainer;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

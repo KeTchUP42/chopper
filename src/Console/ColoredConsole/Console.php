@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Console\ColoredConsole;
+namespace App\Console\ColoredConsole;
 
-use Chopper\Traits\ClosedConstructorTrait;
+use App\Traits\ClosedConstructorTrait;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>

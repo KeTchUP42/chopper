@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\Debug;
+namespace App\Debug;
 
 /**
  * Registers all the debug tools.

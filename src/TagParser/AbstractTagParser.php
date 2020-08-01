@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace Chopper\TagParser;
+namespace App\TagParser;
 
 /**
  * @author Roman Bondarenko <rom_bon@mail.ru>
