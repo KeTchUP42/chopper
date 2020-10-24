@@ -42,7 +42,7 @@ class CurlBuilder extends AbstractCurlBuilder implements CurlBuilderInterface
     }
 
     /**
-     * Method sets Curl login and pasw
+     * Method sets Curl login and password
      *
      * @param string $login
      * @param string $password
